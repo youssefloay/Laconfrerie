@@ -50,7 +50,6 @@ export default function EvenementsPage() {
                   Vermicelles de riz, légumes croquants, poulet ou tofu, cacahuètes, sauce thaï
                 </p>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="font-bold text-[#FF5722]">13€/pers.</span>
                   <span className="text-xs text-gray-500">(option VG)</span>
                 </div>
               </div>
@@ -66,7 +65,8 @@ export default function EvenementsPage() {
                   Riz, saumon ou thon mariné, avocat, mangue, concombre, graines, sauce soja
                 </p>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="font-bold text-[#FF5722]">14.5€/pers.</span>
+                <span className="text-xs text-gray-500">(option VG)</span>
+
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ export default function EvenementsPage() {
                 </div>
                 <p className="mt-2 text-sm text-gray-700">Tortilla, poulet grillé, crudités, sauce yaourt aux herbes</p>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="font-bold text-[#FF5722]">9.5€/pers.</span>
+                <span className="text-xs text-gray-500">(option VG)</span>
                 </div>
               </div>
 
@@ -94,7 +94,7 @@ export default function EvenementsPage() {
                 </div>
                 <p className="mt-2 text-sm text-gray-700">Calamars frits, sauce tartare maison, quartier de citron</p>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="font-bold text-[#FF5722]">8.5€/pers.</span>
+                <span className="text-xs text-gray-500">(option VG)</span>
                 </div>
               </div>
             </div>
@@ -194,8 +194,9 @@ export default function EvenementsPage() {
               <li>Des menus personnalisés selon vos préférences et votre budget</li>
               <li>Une équipe professionnelle et souriante</li>
               <li>Des produits frais et de qualité</li>
-              <li>Une installation autonome (eau, électricité)</li>
-              <li>La possibilité de servir jusqu'à 300 personnes</li>
+              <li>Une logistique adaptée à votre événement</li>
+              <li>Des options végétariennes et véganes disponibles</li>
+              <li>Des plats faits maison préparés sur place</li>
               <li>
                 <span className="font-bold">Une variété de plats au-delà des burgers :</span> bobuns, pokebowls, wraps,
                 fritures et bien plus
