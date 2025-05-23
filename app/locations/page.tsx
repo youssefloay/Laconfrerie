@@ -63,7 +63,7 @@ export default function LocationsPage() {
                 <span className="font-bold">Services :</span> Tables et chaises à disposition, parasols
               </p>
               <p className="text-gray-700">
-                <span className="font-bold">Paiement :</span> Espèces, CB, tickets restaurant
+                <span className="font-bold">Paiement :</span> Espèces, CB
               </p>
               <p className="text-gray-700">
                 <span className="font-bold">Bon à savoir :</span> Possibilité de commander à l'avance par téléphone

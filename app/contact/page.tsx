@@ -47,17 +47,7 @@ export default function ContactPage() {
                 </a>
               </div>
 
-              <div className="flex items-center gap-3">
-                <Facebook className="h-5 w-5 text-[#1E88E5]" />
-                <a
-                  href="https://facebook.com/laconfreriefoodtruck"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg hover:text-[#FF5722]"
-                >
-                  La Confrérie Foodtruck
-                </a>
-              </div>
+              
             </div>
 
             <div>
