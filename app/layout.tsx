@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Baloo_2, Montserrat } from "next/font/google"
+import { Analytics } from "@vercel/analytics/react"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${montserrat.variable} ${baloo.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
