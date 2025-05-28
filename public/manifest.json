@@ -1,0 +1,36 @@
+{
+  "name": "La Confrérie Foodtruck",
+  "short_name": "La Confrérie",
+  "description": "Savourez nos délicieux burgers et salades dans une ambiance estivale à la Plage du Pilou !",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "categories": ["food", "restaurant", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "La Confrérie Foodtruck"
+    }
+  ]
+} 
