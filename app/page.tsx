@@ -364,12 +364,7 @@ export default function Home() {
           <div className="mx-auto max-w-2xl rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-[#1E88E5]" />
-                  <a href="tel:0612345678" className="text-lg hover:text-[#FF5722]">
-                    06 12 34 56 78
-                  </a>
-                </div>
+                
 
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-[#1E88E5]" />
