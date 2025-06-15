@@ -2,6 +2,17 @@ import Link from "next/link"
 import { ArrowLeft, Phone, Mail, Instagram, Facebook } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SiteLogo } from "@/components/site-logo"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Contact | La Confrérie Foodtruck - Villeneuve-lès-Maguelone",
+  description: "Contactez La Confrérie Foodtruck pour vos événements ou réservations. Retrouvez-nous à la Plage du Pilou à Villeneuve-lès-Maguelone.",
+  openGraph: {
+    title: "Contact | La Confrérie Foodtruck",
+    description: "Contactez-nous pour vos événements ou réservations à la Plage du Pilou.",
+    type: "website",
+  }
+}
 
 export default function ContactPage() {
   return (

@@ -82,7 +82,9 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'google-site-verification=XXXXXXXXXXXX', // Remplacez par votre code de vérification Google Search Console
+    other: {
+      'ionos-verification': 'votre-code-verification-ionos',
+    }
   },
   category: 'food',
   classification: 'restaurant',

@@ -3,6 +3,17 @@ import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Menu | La Confrérie Foodtruck - Burgers & Salades à Villeneuve-lès-Maguelone",
+  description: "Découvrez notre menu de burgers gourmets et salades fraîches. Des ingrédients de qualité et des recettes savoureuses à la Plage du Pilou.",
+  openGraph: {
+    title: "Menu | La Confrérie Foodtruck",
+    description: "Découvrez notre menu de burgers gourmets et salades fraîches à la Plage du Pilou.",
+    type: "website",
+  }
+}
 
 export default function MenuPage() {
   return (

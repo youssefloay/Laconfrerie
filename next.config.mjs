@@ -7,8 +7,81 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    domains: ['laconfrerietruck.fr'],
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
+  async redirects() {
+    return [
+      {
+        source: '/menu.html',
+        destination: '/menu',
+        permanent: true,
+      },
+      {
+        source: '/contact.html',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/locations.html',
+        destination: '/locations',
+        permanent: true,
+      },
+      {
+        source: '/evenements.html',
+        destination: '/evenements',
+        permanent: true,
+      },
+      {
+        source: '/devis.html',
+        destination: '/devis',
+        permanent: true,
+      }
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff'
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN'
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block'
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin'
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
+        ]
+      }
+    ]
+  },
+  poweredByHeader: false,
+  compress: true,
+  reactStrictMode: true,
+  swcMinify: true
 }
 
 export default nextConfig
