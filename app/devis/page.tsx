@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SiteLogo } from "@/components/site-logo"
+import { SocialNav } from "@/components/social-nav"
 
 export default function DevisPage() {
   const [formData, setFormData] = useState({
@@ -85,6 +86,7 @@ export default function DevisPage() {
   return (
     <div className="min-h-screen bg-[#FFF8E1]">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <SocialNav />
         <div className="mb-8">
           <Link href="/evenements">
             <Button variant="ghost" className="text-[#1E88E5]">
