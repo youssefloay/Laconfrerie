@@ -14,6 +14,23 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SiteLogo } from "@/components/site-logo"
 import { SocialNav } from "@/components/social-nav"
+import type { Metadata, Viewport } from "next"
+
+export const viewport: Viewport = {
+  themeColor: "#1E88E5",
+  width: "device-width",
+  initialScale: 1,
+}
+
+export const metadata: Metadata = {
+  title: "Demander un devis | La Confrérie Foodtruck - Événements",
+  description: "Demandez un devis pour votre événement avec La Confrérie Foodtruck. Mariages, festivals, événements d'entreprise - nous nous adaptons à vos besoins.",
+  openGraph: {
+    title: "Demander un devis | La Confrérie Foodtruck",
+    description: "Demandez un devis pour votre événement avec La Confrérie Foodtruck.",
+    type: "website",
+  }
+}
 
 export default function DevisPage() {
   const [formData, setFormData] = useState({

@@ -3,8 +3,14 @@ import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { SocialNav } from "@/components/social-nav"
+
+export const viewport: Viewport = {
+  themeColor: "#1E88E5",
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: "Menu | La Confrérie Foodtruck - Burgers & Salades à Villeneuve-lès-Maguelone",

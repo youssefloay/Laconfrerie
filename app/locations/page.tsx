@@ -1,9 +1,17 @@
+"use client"
+
 import { MapPin, Clock, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { SiteLogo } from "@/components/site-logo"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { SocialNav } from "@/components/social-nav"
+
+export const viewport: Viewport = {
+  themeColor: "#1E88E5",
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: "Où nous trouver | La Confrérie Foodtruck - Plage du Pilou",
@@ -13,6 +21,19 @@ export const metadata: Metadata = {
     description: "Retrouvez-nous à la Plage du Pilou à Villeneuve-lès-Maguelone.",
     type: "website",
   }
+}
+
+function MapButton() {
+  return (
+    <Button
+      variant="outline"
+      size="sm"
+      className="text-xs border-[#FF5722] text-[#FF5722] hover:bg-[#FF5722] hover:text-white"
+      onClick={() => window.open("https://maps.app.goo.gl/co6Xn3KF6ieAuDhB7", "_blank")}
+    >
+      <MapPin className="mr-1 h-3 w-3" />Y aller
+    </Button>
+  )
 }
 
 export default function LocationsPage() {
@@ -47,14 +68,7 @@ export default function LocationsPage() {
 
                 <div className="mt-4">
                   <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-xs border-[#FF5722] text-[#FF5722] hover:bg-[#FF5722] hover:text-white"
-                      onClick={() => window.open("https://maps.app.goo.gl/co6Xn3KF6ieAuDhB7", "_blank")}
-                    >
-                      <MapPin className="mr-1 h-3 w-3" />Y aller
-                    </Button>
+                    <MapButton />
                   </div>
                   <div className="mt-2 text-xs text-gray-500">GPS: 43.506683, 3.883924</div>
                 </div>

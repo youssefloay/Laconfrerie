@@ -2,8 +2,14 @@ import Link from "next/link"
 import { ArrowLeft, Phone, Mail, Instagram, Facebook } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { SiteLogo } from "@/components/site-logo"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { SocialNav } from "@/components/social-nav"
+
+export const viewport: Viewport = {
+  themeColor: "#1E88E5",
+  width: "device-width",
+  initialScale: 1,
+}
 
 export const metadata: Metadata = {
   title: "Contact | La Confrérie Foodtruck - Villeneuve-lès-Maguelone",
