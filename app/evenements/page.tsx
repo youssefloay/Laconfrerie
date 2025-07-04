@@ -26,7 +26,6 @@ export default function EvenementsPage() {
   return (
     <div className="min-h-screen bg-[#FFF8E1]">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <SocialNav />
         <div className="mb-8">
           <Link href="/">
             <Button variant="ghost" className="text-[#1E88E5]">
@@ -43,6 +42,9 @@ export default function EvenementsPage() {
         <h1 className="font-display text-4xl font-bold text-[#1E88E5] text-center mb-12">
           La Confrérie pour votre événement
         </h1>
+        <div className="flex justify-center mb-8">
+          <SocialNav />
+        </div>
 
         <div className="mx-auto max-w-4xl mb-12 text-center">
           <p className="text-lg text-gray-700">

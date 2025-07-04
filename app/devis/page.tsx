@@ -61,7 +61,6 @@ export default function DevisPage() {
       <div className="min-h-screen bg-[#FFF8E1] flex items-center justify-center">
         <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
           <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-            <SocialNav />
             <div className="mb-8">
               <Link href="/evenements">
                 <Button variant="ghost" className="text-[#1E88E5]">
@@ -71,9 +70,13 @@ export default function DevisPage() {
               </Link>
             </div>
 
-            {/* Modifier la section du logo */}
             <div className="flex justify-center mb-8">
               <SiteLogo size="medium" background="yellow" />
+            </div>
+
+            <h1 className="font-display text-4xl font-bold text-[#1E88E5] mb-4 text-center">Demande de devis personnalisé</h1>
+            <div className="flex justify-center mb-8">
+              <SocialNav />
             </div>
 
             <div className="mx-auto max-w-4xl">
@@ -318,7 +321,6 @@ export default function DevisPage() {
   return (
     <div className="min-h-screen bg-[#FFF8E1]">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <SocialNav />
         <div className="mb-8">
           <Link href="/evenements">
             <Button variant="ghost" className="text-[#1E88E5]">
@@ -328,9 +330,13 @@ export default function DevisPage() {
           </Link>
         </div>
 
-        {/* Modifier la section du logo */}
         <div className="flex justify-center mb-8">
           <SiteLogo size="medium" background="yellow" />
+        </div>
+
+        <h1 className="font-display text-4xl font-bold text-[#1E88E5] mb-4 text-center">Demande de devis personnalisé</h1>
+        <div className="flex justify-center mb-8">
+          <SocialNav />
         </div>
 
         <div className="mx-auto max-w-4xl">

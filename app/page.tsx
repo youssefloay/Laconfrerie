@@ -11,9 +11,6 @@ import { SocialNav } from "@/components/social-nav"
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#FFF8E1]">
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <SocialNav />
-      </div>
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[#FFD54F] opacity-70"></div>
@@ -52,6 +49,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <SocialNav />
+      </div>
 
       {/* Menu Section */}
       <section id="menu" className="py-16">

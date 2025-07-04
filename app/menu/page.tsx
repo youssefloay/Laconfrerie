@@ -26,7 +26,6 @@ export default function MenuPage() {
   return (
     <div className="min-h-screen bg-[#FFF8E1]">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <SocialNav />
         <div className="mb-8">
           <Link href="/">
             <Button variant="ghost" className="text-[#1E88E5]">
@@ -42,6 +41,9 @@ export default function MenuPage() {
         </div>
 
         <h1 className="font-display text-4xl font-bold text-[#E53935] text-center mb-12">Notre Menu</h1>
+        <div className="flex justify-center mb-8">
+          <SocialNav />
+        </div>
 
         {/* Burgers */}
         <div className="mx-auto max-w-4xl mb-16">

@@ -25,7 +25,6 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-[#FFF8E1]">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <SocialNav />
         <div className="mb-8">
           <Link href="/">
             <Button variant="ghost" className="text-[#1E88E5]">
@@ -36,6 +35,9 @@ export default function ContactPage() {
         </div>
 
         <h1 className="font-display text-4xl font-bold text-[#FF5722] text-center mb-12">Contactez-nous</h1>
+        <div className="flex justify-center mb-8">
+          <SocialNav />
+        </div>
 
         <div className="mx-auto max-w-2xl rounded-2xl bg-white p-6 shadow-lg md:p-8">
           <div className="grid gap-8 md:grid-cols-2">
