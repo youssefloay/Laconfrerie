@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { MapPin, Clock, Phone, Mail, Instagram, Facebook } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
@@ -67,35 +68,65 @@ export default function Home() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display text-xl font-bold text-[#E53935]">CHEESE BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                      <Image 
+                        src="/images/burgers/cheese.jpeg" 
+                        alt="Cheese Burger" 
+                        width={64} 
+                        height={64} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak, salade, tomate, oignon, cornichon, cheddar, sauce cheese
+                    Steak au choix, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">12.5€</span>
+                    {/* <span className="font-bold text-[#FF5722]">12.90€</span> */}
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie Happyvore 🌱</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display text-xl font-bold text-[#E53935]">BACON BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="bacon" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                      <Image 
+                        src="/images/burgers/bacon.jpeg" 
+                        alt="Bacon Burger" 
+                        width={64} 
+                        height={64} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak, salade, tomate, oignon, cornichon, cheddar, bacon, sauce BBQ
+                    Steak au choix, laitue, tomates, oignons rouges, pickles, cheddar, bacon, sauce BBQ
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">13€</span>
+                    {/* <span className="font-bold text-[#FF5722]">14.50€</span> */}
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie Happyvore 🌱</span>
                   </div>
                 </div>
               </div>
 
               <div className="space-y-6">
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">GUACAMOLE BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm text-gray-700">
+                    Steak au choix, cheddar, guacamole, coriandre fraîche, mâche, oignons rouges
+                  </p>
+                  <div className="mt-2 flex items-center justify-between">
+                    {/* <span className="font-bold text-[#FF5722]">14.90€</span> */}
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie Happyvore 🌱</span>
+                  </div>
+                </div>
+
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display text-xl font-bold text-[#E53935]">SALADE CÉSAR</h3>
@@ -107,19 +138,7 @@ export default function Home() {
                     Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">10.5€</span>
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">FRITES MAISON</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="fries" size={32} className="text-[#FF5722]" />
-                    </div>
-                  </div>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">4€</span>
+                    {/* <span className="font-bold text-[#FF5722]">10.50€</span> */}
                   </div>
                 </div>
               </div>
@@ -128,9 +147,13 @@ export default function Home() {
             <div className="mt-6">
               <div className="flex items-center justify-center rounded-full bg-[#FFD54F] p-3 text-center mx-auto max-w-xs mb-4">
                 <p className="font-display font-bold text-[#E53935]">
-                  +5€ FRITES ET BOISSON
+                  {/* +2.5€ BOISSON */}
+                  
+                  <span className="text-sm font-bold text-gray-700">Plat du jour</span>
                   <br />
-                  <span className="text-xs">(avec burger uniquement)</span>
+                  <span className="text-xs text-gray-700">Préparé selon les produits de saison. Découvrez-le chaque jour sur Instagram et Facebook !</span>
+                  <br />
+                  
                 </p>
               </div>
               <div className="text-center">
@@ -372,8 +395,15 @@ export default function Home() {
 
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-[#1E88E5]" />
-                  <a href="mailto:laconfrerie.villeneuve@gmail.com" className="text-lg hover:text-[#FF5722]">
-                    laconfrerie.villeneuve@gmail.com
+                  <a href="mailto:contact@laconfrerietruck.fr" className="text-lg hover:text-[#FF5722]">
+                    contact@laconfrerietruck.fr
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Phone className="h-5 w-5 text-[#1E88E5]" />
+                  <a href="tel:0662350953" className="text-lg hover:text-[#FF5722]">
+                    06 62 35 09 53
                   </a>
                 </div>
 

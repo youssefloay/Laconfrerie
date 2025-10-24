@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { FoodIcon } from "@/components/food-icon"
@@ -53,31 +54,61 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">CHEESE BURGER</h3>
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">HAMBURGER</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak, salade, tomate, oignon, cornichon, cheddar, sauce cheese
+                    Steak au choix, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise. Servi avec frites maison.
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">12.5€</span>
+                    <span className="font-bold text-[#FF5722]">12,9€</span>
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display text-xl font-bold text-[#E53935]">BACON BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="bacon" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                      <Image 
+                        src="/images/burgers/bacon.jpeg" 
+                        alt="Bacon Burger" 
+                        width={64} 
+                        height={64} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak, salade, tomate, oignon, cornichon, cheddar, bacon, sauce BBQ
+                    Steak au choix, laitue, tomates, oignons rouges, pickles, cheddar, bacon, sauce BBQ. Servi avec frites maison.
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">13€</span>
+                    <span className="font-bold text-[#FF5722]">14,5€</span>
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">CHEESY BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                      <Image 
+                        src="/images/burgers/cheese.jpeg" 
+                        alt="Cheesy Burger" 
+                        width={64} 
+                        height={64} 
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  </div>
+                  <p className="mt-2 text-sm text-gray-700">
+                    Steak au choix, cheddar, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise. Servi avec frites maison.
+                  </p>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">15,5€</span>
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
               </div>
@@ -85,17 +116,17 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">VEGGIE BURGER</h3>
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">GUACAMOLE BURGER</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak, salade, tomate, oignon, cornichon, cheddar, sauce cheese
+                    Steak au choix, cheddar, guacamole, laitue, oignons rouges, sauce blanche. Servi avec frites maison.
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">12.5€</span>
-                    <span className="text-xs text-gray-500">(100% VG)</span>
+                    <span className="font-bold text-[#FF5722]">16,9€</span>
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
 
@@ -103,35 +134,146 @@ export default function MenuPage() {
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display text-xl font-bold text-[#E53935]">BURGER DU MOMENT</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="specialite" size={32} className="text-[#FF5722]" />
+                      <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Demandez notre création du moment, élaborée avec des produits de saison
+                    Retrouvez-la sur notre pancarte ou nos réseaux (Instagram, Facebook).
                   </p>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">13.5€</span>
-                  </div>
                 </div>
               </div>
             </div>
             <div className="col-span-full mt-6">
               <div className="flex items-center justify-center rounded-full bg-[#FFD54F] p-4 text-center mx-auto max-w-xs">
                 <p className="font-display font-bold text-[#E53935]">
-                  +5€ FRITES
+                  🌱 Envie d'une option veggie ?
                   <br />
-                  ET BOISSON
+                  <span className="text-xs">Tous nos burgers existent aussi en version végétarienne 🌿</span>
                   <br />
-                  <span className="text-xs">(avec burger uniquement)</span>
+                  <span className="text-xs">le plat du jour</span>
                 </p>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Sides */}
+        <div className="mx-auto max-w-4xl mb-16">
+          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Sides</h2>
+          <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="space-y-6">
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">FRITES MAISON</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="fries" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">4,00 €</span>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">TENDERS X4</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">7,00 €</span>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">TENDERS X6</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">9,00 €</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">TENDERS X8</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">11,00 €</span>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">PETITE SALADE</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">3,50 €</span>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">ROQUETTE & PARMESAN</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">5,00 €</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Desserts */}
+        <div className="mx-auto max-w-4xl mb-16">
+          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Desserts</h2>
+          <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
+            <div className="text-center">
+              <p className="text-gray-700 mb-4">
+                Tous nos desserts sont faits maison, selon l'inspiration du jour.
+              </p>
+              <p className="text-gray-700 font-semibold">
+                Venez les découvrir sur place !
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Plat du jour */}
+        <div className="mx-auto max-w-4xl mb-16">
+          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Plat du jour</h2>
+          <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
+            <div className="text-center">
+              <p className="text-gray-700 mb-4">
+                Préparé selon les produits de saison. Découvrez-le chaque jour sur Instagram et Facebook !
+              </p>
+              <p className="text-gray-700 font-semibold">
+                Notre cuisine est entièrement faite maison, élaborée à partir de produits frais issus de producteurs locaux et de circuits courts.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Salades */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Nos Salades</h2>
+          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Salades</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
@@ -146,7 +288,7 @@ export default function MenuPage() {
                     Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">10.5€</span>
+                    <span className="font-bold text-[#FF5722]">12,9€</span>
                   </div>
                 </div>
               </div>
@@ -159,53 +301,54 @@ export default function MenuPage() {
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
-                  <p className="mt-2 text-sm text-gray-700">Demandez notre salade de saison</p>
+                  <p className="mt-2 text-sm text-gray-700">
+                    Retrouvez-la sur notre pancarte ou nos réseaux (Instagram, Facebook).
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Accompagnements et Boissons */}
+        {/* Boissons */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">
-            Accompagnements & Boissons
-          </h2>
+          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Boissons</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">TENDERS</h3>
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">CANETTE</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
-                  <div className="mt-2 space-y-1">
-                    <div className="flex justify-between">
-                      <span>4 pièces</span>
-                      <span className="font-bold text-[#FF5722]">5.9€</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>6 pièces</span>
-                      <span className="font-bold text-[#FF5722]">7.9€</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>8 pièces</span>
-                      <span className="font-bold text-[#FF5722]">9.9€</span>
-                    </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">2,50 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">FRITES MAISON</h3>
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">EAU</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="fries" size={32} className="text-[#FF5722]" />
+                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">4€</span>
+                    <span className="font-bold text-[#FF5722]">1,50 €</span>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">BIÈRE HEINEKEN</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">3,00 €</span>
                   </div>
                 </div>
               </div>
@@ -213,28 +356,25 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">BOISSONS</h3>
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">CAFÉ</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
-                  <div className="mt-2 space-y-1">
-                    <div className="flex justify-between">
-                      <span>Café</span>
-                      <span className="font-bold text-[#FF5722]">2€</span>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">2,00 €</span>
+                  </div>
+                </div>
+
+                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">BOUTEILLE DE VIN</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
-                    <div className="flex justify-between">
-                      <span>Canette</span>
-                      <span className="font-bold text-[#FF5722]">3.5€</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Bière</span>
-                      <span className="font-bold text-[#FF5722]">4€</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Eau</span>
-                      <span className="font-bold text-[#FF5722]">2€</span>
-                    </div>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">11 €</span>
                   </div>
                 </div>
               </div>
@@ -301,3 +441,4 @@ export default function MenuPage() {
     </div>
   )
 }
+

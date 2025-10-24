@@ -46,8 +46,8 @@ export default function ContactPage() {
 
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-[#1E88E5]" />
-                <a href="mailto:laconfrerie.villeneuve@gmail.com" className="text-lg hover:text-[#FF5722]">
-                  laconfrerie.villeneuve@gmail.com
+                <a href="mailto:contact@laconfrerietruck.fr" className="text-lg hover:text-[#FF5722]">
+                contact@laconfrerietruck.fr
                 </a>
               </div>
 
