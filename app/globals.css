@@ -2,79 +2,431 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+/* Import des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cooper+Hewitt:wght@300;400;500;600;700;800;900&display=swap');
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+/* Variables de couleurs personnalisées */
+:root {
+  --menu-cream: #f7e7d4; /* Beige crème pour le fond */
+  --menu-yellow: #fcc447; /* Jaune pour les accents */
+  --menu-red: #f24f32; /* Rouge pour les noms d'items */
+  --menu-blue: #216ca8; /* Bleu pour les titres et prix */
+  --menu-green: #73a852; /* Vert pour les éléments spéciaux */
+  --menu-gray: #374151; /* Gris foncé pour les descriptions */
+  --menu-light-gray: #6B7280; /* Gris clair pour les prix secondaires */
+}
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+/* Animations personnalisées */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
   }
-  body {
-    @apply bg-background text-foreground;
+  50% {
+    transform: translateY(-20px);
   }
 }
 
-.font-display {
-  font-family: var(--font-display);
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Classes d'animation */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-bounce-gentle {
+  animation: bounceGentle 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-rotate-slow {
+  animation: rotate 20s linear infinite;
+}
+
+/* Délais d'animation */
+.animation-delay-200 {
+  animation-delay: 0.2s;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+}
+
+.animation-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animation-delay-800 {
+  animation-delay: 0.8s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Effets de survol améliorés */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation des icônes */
+.icon-spin:hover {
+  animation: rotate 0.5s ease-in-out;
+}
+
+/* Animation de chargement */
+.loading-dots {
+  display: inline-block;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%, 100% {
+    content: '...';
+  }
+}
+
+/* Animation de glissement */
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation de zoom */
+.zoom-in {
+  animation: zoomIn 0.5s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+@keyframes zoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation de rotation continue pour les éléments décoratifs */
+.rotate-continuous {
+  animation: rotate 10s linear infinite;
+}
+
+/* Animation de pulsation pour les éléments importants */
+.pulse-important {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Animation de rebond pour les boutons */
+.bounce-button {
+  transition: all 0.3s ease;
+}
+
+.bounce-button:hover {
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Animation de vague pour les éléments fluides */
+.wave {
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+/* Animation de scintillement */
+.twinkle {
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Animation de glissement pour les cartes */
+.card-slide {
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.card-slide:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation de rotation pour les icônes */
+.icon-rotate:hover {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease;
+}
+
+/* Animation de scale pour les images */
+.image-scale {
+  transition: transform 0.3s ease;
+}
+
+.image-scale:hover {
+  transform: scale(1.1);
+}
+
+/* Animation de fade pour les transitions */
+.fade-in {
+  animation: fadeIn 0.8s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation de slide up pour les sections */
+.slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classes de couleurs personnalisées pour le menu */
+.text-menu-cream {
+  color: var(--menu-cream);
+}
+
+.text-menu-yellow {
+  color: var(--menu-yellow);
+}
+
+.text-menu-red {
+  color: var(--menu-red);
+}
+
+.text-menu-blue {
+  color: var(--menu-blue);
+}
+
+.text-menu-green {
+  color: var(--menu-green);
+}
+
+.text-menu-gray {
+  color: var(--menu-gray);
+}
+
+.text-menu-light-gray {
+  color: var(--menu-light-gray);
+}
+
+.bg-menu-cream {
+  background-color: var(--menu-cream);
+}
+
+.bg-menu-yellow {
+  background-color: var(--menu-yellow);
+}
+
+.bg-menu-red {
+  background-color: var(--menu-red);
+}
+
+.bg-menu-blue {
+  background-color: var(--menu-blue);
+}
+
+.bg-menu-green {
+  background-color: var(--menu-green);
+}
+
+/* Polices personnalisées */
+.font-roca {
+  font-family: 'Inter', sans-serif; /* Roca Two n'est pas disponible sur Google Fonts, on utilise Inter comme alternative */
+}
+
+.font-cooper {
+  font-family: 'Cooper Hewitt', sans-serif;
+}
+
+/* Styles pour les titres de section */
+.section-title {
+  color: var(--menu-blue);
+  font-family: 'Cooper Hewitt', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+}
+
+/* Styles pour les noms d'items */
+.item-title {
+  color: var(--menu-red);
+  font-family: 'Cooper Hewitt', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Styles pour les descriptions */
+.item-description {
+  color: var(--menu-gray);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+/* Styles pour les prix */
+.price {
+  color: var(--menu-blue);
+  font-family: 'Cooper Hewitt', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+/* Styles pour les prix secondaires */
+.price-secondary {
+  color: var(--menu-light-gray);
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Styles pour les éléments spéciaux */
+.special-text {
+  color: var(--menu-green);
+  font-family: 'Cooper Hewitt', sans-serif;
+  font-weight: 600;
+}
+
+/* Styles pour les accents */
+.accent-yellow {
+  color: var(--menu-yellow);
+  font-family: 'Cooper Hewitt', sans-serif;
+  font-weight: 600;
 }

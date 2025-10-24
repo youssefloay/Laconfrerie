@@ -11,24 +11,24 @@ import { SocialNav } from "@/components/social-nav"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#FFF8E1]">
+    <div className="min-h-screen bg-menu-cream">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-[#FFD54F] opacity-70"></div>
-        <div className="absolute top-40 -right-20 h-48 w-48 rounded-full bg-[#FF7043] opacity-60"></div>
-        <div className="absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-[#4FC3F7] opacity-50"></div>
+        <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-menu-yellow opacity-70 animate-float"></div>
+        <div className="absolute top-40 -right-20 h-48 w-48 rounded-full bg-menu-red opacity-60 animate-float animation-delay-1000"></div>
+        <div className="absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-menu-blue opacity-50 animate-float animation-delay-2000"></div>
 
         <div className="container relative mx-auto px-4 py-16 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
             <div className="text-center md:text-left">
-              <h1 className="font-display text-5xl font-bold text-[#1E88E5] md:text-6xl">
+              <h1 className="font-cooper text-5xl font-bold text-menu-blue md:text-6xl">
                 LA CONFRÉRIE
-                <span className="block text-[#FF5722]">FOODTRUCK</span>
+                <span className="block text-menu-red">FOODTRUCK</span>
               </h1>
               <p className="mt-4 text-lg text-gray-700">Savourez nos délicieux burgers dans une ambiance estivale !</p>
               <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
                 <Link href="/locations">
-                  <Button className="bg-[#FF5722] hover:bg-[#E64A19]">
+                  <Button className="bg-menu-red hover:bg-red-700 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-300">
                     <MapPin className="mr-2 h-4 w-4" />
                     Nous trouver
                   </Button>
@@ -36,7 +36,7 @@ export default function Home() {
                 <Link href="/contact">
                   <Button
                     variant="outline"
-                    className="border-[#1E88E5] text-[#1E88E5] hover:bg-[#1E88E5] hover:text-white"
+                    className="border-menu-blue text-menu-blue hover:bg-menu-blue hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-400"
                   >
                     <Phone className="mr-2 h-4 w-4" />
                     Nous contacter
@@ -44,7 +44,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80">
+            <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80 animate-bounce-gentle">
               <SiteLogo size="large" background="yellow" />
             </div>
           </div>
@@ -58,17 +58,17 @@ export default function Home() {
       <section id="menu" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="font-display text-4xl font-bold text-[#E53935]">MENU</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F]"></div>
+            <h2 className="section-title animate-fade-in-up">MENU</h2>
+            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
           </div>
 
           <div className="mx-auto max-w-4xl rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">CHEESE BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                    <h3 className="item-title">CHEESE BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/cheese.jpeg" 
                         alt="Cheese Burger" 
@@ -78,7 +78,7 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <p className="mt-2 text-sm text-gray-700">
+                  <p className="mt-2 item-description">
                     Steak au choix, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise
                   </p>
                   <div className="mt-2 flex items-center justify-between">
@@ -87,10 +87,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">BACON BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                    <h3 className="item-title">BACON BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/bacon.jpeg" 
                         alt="Bacon Burger" 
@@ -100,7 +100,7 @@ export default function Home() {
                       />
                     </div>
                   </div>
-                  <p className="mt-2 text-sm text-gray-700">
+                  <p className="mt-2 item-description">
                     Steak au choix, laitue, tomates, oignons rouges, pickles, cheddar, bacon, sauce BBQ
                   </p>
                   <div className="mt-2 flex items-center justify-between">
@@ -111,14 +111,14 @@ export default function Home() {
               </div>
 
               <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">GUACAMOLE BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                    <h3 className="item-title">GUACAMOLE BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
-                  <p className="mt-2 text-sm text-gray-700">
+                  <p className="mt-2 item-description">
                     Steak au choix, cheddar, guacamole, coriandre fraîche, mâche, oignons rouges
                   </p>
                   <div className="mt-2 flex items-center justify-between">
@@ -170,8 +170,8 @@ export default function Home() {
       <section id="locations" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="font-display text-4xl font-bold text-[#1E88E5]">OÙ NOUS TROUVER</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F]"></div>
+            <h2 className="section-title animate-fade-in-up">OÙ NOUS TROUVER</h2>
+            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
           </div>
 
           <div className="mx-auto max-w-4xl">
@@ -232,17 +232,17 @@ export default function Home() {
       <section id="evenements" className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="font-display text-4xl font-bold text-[#1E88E5]">ÉVÉNEMENTS</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F]"></div>
-            <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
+            <h2 className="section-title animate-fade-in-up">ÉVÉNEMENTS</h2>
+            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
+            <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
               Pour vos événements, nous proposons une carte étendue avec bobuns, pokebowls, wraps et bien plus !
             </p>
           </div>
 
           <div className="mx-auto max-w-4xl">
             <div className="grid gap-8 md:grid-cols-3">
-              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -264,8 +264,8 @@ export default function Home() {
                 <p className="mt-2 text-sm text-gray-700">Offrez une expérience culinaire unique à vos invités.</p>
               </div>
 
-              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -286,8 +286,8 @@ export default function Home() {
                 <p className="mt-2 text-sm text-gray-700">Nous nous adaptons à tous types d'événements.</p>
               </div>
 
-              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-600">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="32"
@@ -384,7 +384,7 @@ export default function Home() {
       <section id="contact" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="font-display text-4xl font-bold text-[#FF5722]">CONTACTEZ-NOUS</h2>
+            <h2 className="section-title animate-fade-in-up">CONTACTEZ-NOUS</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F]"></div>
           </div>
 
@@ -441,7 +441,7 @@ export default function Home() {
                   Vous organisez un événement ? Contactez-nous pour réserver notre foodtruck !
                 </p>
                 <Link href="/devis">
-                  <Button className="w-full bg-[#FF5722] hover:bg-[#E64A19]">Demander un devis</Button>
+                  <Button className="w-full bg-[#FF5722] hover:bg-[#E64A19] transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-400">Demander un devis</Button>
                 </Link>
               </div>
             </div>

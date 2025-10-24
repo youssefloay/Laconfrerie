@@ -25,11 +25,11 @@ export const metadata: Metadata = {
 
 export default function MenuPage() {
   return (
-    <div className="min-h-screen bg-[#FFF8E1]">
+    <div className="min-h-screen bg-menu-cream">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Link href="/">
-            <Button variant="ghost" className="text-[#1E88E5]">
+            <Button variant="ghost" className="text-menu-blue">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Retour à l'accueil
             </Button>
@@ -41,21 +41,21 @@ export default function MenuPage() {
           <SiteLogo size="medium" background="yellow" />
         </div>
 
-        <h1 className="font-display text-4xl font-bold text-[#E53935] text-center mb-12">Notre Menu</h1>
+        <h1 className="section-title text-center mb-12 animate-fade-in-up">Notre Menu</h1>
         <div className="flex justify-center mb-8">
           <SocialNav />
         </div>
 
         {/* Burgers */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Nos Burgers</h2>
+          <h2 className="section-title mb-8 text-center">Nos Burgers</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">HAMBURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                    <h3 className="item-title">HAMBURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
@@ -63,15 +63,15 @@ export default function MenuPage() {
                     Steak au choix, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise. Servi avec frites maison.
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">12,9€</span>
+                    <span className="price">12,9€</span>
                     <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">BACON BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                    <h3 className="item-title">BACON BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/bacon.jpeg" 
                         alt="Bacon Burger" 
@@ -85,15 +85,15 @@ export default function MenuPage() {
                     Steak au choix, laitue, tomates, oignons rouges, pickles, cheddar, bacon, sauce BBQ. Servi avec frites maison.
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">14,5€</span>
+                    <span className="price">14,5€</span>
                     <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">CHEESY BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden">
+                    <h3 className="item-title">CHEESY BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/cheese.jpeg" 
                         alt="Cheesy Burger" 
@@ -114,10 +114,10 @@ export default function MenuPage() {
               </div>
 
               <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-600">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">GUACAMOLE BURGER</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                    <h3 className="item-title">GUACAMOLE BURGER</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
@@ -130,10 +130,10 @@ export default function MenuPage() {
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-700">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">BURGER DU MOMENT</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
+                    <h3 className="item-title">BURGER DU MOMENT</h3>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
@@ -159,43 +159,43 @@ export default function MenuPage() {
 
         {/* Sides */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Sides</h2>
+          <h2 className="section-title mb-8 text-center">Sides</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">FRITES MAISON</h3>
+                    <h3 className="item-title">FRITES MAISON</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="fries" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">4,00 €</span>
+                    <span className="price">4,00 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">TENDERS X4</h3>
+                    <h3 className="item-title">TENDERS X4</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">7,00 €</span>
+                    <span className="price">7,00 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">TENDERS X6</h3>
+                    <h3 className="item-title">TENDERS X6</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">9,00 €</span>
+                    <span className="price">9,00 €</span>
                   </div>
                 </div>
               </div>
@@ -203,37 +203,37 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">TENDERS X8</h3>
+                    <h3 className="item-title">TENDERS X8</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">11,00 €</span>
+                    <span className="price">11,00 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">PETITE SALADE</h3>
+                    <h3 className="item-title">PETITE SALADE</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">3,50 €</span>
+                    <span className="price">3,50 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">ROQUETTE & PARMESAN</h3>
+                    <h3 className="item-title">ROQUETTE & PARMESAN</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">5,00 €</span>
+                    <span className="price">5,00 €</span>
                   </div>
                 </div>
               </div>
@@ -243,7 +243,7 @@ export default function MenuPage() {
 
         {/* Desserts */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Desserts</h2>
+          <h2 className="section-title mb-8 text-center">Desserts</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="text-center">
               <p className="text-gray-700 mb-4">
@@ -258,7 +258,7 @@ export default function MenuPage() {
 
         {/* Plat du jour */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Plat du jour</h2>
+          <h2 className="section-title mb-8 text-center">Plat du jour</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="text-center">
               <p className="text-gray-700 mb-4">
@@ -273,13 +273,13 @@ export default function MenuPage() {
 
         {/* Salades */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Salades</h2>
+          <h2 className="section-title mb-8 text-center">Salades</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">SALADE CÉSAR</h3>
+                    <h3 className="item-title">SALADE CÉSAR</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
@@ -288,7 +288,7 @@ export default function MenuPage() {
                     Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">12,9€</span>
+                    <span className="price">12,9€</span>
                   </div>
                 </div>
               </div>
@@ -296,7 +296,7 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">SALADE DU MOMENT</h3>
+                    <h3 className="item-title">SALADE DU MOMENT</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
@@ -312,43 +312,43 @@ export default function MenuPage() {
 
         {/* Boissons */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="font-display text-3xl font-bold text-[#1E88E5] mb-8 text-center">Boissons</h2>
+          <h2 className="section-title mb-8 text-center">Boissons</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">CANETTE</h3>
+                    <h3 className="item-title">CANETTE</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">2,50 €</span>
+                    <span className="price">2,50 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">EAU</h3>
+                    <h3 className="item-title">EAU</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">1,50 €</span>
+                    <span className="price">1,50 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">BIÈRE HEINEKEN</h3>
+                    <h3 className="item-title">BIÈRE HEINEKEN</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">3,00 €</span>
+                    <span className="price">3,00 €</span>
                   </div>
                 </div>
               </div>
@@ -356,25 +356,25 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">CAFÉ</h3>
+                    <h3 className="item-title">CAFÉ</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">2,00 €</span>
+                    <span className="price">2,00 €</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">BOUTEILLE DE VIN</h3>
+                    <h3 className="item-title">BOUTEILLE DE VIN</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">11 €</span>
+                    <span className="price">11 €</span>
                   </div>
                 </div>
               </div>
