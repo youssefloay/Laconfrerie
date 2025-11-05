@@ -7,23 +7,23 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Contact | La Confrérie Foodtruck - Villeneuve-lès-Maguelone",
-  description: "Contactez La Confrérie Foodtruck pour vos événements ou réservations. Retrouvez-nous à la Plage du Pilou à Villeneuve-lès-Maguelone.",
+  title: "Contact | La Confrérie Foodtruck - Montpellier",
+  description: "Contactez La Confrérie Foodtruck pour vos événements ou réservations à Montpellier.",
   keywords: [
-    "restaurant villeneuve les maguelone",
+    "restaurant montpellier",
     "confrérie",
-    "food truck villeneuve les maguelone",
+    "food truck montpellier",
     "la confrerie food truck",
-    "restaurant villeneuve-les-maguelone",
+    "restaurant montpellier",
     "restaurant frontignan plage",
     "takeout food near me",
-    "villeneuve les maguelone restaurant",
-    "fast food villeneuve les maguelone",
-    "restaurant villeneuve les maguelonne"
+    "montpellier restaurant",
+    "fast food montpellier",
+    "restaurant montpellier centre"
   ],
   openGraph: {
     title: "Contact | La Confrérie Foodtruck",
-    description: "Contactez-nous pour vos événements ou réservations à la Plage du Pilou.",
+    description: "Contactez-nous pour vos événements ou réservations à Montpellier.",
     type: "website",
   }
 } 

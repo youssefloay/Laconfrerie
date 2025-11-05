@@ -19,14 +19,14 @@ const montserrat = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "La Confrérie Foodtruck | Burgers & Salades à Villeneuve-lès-Maguelone",
-  description: "Savourez nos délicieux burgers et salades dans une ambiance estivale à la Plage du Pilou ! Foodtruck à Villeneuve-lès-Maguelone, ouvert tous les jours de 11h30 à 18h30. Commandez en ligne ou venez nous retrouver sur la plage !",
+  title: "La Confrérie Foodtruck | Burgers & Salades à Montpellier",
+  description: "Savourez nos délicieux burgers et salades à Montpellier ! Foodtruck à Montpellier, ouvert du lundi au vendredi de 11h30 à 14h30. Commandez en ligne ou venez nous retrouver sur place !",
   generator: 'v0.dev',
   applicationName: 'La Confrérie Foodtruck',
   keywords: [
-    'foodtruck', 'burgers', 'salades', 'Villeneuve-lès-Maguelone', 'Plage du Pilou',
+    'foodtruck', 'burgers', 'salades', 'Montpellier',
     'restaurant mobile', 'événements', 'mariages', 'festivals', 'cuisine street food',
-    'restauration rapide', 'plage', 'été', 'Méditerranée', 'Hérault', 'Montpellier',
+    'restauration rapide', 'été', 'Méditerranée', 'Hérault', 'Montpellier',
     'traiteur événementiel', 'catering', 'food truck', 'burger gourmet', 'salade fraîche'
   ],
   authors: [{ name: 'La Confrérie Foodtruck', url: 'https://laconfrerie-foodtruck.fr' }],
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'La Confrérie Foodtruck | Burgers & Salades à Villeneuve-lès-Maguelone',
-    description: 'Savourez nos délicieux burgers et salades dans une ambiance estivale à la Plage du Pilou ! Foodtruck à Villeneuve-lès-Maguelone, ouvert tous les jours de 11h30 à 18h30.',
+    title: 'La Confrérie Foodtruck | Burgers & Salades à Montpellier',
+    description: "Savourez nos délicieux burgers et salades à Montpellier ! Foodtruck à Montpellier, ouvert du lundi au vendredi de 11h30 à 14h30.",
     url: 'https://laconfrerie-foodtruck.fr',
     siteName: 'La Confrérie Foodtruck',
     locale: 'fr_FR',
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'La Confrérie Foodtruck | Burgers & Salades à Villeneuve-lès-Maguelone',
-    description: 'Savourez nos délicieux burgers et salades dans une ambiance estivale à la Plage du Pilou !',
+    title: 'La Confrérie Foodtruck | Burgers & Salades à Montpellier',
+    description: 'Savourez nos délicieux burgers et salades à Montpellier !',
     images: ['/images/logo.png'],
     creator: '@laconfrerie',
     site: '@laconfrerie',

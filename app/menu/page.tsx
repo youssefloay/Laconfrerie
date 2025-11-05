@@ -14,11 +14,11 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Menu | La Confrérie Foodtruck - Burgers & Salades à Villeneuve-lès-Maguelone",
-  description: "Découvrez notre menu de burgers gourmets et salades fraîches. Des ingrédients de qualité et des recettes savoureuses à la Plage du Pilou.",
+  title: "Menu | La Confrérie Foodtruck - Burgers & Salades à Montpellier",
+  description: "Découvrez notre menu de burgers gourmets et salades fraîches à Montpellier. Des ingrédients de qualité et des recettes savoureuses.",
   openGraph: {
     title: "Menu | La Confrérie Foodtruck",
-    description: "Découvrez notre menu de burgers gourmets et salades fraîches à la Plage du Pilou.",
+    description: "Découvrez notre menu de burgers gourmets et salades fraîches à Montpellier.",
     type: "website",
   }
 }

@@ -10,16 +10,16 @@ export const metadata: Metadata = {
   title: "Événements | La Confrérie Foodtruck - Mariages, Festivals, Entreprises",
   description: "La Confrérie Foodtruck pour vos événements : mariages, festivals, événements d'entreprise. Une expérience culinaire unique avec notre foodtruck.",
   keywords: [
-    "restaurant villeneuve les maguelone",
+    "restaurant montpellier",
     "confrérie",
-    "food truck villeneuve les maguelone",
+    "food truck montpellier",
     "la confrerie food truck",
-    "restaurant villeneuve-les-maguelone",
+    "restaurant montpellier",
     "restaurant frontignan plage",
     "takeout food near me",
-    "villeneuve les maguelone restaurant",
-    "fast food villeneuve les maguelone",
-    "restaurant villeneuve les maguelonne"
+    "montpellier restaurant",
+    "fast food montpellier",
+    "restaurant montpellier centre"
   ],
   openGraph: {
     title: "Événements | La Confrérie Foodtruck",
