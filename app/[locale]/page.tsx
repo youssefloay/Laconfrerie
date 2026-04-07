@@ -62,15 +62,15 @@ export default function Home() {
                   href="https://www.ubereats.com/fr/store/la-confrerie/8FcWf8cVSG-PBm69V6POGQ?effect=" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="block"
+                  className="block transition-transform hover:scale-105"
                 >
-                  <Button className="h-12 min-w-[160px] border-0 bg-[#06C167] px-8 text-lg font-bold text-white transition-all hover:bg-[#05a357] hover:scale-105 hover:shadow-lg">
-                    <svg viewBox="0 0 24 24" className="mr-2 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                      <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
-                    </svg>
-                    {navT('orderUberEats')}
-                  </Button>
+                  <Image 
+                    src="/images/uber-eats-button.png" 
+                    alt="Order online with Uber Eats" 
+                    width={180} 
+                    height={48} 
+                    className="h-12 w-auto shadow-lg rounded-xl"
+                  />
                 </a>
               </div>
             </div>

@@ -517,19 +517,20 @@ export default function MenuPage() {
       </div>
 
       {/* Sticky Uber Eats Button */}
-      <div className="fixed bottom-6 right-6 z-50 animate-bounce-gentle">
+      <div className="fixed bottom-6 right-6 z-50 animate-bounce-gentle md:bottom-20 md:right-10">
         <a
           href="https://www.ubereats.com/fr/store/la-confrerie/8FcWf8cVSG-PBm69V6POGQ?effect="
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 rounded-full bg-[#06C167] px-6 py-3 font-display font-bold text-white shadow-2xl transition-all hover:scale-110 hover:bg-[#05a357] border-2 border-white/20 backdrop-blur-sm"
+          className="block transition-transform hover:scale-110"
         >
-          <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-            <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
-          </svg>
-          <span className="hidden sm:inline">{navT('orderUberEats')}</span>
-          <span className="sm:hidden">{navT('orderUberEats').split(' ')[0]}</span>
+          <Image 
+            src="/images/uber-eats-button.png" 
+            alt="Order online with Uber Eats" 
+            width={200} 
+            height={60} 
+            className="h-14 w-auto shadow-2xl rounded-2xl border-2 border-white/50"
+          />
         </a>
       </div>
     </div>
