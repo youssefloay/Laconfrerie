@@ -10,6 +10,13 @@ import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
 import { SocialNav } from "@/components/social-nav"
 import { LanguageToggle } from "@/components/language-toggle"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 export default function Home() {
   const t = useTranslations('HomePage')
@@ -78,12 +85,12 @@ export default function Home() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('cheesyBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
                       <Image 
-                        src="/images/burgers/cheese.jpeg" 
+                        src="/images/menu/cheesy+ frites.jpeg" 
                         alt={menuItemsT('cheesyBurger.name')} 
-                        width={64} 
-                        height={64} 
+                        width={128} 
+                        height={128} 
                         className="object-cover w-full h-full"
                       />
                     </div>
@@ -100,12 +107,12 @@ export default function Home() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('baconBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
                       <Image 
-                        src="/images/burgers/bacon.jpeg" 
+                        src="/images/menu/bacon+ frites.jpeg" 
                         alt={menuItemsT('baconBurger.name')} 
-                        width={64} 
-                        height={64} 
+                        width={128} 
+                        height={128} 
                         className="object-cover w-full h-full"
                       />
                     </div>
@@ -124,8 +131,14 @@ export default function Home() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('chickenBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/chicken+frites.jpeg" 
+                        alt={menuItemsT('chickenBurger.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 item-description">
@@ -140,8 +153,14 @@ export default function Home() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display text-xl font-bold text-[#E53935]">{menuItemsT('caesarSalad.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/salade cesar.jpeg" 
+                        alt={menuItemsT('caesarSalad.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
@@ -168,6 +187,59 @@ export default function Home() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="py-16 bg-[#FFF8E1]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h2 className="section-title animate-fade-in-up uppercase tracking-widest">{t('gallery.title')}</h2>
+            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
+            <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300 italic">
+              {t('gallery.subtitle')}
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-5xl px-12">
+            <Carousel
+              opts={{
+                align: "center",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {[
+                  { src: "cheesy+ frites.jpeg", alt: "Cheesy Burger" },
+                  { src: "bacon+ frites.jpeg", alt: "Bacon Burger" },
+                  { src: "chicken+frites.jpeg", alt: "Chicken Burger" },
+                  { src: "raclette+frites.jpeg", alt: "Raclette Burger" },
+                  { src: "salade cesar.jpeg", alt: "Salade César" },
+                  { src: "roquette et parmesan.jpeg", alt: "Roquette & Parmesan" },
+                  { src: "frites.jpeg", alt: "Frites Maison" },
+                ].map((item, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <div className="relative h-72 overflow-hidden rounded-2xl border-4 border-white shadow-xl group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                        <Image
+                          src={`/images/menu/${item.src}`}
+                          alt={item.alt}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <span className="text-white font-display font-medium text-lg uppercase tracking-wider">{item.alt}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex -left-4 md:-left-12 bg-white text-menu-blue hover:bg-menu-blue hover:text-white border-0 shadow-lg" />
+              <CarouselNext className="hidden md:flex -right-4 md:-right-12 bg-white text-menu-blue hover:bg-menu-blue hover:text-white border-0 shadow-lg" />
+            </Carousel>
           </div>
         </div>
       </section>

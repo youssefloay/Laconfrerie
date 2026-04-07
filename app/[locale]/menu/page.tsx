@@ -49,8 +49,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('hamburger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                      <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/cheesy+ frites.jpeg" 
+                        alt={menuItemsT('hamburger.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
@@ -65,12 +71,12 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('baconBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
                       <Image 
-                        src="/images/burgers/bacon.jpeg" 
+                        src="/images/menu/bacon+ frites.jpeg" 
                         alt={menuItemsT('baconBurger.name')} 
-                        width={64} 
-                        height={64} 
+                        width={128} 
+                        height={128} 
                         className="object-cover w-full h-full"
                       />
                     </div>
@@ -87,12 +93,12 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('cheesyBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
                       <Image 
-                        src="/images/burgers/cheese.jpeg" 
+                        src="/images/menu/cheesy+ frites.jpeg" 
                         alt={menuItemsT('cheesyBurger.name')} 
-                        width={64} 
-                        height={64} 
+                        width={128} 
+                        height={128} 
                         className="object-cover w-full h-full"
                       />
                     </div>
@@ -111,8 +117,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-600">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('chickenBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/chicken+frites.jpeg" 
+                        alt={menuItemsT('chickenBurger.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
@@ -127,8 +139,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-700">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('racletteBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                      <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/raclette+frites.jpeg" 
+                        alt={menuItemsT('racletteBurger.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
@@ -160,8 +178,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('fries.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="fries" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/frites.jpeg" 
+                        alt={menuItemsT('fries.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -210,8 +234,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('smallSalad.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/salade cesar.jpeg" 
+                        alt={menuItemsT('smallSalad.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -222,8 +252,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('arugulaSalad.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image 
+                        src="/images/menu/roquette et parmesan.jpeg" 
+                        alt={menuItemsT('arugulaSalad.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -274,8 +310,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('caesarSalad.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                       <Image 
+                        src="/images/menu/salade cesar.jpeg" 
+                        alt={menuItemsT('caesarSalad.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">

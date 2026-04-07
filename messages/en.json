@@ -46,6 +46,10 @@
     },
     "footer": {
       "rights": "© {year} La Confrérie Foodtruck. All rights reserved."
+    },
+    "gallery": {
+      "title": "PHOTO GALLERY",
+      "subtitle": "Discover our homemade dishes in photos"
     }
   },
   "MenuPage": {
