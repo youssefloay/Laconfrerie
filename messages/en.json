@@ -236,7 +236,8 @@
     "locations": "Locations",
     "events": "Events",
     "contact": "Contact",
-    "home": "Back to Home"
+    "home": "Back to Home",
+    "orderUberEats": "Order on Uber Eats"
   },
   "FoodIcons": {
     "bobun": "Bobuns",

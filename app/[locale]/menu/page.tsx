@@ -196,8 +196,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('tenders.name')} X4</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                       <Image 
+                        src="/images/menu/Tenders [5_4-440x550] be6.jpg" 
+                        alt={menuItemsT('tenders.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -208,8 +214,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('tenders.name')} X6</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                       <Image 
+                        src="/images/menu/Tenders [5_4-440x550] be6.jpg" 
+                        alt={menuItemsT('tenders.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -222,8 +234,14 @@ export default function MenuPage() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('tenders.name')} X8</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                       <Image 
+                        src="/images/menu/Tenders [5_4-440x550] be6.jpg" 
+                        alt={menuItemsT('tenders.name')} 
+                        width={128} 
+                        height={128} 
+                        className="object-cover w-full h-full"
+                      />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -496,6 +514,23 @@ export default function MenuPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Sticky Uber Eats Button */}
+      <div className="fixed bottom-6 right-6 z-50 animate-bounce-gentle">
+        <a
+          href="https://www.ubereats.com/fr/store/la-confrerie/8FcWf8cVSG-PBm69V6POGQ?effect="
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 rounded-full bg-[#06C167] px-6 py-3 font-display font-bold text-white shadow-2xl transition-all hover:scale-110 hover:bg-[#05a357] border-2 border-white/20 backdrop-blur-sm"
+        >
+          <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+          </svg>
+          <span className="hidden sm:inline">{navT('orderUberEats')}</span>
+          <span className="sm:hidden">{navT('orderUberEats').split(' ')[0]}</span>
+        </a>
       </div>
     </div>
   )

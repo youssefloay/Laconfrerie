@@ -129,6 +129,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing } from '@/src/i18n/routing'
+import { MobileNav } from "@/components/mobile-nav"
 
 export default async function RootLayout({
   children,
@@ -153,7 +154,10 @@ export default async function RootLayout({
       <body className={`${montserrat.variable} ${baloo.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           <NextIntlClientProvider messages={messages}>
-            {children}
+            <div className="pb-16 md:pb-0">
+              {children}
+            </div>
+            <MobileNav />
             <Analytics />
             <GoogleAnalytics gaId="G-GSJHW3W7E9" />
           </NextIntlClientProvider>

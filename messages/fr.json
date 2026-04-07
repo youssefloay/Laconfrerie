@@ -236,7 +236,8 @@
     "locations": "Emplacements",
     "events": "Événements",
     "contact": "Contact",
-    "home": "Retour à l'accueil"
+    "home": "Retour à l'accueil",
+    "orderUberEats": "Commander sur Uber Eats"
   },
   "FoodIcons": {
     "bobun": "Bobuns",
