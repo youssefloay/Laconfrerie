@@ -1,0 +1,187 @@
+{
+  "HomePage": {
+    "hero": {
+      "title": "LA CONFRÉRIE",
+      "subtitle": "FOODTRUCK",
+      "description": "Savourez nos délicieux burgers dans une ambiance estivale !",
+      "findUs": "Nous trouver",
+      "contactUs": "Nous contacter"
+    },
+    "menu": {
+      "title": "MENU",
+      "viewFull": "Voir le menu complet",
+      "veggieOption": "Option Veggie Happyvore 🌱",
+      "dailySpecial": "Plat du jour",
+      "dailySpecialDesc": "Préparé selon les produits de saison. Découvrez-le chaque jour sur Instagram et Facebook !"
+    },
+    "locations": {
+      "title": "OÙ NOUS TROUVER",
+      "address": "191 Avenue de Fes",
+      "city": "34090 Montpellier",
+      "hours": "Lundi au vendredi: 11h30 - 14h30",
+      "tram": "Tram :",
+      "tramDesc": "Malbosc - Domaine d'Ô",
+      "parking": "Stationnement :",
+      "parkingDesc": "Possibilité de stationnement à proximité",
+      "getDirections": "Y aller",
+      "moreInfo": "Plus d'informations"
+    },
+    "events": {
+      "title": "ÉVÉNEMENTS",
+      "description": "Pour vos événements, nous proposons une carte étendue avec bobuns, pokebowls, wraps et bien plus !",
+      "weddings": "Mariages",
+      "weddingsDesc": "Offrez une expérience culinaire unique à vos invités.",
+      "festivals": "Festivals",
+      "festivalsDesc": "Nous nous adaptons à tous types d'événements.",
+      "corporate": "Événements d'entreprise",
+      "corporateDesc": "Impressionnez vos collaborateurs avec une pause déjeuner originale.",
+      "specialties": "Nos spécialités pourévénements",
+      "learnMore": "En savoir plus sur nos services événementiels"
+    },
+    "contact": {
+      "title": "CONTACTEZ-NOUS",
+      "reservations": "Réservations",
+      "reservationsDesc": "Vous organisez un événement ? Contactez-nous pour réserver notre foodtruck !",
+      "getQuote": "Demander un devis"
+    },
+    "footer": {
+      "rights": "© {year} La Confrérie Foodtruck. Tous droits réservés."
+    }
+  },
+  "MenuPage": {
+    "title": "Notre Menu",
+    "burgers": "Nos Burgers",
+    "sides": "Sides",
+    "desserts": "Desserts",
+    "dailySpecial": "Plat du jour",
+    "salads": "Salades",
+    "drinks": "Boissons",
+    "studentOffer": "Offre Étudiante 🎓",
+    "studentPromo": "Hamburger + Frites",
+    "studentDiscount": "Sur tous les burgers",
+    "studentRequirement": "Sur présentation de votre carte étudiant en cours de validité",
+    "veggieNote": "🌱 Envie d'une option veggie ?\nTous nos burgers existent aussi en version végétarienne 🌿",
+    "servingSuggestion": "Servi avec frites maison.",
+    "dailySpecialNote": "Préparé selon les produits de saison. Découvrez-le chaque jour sur Instagram et Facebook !",
+    "homemadeNote": "Notre cuisine est entièrement faite maison, élaborée à partir de produits frais issus de producteurs locaux et de circuits courts.",
+    "eventQuestion": "Vous organisez un événement ?",
+    "eventDesc": "Pour vos mariages, festivals ou événements d'entreprise, nous proposons une carte étendue avec des options supplémentaires :",
+    "eventCTA": "Découvrir nos offres événementielles",
+    "homemadeDesserts": "Tous nos desserts sont faits maison, selon l'inspiration du jour.",
+    "discoverOnSite": "Venez les découvrir sur place !"
+  },
+  "LocationsPage": {
+    "title": "Notre emplacement",
+    "practicalInfo": "Informations pratiques",
+    "tramStop": "Arrêt de tram :",
+    "payment": "Paiement :",
+    "goodToKnow": "Bon à savoir :",
+    "paymentDesc": "Espèces, CB",
+    "goodToKnowDesc": "Possibilité de commander à l'avance par téléphone"
+  },
+  "EventsPage": {
+    "title": "La Confrérie pour votre événement",
+    "subtitle": "Pour vos événements spéciaux, nous proposons une carte étendue et personnalisable avec une variété de plats au-delà de nos burgers traditionnels.",
+    "specialties": "Nos spécialités pour événements",
+    "bobun": "BOBUN THAÏ",
+    "bobunDesc": "Vermicelles de riz, légumes croquants, poulet ou tofu, cacahuètes, sauce thaï",
+    "pokebowl": "POKEBOWL HAWAÏEN",
+    "pokebowlDesc": "Riz, saumon ou thon mariné, avocat, mangue, concombre, graines, sauce soja",
+    "wrap": "WRAP POULET",
+    "wrapDesc": "Tortilla, poulet grillé, crudités, sauce yaourt aux herbes",
+    "friture": "FRITURE DE CALAMARS",
+    "fritureDesc": "Calamars frits, sauce tartare maison, quartier de citron",
+    "vgOption": "(option VG)",
+    "offerTitle": "Notre offre événementielle",
+    "offerSubtitle": "La Confrérie Foodtruck s'adapte à vos besoins pour rendre votre événement inoubliable. Nous proposons :",
+    "offerList": [
+      "Des menus personnalisés selon vos préférences et votre budget",
+      "Une équipe professionnelle et souriante",
+      "Des produits frais et de qualité",
+      "Une logistique adaptée à votre événement",
+      "Des options végétariennes et véganes disponibles",
+      "Des plats faits maison préparés sur place",
+      "Une variété de plats au-delà des burgers : bobuns, pokebowls, wraps, fritures et bien plus"
+    ],
+    "formulasTitle": "Nos formules événementielles",
+    "formulaEssential": "Formule Essentielle",
+    "formulaEssentialDesc": "Burger au choix + Frites + Boisson",
+    "formulaEssentialPrice": "À partir de 15€/personne",
+    "formulaFriendly": "Formule Conviviale",
+    "formulaFriendlyDesc": "Assortiment de burgers à partager + Frites + Boissons + Dessert",
+    "formulaFriendlyPrice": "À partir de 22€/personne",
+    "formulaPremium": "Formule Premium",
+    "formulaPremiumDesc": "Apéritifs + Choix varié (burgers, bobuns, pokebowls, wraps) + Accompagnements + Desserts + Boissons",
+    "formulaPremiumPrice": "À partir de 30€/personne",
+    "getQuote": "Demander un devis personnalisé"
+  },
+  "QuotePage": {
+    "title": "Demande de devis personnalisé",
+    "description": "Remplissez ce formulaire et nous vous proposerons une offre sur mesure pour votre événement.",
+    "backToEvents": "Retour aux événements",
+    "firstName": "Prénom *",
+    "lastName": "Nom *",
+    "email": "Email *",
+    "phone": "Téléphone *",
+    "eventType": "Type d'événement *",
+    "eventDate": "Date de l'événement *",
+    "startTime": "Heure de début",
+    "endTime": "Heure de fin",
+    "numPeople": "Nombre de personnes *",
+    "budget": "Budget approximatif",
+    "location": "Adresse ou lieu *",
+    "postalCode": "Code postal *",
+    "prestations": "Prestations souhaitées",
+    "comments": "Décrivez votre projet, vos attentes particulières, contraintes...",
+    "placeholderSelectType": "Sélectionnez le type",
+    "placeholderNumPeople": "Nombre d'invités",
+    "placeholderBudget": "Votre budget",
+    "placeholderLocation": "Adresse complète ou nom du lieu",
+    "placeholderPostalCode": "34000",
+    "placeholderComments": "Parlez-nous de votre événement, de vos préférences culinaires, des contraintes du lieu, etc.",
+    "submit": "Envoyer ma demande",
+    "submitting": "Envoi en cours...",
+    "responseTime": "Nous vous répondrons dans les 24h avec une proposition personnalisée",
+    "types": {
+      "wedding": "Mariage",
+      "birthday": "Anniversaire",
+      "business": "Événement d'entreprise",
+      "festival": "Festival",
+      "baptism": "Baptême / Communion",
+      "other": "Autre"
+    },
+    "prestationsList": {
+      "burgers": "Burgers classiques",
+      "bobuns": "Bobuns thaï",
+      "pokebowls": "Pokebowls",
+      "wraps": "Wraps",
+      "salades": "Salades",
+      "fritures": "Fritures de poisson",
+      "vegetarien": "Options végétariennes",
+      "desserts": "Desserts",
+      "boissons": "Boissons",
+      "aperitif": "Apéritif"
+    }
+  },
+  "ContactPage": {
+    "title": "Contactez-nous",
+    "reservations": "Réservations",
+    "eventQuestion": "Vous organisez un événement ? Contactez-nous pour réserver notre foodtruck !",
+    "getQuote": "Demander un devis"
+  },
+  "Navigation": {
+    "menu": "Menu",
+    "locations": "Emplacements",
+    "events": "Événements",
+    "contact": "Contact",
+    "home": "Retour à l'accueil"
+  },
+  "FoodIcons": {
+    "bobun": "Bobuns",
+    "pokebowl": "Pokebowls",
+    "wrap": "Wraps",
+    "friture": "Fritures",
+    "dessert": "Desserts",
+    "specialite": "Spécialités"
+  }
+}

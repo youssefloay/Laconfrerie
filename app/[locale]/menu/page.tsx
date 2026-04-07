@@ -1,39 +1,31 @@
-import Link from "next/link"
+"use client"
+
 import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
+import { useTranslations } from 'next-intl'
+import { Link } from '@/src/i18n/routing'
+
 import { Button } from "@/components/ui/button"
 import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
-import type { Metadata, Viewport } from "next"
 import { SocialNav } from "@/components/social-nav"
-
-export const viewport: Viewport = {
-  themeColor: "#1E88E5",
-  width: "device-width",
-  initialScale: 1,
-}
-
-export const metadata: Metadata = {
-  title: "Menu | La Confrérie Foodtruck - Burgers & Salades à Montpellier",
-  description: "Découvrez notre menu de burgers gourmets et salades fraîches à Montpellier. Des ingrédients de qualité et des recettes savoureuses.",
-  openGraph: {
-    title: "Menu | La Confrérie Foodtruck",
-    description: "Découvrez notre menu de burgers gourmets et salades fraîches à Montpellier.",
-    type: "website",
-  }
-}
+import { LanguageToggle } from "@/components/language-toggle"
 
 export default function MenuPage() {
+  const t = useTranslations('MenuPage')
+  const navT = useTranslations('Navigation')
+
   return (
     <div className="min-h-screen bg-menu-cream">
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8">
+      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center mb-8">
           <Link href="/">
             <Button variant="ghost" className="text-menu-blue">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Retour à l'accueil
+              {navT('home')}
             </Button>
           </Link>
+          <LanguageToggle />
         </div>
 
         {/* Modifier la section du logo */}
@@ -41,14 +33,14 @@ export default function MenuPage() {
           <SiteLogo size="medium" background="yellow" />
         </div>
 
-        <h1 className="section-title text-center mb-12 animate-fade-in-up">Notre Menu</h1>
+        <h1 className="section-title text-center mb-12 animate-fade-in-up">{t('title')}</h1>
         <div className="flex justify-center mb-8">
           <SocialNav />
         </div>
 
         {/* Burgers */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="section-title mb-8 text-center">Nos Burgers</h2>
+          <h2 className="section-title mb-8 text-center">{t('burgers')}</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
@@ -60,11 +52,11 @@ export default function MenuPage() {
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise. Servi avec frites maison.
+                    Steak au choix, laitue, tomates, oignons rouges, cornichons, ketchup, mayonnaise. {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="price">12,9€</span>
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('burgers').toLowerCase().includes('veggie') ? '' : 'Option Veggie 🌱'}</span>
                   </div>
                 </div>
 
@@ -82,10 +74,10 @@ export default function MenuPage() {
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, laitue, tomates, oignons rouges, pickles, cheddar, bacon, sauce BBQ. Servi avec frites maison.
+                    Steak au choix, laitue, tomates, oignons rouges, cornichons, cheddar, bacon, sauce BBQ. {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="price">14,5€</span>
+                    <span className="price">15,5€</span>
                     <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
@@ -104,10 +96,10 @@ export default function MenuPage() {
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, cheddar, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise. Servi avec frites maison.
+                    Steak au choix, cheddar, laitue, tomates, oignons rouges, cornichons, sauce cheese. {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">15,5€</span>
+                    <span className="font-bold text-[#FF5722]">14,5€</span>
                     <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
@@ -116,41 +108,41 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-600">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">GUACAMOLE BURGER</h3>
+                    <h3 className="item-title">CHICKEN BURGER</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                      <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
+                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, cheddar, guacamole, laitue, oignons rouges, sauce blanche. Servi avec frites maison.
+                    Poulet frit, cheddar, laitue, oignons frits, sauce Curry Mango. {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">16,9€</span>
+                    <span className="font-bold text-[#FF5722]">14,9€</span>
                     <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-700">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">BURGER DU MOMENT</h3>
+                    <h3 className="item-title">RACLETTE BURGER</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Retrouvez-la sur notre pancarte ou nos réseaux (Instagram, Facebook).
+                    Steak au choix, raclette, oignons caramélisés, laitue, tomates, cornichons, sauce burger. {t('servingSuggestion')}
                   </p>
+                  <div className="mt-2 flex items-center justify-between">
+                    <span className="font-bold text-[#FF5722]">16,9€</span>
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col-span-full mt-6">
               <div className="flex items-center justify-center rounded-full bg-[#FFD54F] p-4 text-center mx-auto max-w-xs">
-                <p className="font-display font-bold text-[#E53935]">
-                  🌱 Envie d'une option veggie ?
-                  <br />
-                  <span className="text-xs">Tous nos burgers existent aussi en version végétarienne 🌿</span>
-                  <br />
-                  <span className="text-xs">le plat du jour</span>
+                <p className="font-display font-bold text-[#E53935] whitespace-pre-line">
+                  {t('veggieNote')}
                 </p>
               </div>
             </div>
@@ -159,7 +151,7 @@ export default function MenuPage() {
 
         {/* Sides */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="section-title mb-8 text-center">Sides</h2>
+          <h2 className="section-title mb-8 text-center">{t('sides')}</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
@@ -171,7 +163,7 @@ export default function MenuPage() {
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="price">4,00 €</span>
+                    <span className="price">3,50 €</span>
                   </div>
                 </div>
 
@@ -243,14 +235,14 @@ export default function MenuPage() {
 
         {/* Desserts */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="section-title mb-8 text-center">Desserts</h2>
+          <h2 className="section-title mb-8 text-center">{t('desserts')}</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="text-center">
               <p className="text-gray-700 mb-4">
-                Tous nos desserts sont faits maison, selon l'inspiration du jour.
+                {t('homemadeDesserts')}
               </p>
               <p className="text-gray-700 font-semibold">
-                Venez les découvrir sur place !
+                {t('discoverOnSite')}
               </p>
             </div>
           </div>
@@ -258,14 +250,14 @@ export default function MenuPage() {
 
         {/* Plat du jour */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="section-title mb-8 text-center">Plat du jour</h2>
+          <h2 className="section-title mb-8 text-center">{t('dailySpecial')}</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="text-center">
               <p className="text-gray-700 mb-4">
-                Préparé selon les produits de saison. Découvrez-le chaque jour sur Instagram et Facebook !
+                {t('dailySpecialNote')}
               </p>
               <p className="text-gray-700 font-semibold">
-                Notre cuisine est entièrement faite maison, élaborée à partir de produits frais issus de producteurs locaux et de circuits courts.
+                {t('homemadeNote')}
               </p>
             </div>
           </div>
@@ -273,7 +265,7 @@ export default function MenuPage() {
 
         {/* Salades */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="section-title mb-8 text-center">Salades</h2>
+          <h2 className="section-title mb-8 text-center">{t('salads')}</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
@@ -288,7 +280,7 @@ export default function MenuPage() {
                     Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="price">12,9€</span>
+                    <span className="price">12,50€</span>
                   </div>
                 </div>
               </div>
@@ -312,7 +304,7 @@ export default function MenuPage() {
 
         {/* Boissons */}
         <div className="mx-auto max-w-4xl mb-16">
-          <h2 className="section-title mb-8 text-center">Boissons</h2>
+          <h2 className="section-title mb-8 text-center">{t('drinks')}</h2>
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
@@ -324,7 +316,7 @@ export default function MenuPage() {
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
-                    <span className="price">2,50 €</span>
+                    <span className="price">2,00 €</span>
                   </div>
                 </div>
 
@@ -386,11 +378,10 @@ export default function MenuPage() {
         <div className="mx-auto max-w-4xl mb-16">
           <div className="rounded-2xl bg-[#E3F2FD] p-6 shadow-lg md:p-8">
             <h2 className="font-display text-2xl font-bold text-[#1E88E5] mb-4 text-center">
-              Vous organisez un événement ?
+              {t('eventQuestion')}
             </h2>
             <p className="text-gray-700 mb-4 text-center">
-              Pour vos mariages, festivals ou événements d'entreprise, nous proposons une carte étendue avec des options
-              supplémentaires :
+              {t('eventDesc')}
             </p>
             <div className="grid gap-4 md:grid-cols-3 mt-6">
               <div className="bg-white rounded-lg p-4 text-center">
@@ -432,8 +423,32 @@ export default function MenuPage() {
             </div>
             <div className="mt-6 text-center">
               <Link href="/evenements">
-                <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">Découvrir nos offres événementielles</Button>
+                <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">{t('eventCTA')}</Button>
               </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Menu Etudiant */}
+        <div className="mx-auto max-w-4xl mb-16">
+          <div className="rounded-2xl bg-menu-blue p-8 shadow-xl text-white relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-4 opacity-10">
+              <FoodIcon name="burger" size={120} />
+            </div>
+            <div className="relative z-10 text-center">
+              <h2 className="font-display text-3xl font-bold mb-4">{t('studentOffer')}</h2>
+              <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+                <div className="text-center">
+                  <p className="text-lg opacity-90 mb-1">{t('studentPromo')}</p>
+                  <p className="text-4xl font-bold text-menu-yellow">10,50€</p>
+                </div>
+                <div className="hidden md:block h-12 w-px bg-white/20"></div>
+                <div className="text-center">
+                  <p className="text-lg opacity-90 mb-1">{t('studentDiscount')}</p>
+                  <p className="text-4xl font-bold text-menu-yellow">-10%</p>
+                </div>
+              </div>
+              <p className="mt-6 text-sm opacity-80 italic">{t('studentRequirement')}</p>
             </div>
           </div>
         </div>

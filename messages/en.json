@@ -1,0 +1,187 @@
+{
+  "HomePage": {
+    "hero": {
+      "title": "THE BROTHERHOOD",
+      "subtitle": "FOOD TRUCK",
+      "description": "Savor our delicious burgers in a summer atmosphere!",
+      "findUs": "Find us",
+      "contactUs": "Contact us"
+    },
+    "menu": {
+      "title": "MENU",
+      "viewFull": "View full menu",
+      "veggieOption": "Happyvore Veggie Option 🌱",
+      "dailySpecial": "Daily Special",
+      "dailySpecialDesc": "Prepared with seasonal products. Discover it every day on Instagram and Facebook!"
+    },
+    "locations": {
+      "title": "WHERE TO FIND US",
+      "address": "191 Avenue de Fes",
+      "city": "34090 Montpellier",
+      "hours": "Monday to Friday: 11:30 AM - 2:30 PM",
+      "tram": "Tram:",
+      "tramDesc": "Malbosc - Domaine d'Ô",
+      "parking": "Parking:",
+      "parkingDesc": "Parking available nearby",
+      "getDirections": "Get directions",
+      "moreInfo": "More information"
+    },
+    "events": {
+      "title": "EVENTS",
+      "description": "For your events, we offer an extensive menu with bobuns, pokebowls, wraps and much more!",
+      "weddings": "Weddings",
+      "weddingsDesc": "Offer a unique culinary experience to your guests.",
+      "festivals": "Festivals",
+      "festivalsDesc": "We adapt to all types of events.",
+      "corporate": "Corporate Events",
+      "corporateDesc": "Impress your employees with an original lunch break.",
+      "specialties": "Our specialties for events",
+      "learnMore": "Learn more about our event services"
+    },
+    "contact": {
+      "title": "CONTACT US",
+      "reservations": "Reservations",
+      "reservationsDesc": "Organizing an event? Contact us to book our food truck!",
+      "getQuote": "Request a quote"
+    },
+    "footer": {
+      "rights": "© {year} La Confrérie Foodtruck. All rights reserved."
+    }
+  },
+  "MenuPage": {
+    "title": "Our Menu",
+    "burgers": "Our Burgers",
+    "sides": "Sides",
+    "desserts": "Desserts",
+    "dailySpecial": "Daily Special",
+    "salads": "Salads",
+    "drinks": "Drinks",
+    "studentOffer": "Student Offer 🎓",
+    "studentPromo": "Burger + Fries",
+    "studentDiscount": "On all burgers",
+    "studentRequirement": "Upon presentation of your valid student card",
+    "veggieNote": "🌱 Looking for a veggie option?\nAll our burgers are also available in a vegetarian version 🌿",
+    "servingSuggestion": "Served with homemade fries.",
+    "dailySpecialNote": "Prepared with seasonal products. Discover it every day on Instagram and Facebook!",
+    "homemadeNote": "Our cuisine is entirely homemade, made from fresh products from local producers and short circuits.",
+    "eventQuestion": "Organizing an event?",
+    "eventDesc": "For your weddings, festivals or corporate events, we offer an extensive menu with additional options:",
+    "eventCTA": "Discover our event offers",
+    "homemadeDesserts": "All our desserts are homemade, based on the inspiration of the day.",
+    "discoverOnSite": "Come and discover them on site!"
+  },
+  "LocationsPage": {
+    "title": "Our Location",
+    "practicalInfo": "Practical Information",
+    "tramStop": "Tram stop:",
+    "payment": "Payment:",
+    "goodToKnow": "Good to know:",
+    "paymentDesc": "Cash, Credit Card",
+    "goodToKnowDesc": "Possibility to order in advance by phone"
+  },
+  "EventsPage": {
+    "title": "La Confrérie for your event",
+    "subtitle": "For your special events, we offer an extensive and customizable menu with a variety of dishes beyond our traditional burgers.",
+    "specialties": "Our specialties for events",
+    "bobun": "THAI BOBUN",
+    "bobunDesc": "Rice vermicelli, crunchy vegetables, chicken or tofu, peanuts, Thai sauce",
+    "pokebowl": "HAWAIIAN POKEBOWL",
+    "pokebowlDesc": "Rice, marinated salmon or tuna, avocado, mango, cucumber, seeds, soy sauce",
+    "wrap": "CHICKEN WRAP",
+    "wrapDesc": "Tortilla, grilled chicken, raw vegetables, herb yogurt sauce",
+    "friture": "FRIED CALAMARI",
+    "fritureDesc": "Fried calamari, homemade tartar sauce, lemon wedge",
+    "vgOption": "(VG option)",
+    "offerTitle": "Our event offer",
+    "offerSubtitle": "La Confrérie Foodtruck adapts to your needs to make your event unforgettable. We offer:",
+    "offerList": [
+      "Customized menus matching your preferences and budget",
+      "A professional and smiling team",
+      "Fresh and quality products",
+      "Logistics adapted to your event",
+      "Vegetarian and vegan options available",
+      "Homemade dishes prepared on site",
+      "A variety of dishes beyond burgers: bobuns, pokebowls, wraps, fried snacks and more"
+    ],
+    "formulasTitle": "Our event formulas",
+    "formulaEssential": "Essential Formula",
+    "formulaEssentialDesc": "Burger of choice + Fries + Drink",
+    "formulaEssentialPrice": "From €15/person",
+    "formulaFriendly": "Friendly Formula",
+    "formulaFriendlyDesc": "Assortment of burgers to share + Fries + Drinks + Dessert",
+    "formulaFriendlyPrice": "From €22/person",
+    "formulaPremium": "Premium Formula",
+    "formulaPremiumDesc": "Appetizers + Varied choice (burgers, bobuns, pokebowls, wraps) + Sides + Desserts + Drinks",
+    "formulaPremiumPrice": "From €30/person",
+    "getQuote": "Request a customized quote"
+  },
+  "QuotePage": {
+    "title": "Customized Quote Request",
+    "description": "Fill out this form and we will propose a tailor-made offer for your event.",
+    "backToEvents": "Back to events",
+    "firstName": "First Name *",
+    "lastName": "Last Name *",
+    "email": "Email *",
+    "phone": "Phone *",
+    "eventType": "Event Type *",
+    "eventDate": "Event Date *",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "numPeople": "Number of People *",
+    "budget": "Approximate Budget",
+    "location": "Address or Venue *",
+    "postalCode": "Postal Code *",
+    "prestations": "Requested Services",
+    "comments": "Describe your project, special expectations, constraints...",
+    "placeholderSelectType": "Select the type",
+    "placeholderNumPeople": "Number of guests",
+    "placeholderBudget": "Your budget",
+    "placeholderLocation": "Full address or venue name",
+    "placeholderPostalCode": "34000",
+    "placeholderComments": "Tell us about your event, culinary preferences, venue constraints, etc.",
+    "submit": "Send my request",
+    "submitting": "Sending...",
+    "responseTime": "We will respond within 24h with a personalized proposal",
+    "types": {
+      "wedding": "Wedding",
+      "birthday": "Birthday",
+      "business": "Corporate Event",
+      "festival": "Festival",
+      "baptism": "Baptism / Communion",
+      "other": "Other"
+    },
+    "prestationsList": {
+      "burgers": "Classic burgers",
+      "bobuns": "Thai bobuns",
+      "pokebowls": "Pokebowls",
+      "wraps": "Wraps",
+      "salades": "Salads",
+      "fritures": "Fish fries",
+      "vegetarien": "Vegetarian options",
+      "desserts": "Desserts",
+      "boissons": "Drinks",
+      "aperitif": "Appetizer"
+    }
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "reservations": "Reservations",
+    "eventQuestion": "Organizing an event? Contact us to book our foodtruck!",
+    "getQuote": "Request a quote"
+  },
+  "Navigation": {
+    "menu": "Menu",
+    "locations": "Locations",
+    "events": "Events",
+    "contact": "Contact",
+    "home": "Back to Home"
+  },
+  "FoodIcons": {
+    "bobun": "Bobuns",
+    "pokebowl": "Pokebowls",
+    "wrap": "Wraps",
+    "friture": "Fried Food",
+    "dessert": "Desserts",
+    "specialite": "Specialties"
+  }
+}

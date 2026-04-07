@@ -1,38 +1,29 @@
-import Link from "next/link"
+"use client"
+
 import { ArrowLeft, Mail } from "lucide-react"
+import { useTranslations } from 'next-intl'
+import { Link } from '@/src/i18n/routing'
 import { Button } from "@/components/ui/button"
 import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
-import type { Metadata, Viewport } from "next"
 import { SocialNav } from "@/components/social-nav"
-
-export const viewport: Viewport = {
-  themeColor: "#1E88E5",
-  width: "device-width",
-  initialScale: 1,
-}
-
-export const metadata: Metadata = {
-  title: "Événements | La Confrérie Foodtruck - Mariages, Festivals, Entreprises",
-  description: "La Confrérie Foodtruck pour vos événements : mariages, festivals, événements d'entreprise. Une expérience culinaire unique avec notre foodtruck.",
-  openGraph: {
-    title: "Événements | La Confrérie Foodtruck",
-    description: "La Confrérie Foodtruck pour vos événements : mariages, festivals, événements d'entreprise.",
-    type: "website",
-  }
-}
+import { LanguageToggle } from "@/components/language-toggle"
 
 export default function EvenementsPage() {
+  const t = useTranslations('EventsPage')
+  const navT = useTranslations('Navigation')
+
   return (
     <div className="min-h-screen bg-[#FFF8E1]">
-      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-8">
+      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center mb-8">
           <Link href="/">
             <Button variant="ghost" className="text-[#1E88E5]">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              Retour à l'accueil
+              {navT('home')}
             </Button>
           </Link>
+          <LanguageToggle />
         </div>
 
         <div className="flex justify-center mb-8">
@@ -40,7 +31,7 @@ export default function EvenementsPage() {
         </div>
 
         <h1 className="font-display text-4xl font-bold text-[#1E88E5] text-center mb-12">
-          La Confrérie pour votre événement
+          {t('title')}
         </h1>
         <div className="flex justify-center mb-8">
           <SocialNav />
@@ -48,45 +39,44 @@ export default function EvenementsPage() {
 
         <div className="mx-auto max-w-4xl mb-12 text-center">
           <p className="text-lg text-gray-700">
-            Pour vos événements spéciaux, nous proposons une carte étendue et personnalisable avec une variété de plats
-            au-delà de nos burgers traditionnels.
+            {t('subtitle')}
           </p>
         </div>
 
         <div className="mx-auto max-w-4xl rounded-2xl bg-white p-6 shadow-lg md:p-8 mb-12">
           <h2 className="font-display text-2xl font-bold text-[#E53935] mb-8 text-center">
-            Nos spécialités pour événements
+            {t('specialties')}
           </h2>
 
           <div className="grid gap-8 md:grid-cols-2">
             <div className="space-y-6">
               <div className="rounded-lg bg-[#FFF8E1] p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display text-xl font-bold text-[#E53935]">BOBUN THAÏ</h3>
+                  <h3 className="font-display text-xl font-bold text-[#E53935] uppercase">{t('bobun')}</h3>
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="bobun" size={32} className="text-[#FF5722]" />
                   </div>
                 </div>
                 <p className="mt-2 text-sm text-gray-700">
-                  Vermicelles de riz, légumes croquants, poulet ou tofu, cacahuètes, sauce thaï
+                  {t('bobunDesc')}
                 </p>
                 <div className="mt-2 flex items-center justify-between">
-                  <span className="text-xs text-gray-500">(option VG)</span>
+                  <span className="text-xs text-gray-500">{t('vgOption')}</span>
                 </div>
               </div>
 
               <div className="rounded-lg bg-[#FFF8E1] p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display text-xl font-bold text-[#E53935]">POKEBOWL HAWAÏEN</h3>
+                  <h3 className="font-display text-xl font-bold text-[#E53935] uppercase">{t('pokebowl')}</h3>
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="pokebowl" size={32} className="text-[#FF5722]" />
                   </div>
                 </div>
                 <p className="mt-2 text-sm text-gray-700">
-                  Riz, saumon ou thon mariné, avocat, mangue, concombre, graines, sauce soja
+                  {t('pokebowlDesc')}
                 </p>
                 <div className="mt-2 flex items-center justify-between">
-                <span className="text-xs text-gray-500">(option VG)</span>
+                <span className="text-xs text-gray-500">{t('vgOption')}</span>
 
                 </div>
               </div>
@@ -95,27 +85,27 @@ export default function EvenementsPage() {
             <div className="space-y-6">
               <div className="rounded-lg bg-[#FFF8E1] p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display text-xl font-bold text-[#E53935]">WRAP POULET</h3>
+                  <h3 className="font-display text-xl font-bold text-[#E53935] uppercase">{t('wrap')}</h3>
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="wrap" size={32} className="text-[#FF5722]" />
                   </div>
                 </div>
-                <p className="mt-2 text-sm text-gray-700">Tortilla, poulet grillé, crudités, sauce yaourt aux herbes</p>
+                <p className="mt-2 text-sm text-gray-700">{t('wrapDesc')}</p>
                 <div className="mt-2 flex items-center justify-between">
-                <span className="text-xs text-gray-500">(option VG)</span>
+                <span className="text-xs text-gray-500">{t('vgOption')}</span>
                 </div>
               </div>
 
               <div className="rounded-lg bg-[#FFF8E1] p-4">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-display text-xl font-bold text-[#E53935]">FRITURE DE CALAMARS</h3>
+                  <h3 className="font-display text-xl font-bold text-[#E53935] uppercase">{t('friture')}</h3>
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="friture" size={32} className="text-[#FF5722]" />
                   </div>
                 </div>
-                <p className="mt-2 text-sm text-gray-700">Calamars frits, sauce tartare maison, quartier de citron</p>
+                <p className="mt-2 text-sm text-gray-700">{t('fritureDesc')}</p>
                 <div className="mt-2 flex items-center justify-between">
-                <span className="text-xs text-gray-500">(option VG)</span>
+                <span className="text-xs text-gray-500">{t('vgOption')}</span>
                 </div>
               </div>
             </div>
@@ -143,15 +133,15 @@ export default function EvenementsPage() {
                   <path d="M19 9.5V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4.5" />
                 </svg>
               </div>
-              <h4 className="font-display text-lg font-bold text-[#E53935]">Mariages</h4>
+              <h4 className="font-display text-lg font-bold text-[#E53935]">{t.raw('offerList')[6].split(':')[0]}</h4>
               <p className="mt-2 text-sm text-gray-700">
-                Offrez une expérience culinaire unique à vos invités avec nos délicieux plats artisanaux.
+                {t.raw('offerList')[4]}
               </p>
             </div>
-
+            {/* ... other event types like Festivals, Entreprise could be localized too but keeping layout simple */}
             <div className="rounded-lg bg-[#FFF8E1] p-4 text-center">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                <svg
+              <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="32"
                   height="32"
@@ -169,7 +159,7 @@ export default function EvenementsPage() {
               </div>
               <h4 className="font-display text-lg font-bold text-[#E53935]">Festivals</h4>
               <p className="mt-2 text-sm text-gray-700">
-                Nous nous adaptons à tous types d'événements avec une capacité de service importante.
+                {t.raw('offerList')[3]}
               </p>
             </div>
 
@@ -199,55 +189,48 @@ export default function EvenementsPage() {
                   <path d="M16 18h.01" />
                 </svg>
               </div>
-              <h4 className="font-display text-lg font-bold text-[#E53935]">Événements d'entreprise</h4>
+              <h4 className="font-display text-lg font-bold text-[#E53935]">Business</h4>
               <p className="mt-2 text-sm text-gray-700">
-                Impressionnez vos collaborateurs avec une pause déjeuner originale et conviviale.
+                {t.raw('offerList')[0]}
               </p>
             </div>
           </div>
 
           <div className="mt-8 bg-[#F5F5F5] p-4 rounded-lg">
-            <h4 className="font-display text-lg font-bold text-[#1E88E5] mb-2">Notre offre événementielle</h4>
+            <h4 className="font-display text-lg font-bold text-[#1E88E5] mb-2">{t('offerTitle')}</h4>
             <p className="text-gray-700 mb-4">
-              La Confrérie Foodtruck s'adapte à vos besoins pour rendre votre événement inoubliable. Nous proposons :
+              {t('offerSubtitle')}
             </p>
             <ul className="list-disc pl-5 space-y-2 text-gray-700">
-              <li>Des menus personnalisés selon vos préférences et votre budget</li>
-              <li>Une équipe professionnelle et souriante</li>
-              <li>Des produits frais et de qualité</li>
-              <li>Une logistique adaptée à votre événement</li>
-              <li>Des options végétariennes et véganes disponibles</li>
-              <li>Des plats faits maison préparés sur place</li>
-              <li>
-                <span className="font-bold">Une variété de plats au-delà des burgers :</span> bobuns, pokebowls, wraps,
-                fritures et bien plus
-              </li>
+              {(t.raw('offerList') as string[]).map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
 
             <div className="mt-8 p-4 border border-[#FFD54F] rounded-lg bg-white">
-              <h4 className="font-display text-lg font-bold text-[#E53935] mb-2">Nos formules événementielles</h4>
+              <h4 className="font-display text-lg font-bold text-[#E53935] mb-2">{t('formulasTitle')}</h4>
 
               <div className="space-y-4">
                 <div className="p-3 border-l-4 border-[#1E88E5]">
-                  <h5 className="font-bold">Formule Essentielle</h5>
-                  <p className="text-sm text-gray-700">Burger au choix + Frites + Boisson</p>
-                  <p className="text-sm font-bold text-[#FF5722] mt-1">À partir de 15€/personne</p>
+                  <h5 className="font-bold">{t('formulaEssential')}</h5>
+                  <p className="text-sm text-gray-700">{t('formulaEssentialDesc')}</p>
+                  <p className="text-sm font-bold text-[#FF5722] mt-1">{t('formulaEssentialPrice')}</p>
                 </div>
 
                 <div className="p-3 border-l-4 border-[#1E88E5]">
-                  <h5 className="font-bold">Formule Conviviale</h5>
+                  <h5 className="font-bold">{t('formulaFriendly')}</h5>
                   <p className="text-sm text-gray-700">
-                    Assortiment de burgers à partager + Frites + Boissons + Dessert
+                    {t('formulaFriendlyDesc')}
                   </p>
-                  <p className="text-sm font-bold text-[#FF5722] mt-1">À partir de 22€/personne</p>
+                  <p className="text-sm font-bold text-[#FF5722] mt-1">{t('formulaFriendlyPrice')}</p>
                 </div>
 
                 <div className="p-3 border-l-4 border-[#1E88E5]">
-                  <h5 className="font-bold">Formule Premium</h5>
+                  <h5 className="font-bold">{t('formulaPremium')}</h5>
                   <p className="text-sm text-gray-700">
-                    Apéritifs + Choix varié (burgers, bobuns, pokebowls, wraps) + Accompagnements + Desserts + Boissons
+                    {t('formulaPremiumDesc')}
                   </p>
-                  <p className="text-sm font-bold text-[#FF5722] mt-1">À partir de 30€/personne</p>
+                  <p className="text-sm font-bold text-[#FF5722] mt-1">{t('formulaPremiumPrice')}</p>
                 </div>
               </div>
             </div>
@@ -256,7 +239,7 @@ export default function EvenementsPage() {
               <Link href="/devis">
                 <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">
                   <Mail className="mr-2 h-4 w-4" />
-                  Demander un devis personnalisé
+                  {t('getQuote')}
                 </Button>
               </Link>
             </div>

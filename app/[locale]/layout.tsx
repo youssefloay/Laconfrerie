@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from "next"
 import { Baloo_2, Montserrat } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { GoogleAnalytics } from '@next/third-parties/google'
-import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import "../globals.css"
 
 const baloo = Baloo_2({
   subsets: ["latin"],
@@ -125,18 +125,38 @@ export const metadata: Metadata = {
   }
 }
 
-export default function RootLayout({
+import { NextIntlClientProvider } from 'next-intl'
+import { getMessages } from 'next-intl/server'
+import { notFound } from 'next/navigation'
+import { routing } from '@/src/i18n/routing'
+
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params
+}: {
   children: React.ReactNode
-}>) {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params;
+
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${montserrat.variable} ${baloo.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
-          {children}
-          <Analytics />
-          <GoogleAnalytics gaId="G-GSJHW3W7E9" />
+          <NextIntlClientProvider messages={messages}>
+            {children}
+            <Analytics />
+            <GoogleAnalytics gaId="G-GSJHW3W7E9" />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

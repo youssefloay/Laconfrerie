@@ -1,15 +1,21 @@
 "use client"
 
-import Link from "next/link"
 import Image from "next/image"
 import { MapPin, Clock, Phone, Mail, Instagram, Facebook } from "lucide-react"
+import { useTranslations } from 'next-intl'
+import { Link } from '@/src/i18n/routing'
 
 import { Button } from "@/components/ui/button"
 import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
 import { SocialNav } from "@/components/social-nav"
+import { LanguageToggle } from "@/components/language-toggle"
 
 export default function Home() {
+  const t = useTranslations('HomePage')
+  const navT = useTranslations('Navigation')
+  const iconsT = useTranslations('FoodIcons')
+
   return (
     <div className="min-h-screen bg-menu-cream">
       {/* Hero Section */}
@@ -18,19 +24,22 @@ export default function Home() {
         <div className="absolute top-40 -right-20 h-48 w-48 rounded-full bg-menu-red opacity-60 animate-float animation-delay-1000"></div>
         <div className="absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-menu-blue opacity-50 animate-float animation-delay-2000"></div>
 
-        <div className="container relative mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="container relative mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <div className="flex justify-end mb-4">
+            <LanguageToggle />
+          </div>
           <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
             <div className="text-center md:text-left">
               <h1 className="font-cooper text-5xl font-bold text-menu-blue md:text-6xl">
-                LA CONFRÉRIE
-                <span className="block text-menu-red">FOODTRUCK</span>
+                {t('hero.title')}
+                <span className="block text-menu-red">{t('hero.subtitle')}</span>
               </h1>
-              <p className="mt-4 text-lg text-gray-700">Savourez nos délicieux burgers dans une ambiance estivale !</p>
+              <p className="mt-4 text-lg text-gray-700">{t('hero.description')}</p>
               <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
                 <Link href="/locations">
                   <Button className="bg-menu-red hover:bg-red-700 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-300">
                     <MapPin className="mr-2 h-4 w-4" />
-                    Nous trouver
+                    {t('hero.findUs')}
                   </Button>
                 </Link>
                 <Link href="/contact">
@@ -39,7 +48,7 @@ export default function Home() {
                     className="border-menu-blue text-menu-blue hover:bg-menu-blue hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-400"
                   >
                     <Phone className="mr-2 h-4 w-4" />
-                    Nous contacter
+                    {t('hero.contactUs')}
                   </Button>
                 </Link>
               </div>
@@ -58,7 +67,7 @@ export default function Home() {
       <section id="menu" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">MENU</h2>
+            <h2 className="section-title animate-fade-in-up">{t('menu.title')}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
           </div>
 
@@ -67,7 +76,7 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CHEESE BURGER</h3>
+                    <h3 className="item-title">CHEESY BURGER</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/cheese.jpeg" 
@@ -79,11 +88,11 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="mt-2 item-description">
-                    Steak au choix, laitue, tomates, oignons rouges, pickles, ketchup, mayonnaise
+                    Steak au choix, cheddar, laitue, tomates, oignons rouges, cornichons, sauce cheese
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    {/* <span className="font-bold text-[#FF5722]">12.90€</span> */}
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie Happyvore 🌱</span>
+                    <span className="font-bold text-[#FF5722]">14,50€</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('menu.veggieOption')}</span>
                   </div>
                 </div>
 
@@ -101,11 +110,11 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="mt-2 item-description">
-                    Steak au choix, laitue, tomates, oignons rouges, pickles, cheddar, bacon, sauce BBQ
+                    Steak au choix, laitue, tomates, oignons rouges, cornichons, cheddar, bacon, sauce BBQ
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    {/* <span className="font-bold text-[#FF5722]">14.50€</span> */}
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie Happyvore 🌱</span>
+                    <span className="font-bold text-[#FF5722]">15,50€</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('menu.veggieOption')}</span>
                   </div>
                 </div>
               </div>
@@ -113,17 +122,17 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">GUACAMOLE BURGER</h3>
+                    <h3 className="item-title">CHICKEN BURGER</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                      <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
+                      <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 item-description">
-                    Steak au choix, cheddar, guacamole, coriandre fraîche, mâche, oignons rouges
+                    Poulet frit, cheddar, laitue, oignons frits, sauce Curry Mango
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    {/* <span className="font-bold text-[#FF5722]">14.90€</span> */}
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie Happyvore 🌱</span>
+                    <span className="font-bold text-[#FF5722]">14,90€</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('menu.veggieOption')}</span>
                   </div>
                 </div>
 
@@ -138,7 +147,7 @@ export default function Home() {
                     Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César
                   </p>
                   <div className="mt-2 flex items-center justify-between">
-                    {/* <span className="font-bold text-[#FF5722]">10.50€</span> */}
+                    <span className="font-bold text-[#FF5722]">12,50€</span>
                   </div>
                 </div>
               </div>
@@ -147,18 +156,14 @@ export default function Home() {
             <div className="mt-6">
               <div className="flex items-center justify-center rounded-full bg-[#FFD54F] p-3 text-center mx-auto max-w-xs mb-4">
                 <p className="font-display font-bold text-[#E53935]">
-                  {/* +2.5€ BOISSON */}
-                  
-                  <span className="text-sm font-bold text-gray-700">Plat du jour</span>
+                  <span className="text-sm font-bold text-gray-700">{t('menu.dailySpecial')}</span>
                   <br />
-                  <span className="text-xs text-gray-700">Préparé selon les produits de saison. Découvrez-le chaque jour sur Instagram et Facebook !</span>
-                  <br />
-                  
+                  <span className="text-xs text-gray-700">{t('menu.dailySpecialDesc')}</span>
                 </p>
               </div>
               <div className="text-center">
                 <Link href="/menu">
-                  <Button className="bg-[#E53935] hover:bg-[#C62828]">Voir le menu complet</Button>
+                  <Button className="bg-[#E53935] hover:bg-[#C62828]">{t('menu.viewFull')}</Button>
                 </Link>
               </div>
             </div>
@@ -170,7 +175,7 @@ export default function Home() {
       <section id="locations" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">OÙ NOUS TROUVER</h2>
+            <h2 className="section-title animate-fade-in-up">{t('locations.title')}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
           </div>
 
@@ -180,15 +185,15 @@ export default function Home() {
                 <div className="flex items-start gap-4">
                   <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#FF5722]" />
                   <div>
-                    <h3 className="font-display text-lg font-bold">191 Avenue de Fes</h3>
-                    <p className="text-gray-700">34090 Montpellier</p>
+                    <h3 className="font-display text-lg font-bold">{t('locations.address')}</h3>
+                    <p className="text-gray-700">{t('locations.city')}</p>
                     <div className="mt-2 flex items-center gap-2">
                       <Clock className="h-4 w-4 text-[#1E88E5]" />
-                      <span>Lundi au vendredi: 11h30 - 14h30</span>
+                      <span>{t('locations.hours')}</span>
                     </div>
                     <div className="mt-3 space-y-1 text-sm text-gray-600">
-                      <p><span className="font-semibold">Tram :</span> Malbosc - Domaine d'Ô</p>
-                      <p><span className="font-semibold">Stationnement :</span> Possibilité de stationnement à proximité</p>
+                      <p><span className="font-semibold">{t('locations.tram')}</span> {t('locations.tramDesc')}</p>
+                      <p><span className="font-semibold">{t('locations.parking')}</span> {t('locations.parkingDesc')}</p>
                     </div>
                     <div className="mt-4">
                       <div className="flex gap-2">
@@ -196,9 +201,9 @@ export default function Home() {
                           variant="outline"
                           size="sm"
                           className="text-xs border-[#FF5722] text-[#FF5722] hover:bg-[#FF5722] hover:text-white"
-                          onClick={() => window.open("https://www.google.com/maps/search/?api=1&query=191%20Av.%20de%20Fes%2C%2034090%20Montpellier", "_blank")}
+                          onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${t('locations.address')}, ${t('locations.city')}`)}`, "_blank")}
                         >
-                          <MapPin className="mr-1 h-3 w-3" />Y aller
+                          <MapPin className="mr-1 h-3 w-3" />{t('locations.getDirections')}
                         </Button>
                         <Link href="/locations">
                           <Button
@@ -206,7 +211,7 @@ export default function Home() {
                             size="sm"
                             className="text-xs border-[#1E88E5] text-[#1E88E5] hover:bg-[#1E88E5] hover:text-white"
                           >
-                            Plus d'informations
+                            {t('locations.moreInfo')}
                           </Button>
                         </Link>
                       </div>
@@ -215,7 +220,7 @@ export default function Home() {
                 </div>
                 <div className="h-[300px] w-full overflow-hidden rounded-lg border border-gray-200">
                   <iframe
-                    src="https://www.google.com/maps?q=191%20Av.%20de%20Fes%2C%2034090%20Montpellier&output=embed"
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(`${t('locations.address')}, ${t('locations.city')}`)}&output=embed`}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -234,10 +239,10 @@ export default function Home() {
       <section id="evenements" className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">ÉVÉNEMENTS</h2>
+            <h2 className="section-title animate-fade-in-up">{t('events.title')}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
             <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
-              Pour vos événements, nous proposons une carte étendue avec bobuns, pokebowls, wraps et bien plus !
+              {t('events.description')}
             </p>
           </div>
 
@@ -262,8 +267,8 @@ export default function Home() {
                     <path d="M19 9.5V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4.5" />
                   </svg>
                 </div>
-                <h4 className="font-display text-lg font-bold text-[#E53935]">Mariages</h4>
-                <p className="mt-2 text-sm text-gray-700">Offrez une expérience culinaire unique à vos invités.</p>
+                <h4 className="font-display text-lg font-bold text-[#E53935]">{t('events.weddings')}</h4>
+                <p className="mt-2 text-sm text-gray-700">{t('events.weddingsDesc')}</p>
               </div>
 
               <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
@@ -284,8 +289,8 @@ export default function Home() {
                     <circle cx="17" cy="7" r="5" />
                   </svg>
                 </div>
-                <h4 className="font-display text-lg font-bold text-[#E53935]">Festivals</h4>
-                <p className="mt-2 text-sm text-gray-700">Nous nous adaptons à tous types d'événements.</p>
+                <h4 className="font-display text-lg font-bold text-[#E53935]">{t('events.festivals')}</h4>
+                <p className="mt-2 text-sm text-gray-700">{t('events.festivalsDesc')}</p>
               </div>
 
               <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-600">
@@ -314,16 +319,14 @@ export default function Home() {
                     <path d="M16 18h.01" />
                   </svg>
                 </div>
-                <h4 className="font-display text-lg font-bold text-[#E53935]">Événements d'entreprise</h4>
-                <p className="mt-2 text-sm text-gray-700">
-                  Impressionnez vos collaborateurs avec une pause déjeuner originale.
-                </p>
+                <h4 className="font-display text-lg font-bold text-[#E53935]">{t('events.corporate')}</h4>
+                <p className="mt-2 text-sm text-gray-700">{t('events.corporateDesc')}</p>
               </div>
             </div>
 
             <div className="mt-8 bg-[#F5F5F5] p-6 rounded-lg">
               <h3 className="font-display text-xl font-bold text-[#1E88E5] mb-4 text-center">
-                Nos spécialités pour événements
+                {t('events.specialties')}
               </h3>
 
               <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
@@ -331,42 +334,42 @@ export default function Home() {
                   <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="bobun" size={20} className="text-[#FF5722]" />
                   </div>
-                  <p className="text-xs font-bold">Bobuns</p>
+                  <p className="text-xs font-bold">{iconsT('bobun')}</p>
                 </div>
 
                 <div className="bg-white rounded-lg p-3 text-center">
                   <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="pokebowl" size={20} className="text-[#FF5722]" />
                   </div>
-                  <p className="text-xs font-bold">Pokebowls</p>
+                  <p className="text-xs font-bold">{iconsT('pokebowl')}</p>
                 </div>
 
                 <div className="bg-white rounded-lg p-3 text-center">
                   <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="wrap" size={20} className="text-[#FF5722]" />
                   </div>
-                  <p className="text-xs font-bold">Wraps</p>
+                  <p className="text-xs font-bold">{iconsT('wrap')}</p>
                 </div>
 
                 <div className="bg-white rounded-lg p-3 text-center">
                   <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="friture" size={20} className="text-[#FF5722]" />
                   </div>
-                  <p className="text-xs font-bold">Fritures</p>
+                  <p className="text-xs font-bold">{iconsT('friture')}</p>
                 </div>
 
                 <div className="bg-white rounded-lg p-3 text-center">
                   <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="dessert" size={20} className="text-[#FF5722]" />
                   </div>
-                  <p className="text-xs font-bold">Desserts</p>
+                  <p className="text-xs font-bold">{iconsT('dessert')}</p>
                 </div>
 
                 <div className="bg-white rounded-lg p-3 text-center">
                   <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
                     <FoodIcon name="specialite" size={20} className="text-[#FF5722]" />
                   </div>
-                  <p className="text-xs font-bold">Spécialités</p>
+                  <p className="text-xs font-bold">{iconsT('specialite')}</p>
                 </div>
               </div>
             </div>
@@ -374,7 +377,7 @@ export default function Home() {
             <div className="mt-6 text-center">
               <Link href="/evenements">
                 <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">
-                  En savoir plus sur nos services événementiels
+                  {t('events.learnMore')}
                 </Button>
               </Link>
             </div>
@@ -386,15 +389,13 @@ export default function Home() {
       <section id="contact" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">CONTACTEZ-NOUS</h2>
+            <h2 className="section-title animate-fade-in-up">{t('contact.title')}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F]"></div>
           </div>
 
           <div className="mx-auto max-w-2xl rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
-                
-
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-[#1E88E5]" />
                   <a href="mailto:contact@laconfrerietruck.fr" className="text-lg hover:text-[#FF5722]">
@@ -438,12 +439,12 @@ export default function Home() {
                 <div className="mb-4 flex justify-center">
                   <SiteLogo size="medium" background="yellow" />
                 </div>
-                <h3 className="mb-4 font-display text-xl font-bold text-[#1E88E5] text-center">Réservations</h3>
+                <h3 className="mb-4 font-display text-xl font-bold text-[#1E88E5] text-center">{t('contact.reservations')}</h3>
                 <p className="mb-4 text-gray-700">
-                  Vous organisez un événement ? Contactez-nous pour réserver notre foodtruck !
+                  {t('contact.reservationsDesc')}
                 </p>
                 <Link href="/devis">
-                  <Button className="w-full bg-[#FF5722] hover:bg-[#E64A19] transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-400">Demander un devis</Button>
+                  <Button className="w-full bg-[#FF5722] hover:bg-[#E64A19] transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-400">{t('contact.getQuote')}</Button>
                 </Link>
               </div>
             </div>
@@ -457,25 +458,25 @@ export default function Home() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex items-center gap-2">
               <SiteLogo size="small" background="white" />
-              <span className="font-display text-xl font-bold">LA CONFRÉRIE</span>
+              <span className="font-display text-xl font-bold">{t('hero.title')}</span>
             </div>
 
             <div className="flex gap-6">
               <Link href="/menu" className="hover:text-[#FFD54F]">
-                Menu
+                {navT('menu')}
               </Link>
               <Link href="/locations" className="hover:text-[#FFD54F]">
-                Emplacements
+                {navT('locations')}
               </Link>
               <Link href="/evenements" className="hover:text-[#FFD54F]">
-                Événements
+                {navT('events')}
               </Link>
               <Link href="/contact" className="hover:text-[#FFD54F]">
-                Contact
+                {navT('contact')}
               </Link>
             </div>
 
-            <div className="text-sm">© {new Date().getFullYear()} La Confrérie Foodtruck. Tous droits réservés.</div>
+            <div className="text-sm">{t('footer.rights', { year: new Date().getFullYear() })}</div>
           </div>
         </div>
       </footer>
