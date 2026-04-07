@@ -15,6 +15,7 @@ export default function Home() {
   const t = useTranslations('HomePage')
   const navT = useTranslations('Navigation')
   const iconsT = useTranslations('FoodIcons')
+  const menuItemsT = useTranslations('MenuItems')
 
   return (
     <div className="min-h-screen bg-menu-cream">
@@ -76,11 +77,11 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CHEESY BURGER</h3>
+                    <h3 className="item-title">{menuItemsT('cheesyBurger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/cheese.jpeg" 
-                        alt="Cheese Burger" 
+                        alt={menuItemsT('cheesyBurger.name')} 
                         width={64} 
                         height={64} 
                         className="object-cover w-full h-full"
@@ -88,7 +89,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="mt-2 item-description">
-                    Steak au choix, cheddar, laitue, tomates, oignons rouges, cornichons, sauce cheese
+                    {menuItemsT('cheesyBurger.description')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">14,50€</span>
@@ -98,11 +99,11 @@ export default function Home() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">BACON BURGER</h3>
+                    <h3 className="item-title">{menuItemsT('baconBurger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/bacon.jpeg" 
-                        alt="Bacon Burger" 
+                        alt={menuItemsT('baconBurger.name')} 
                         width={64} 
                         height={64} 
                         className="object-cover w-full h-full"
@@ -110,7 +111,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="mt-2 item-description">
-                    Steak au choix, laitue, tomates, oignons rouges, cornichons, cheddar, bacon, sauce BBQ
+                    {menuItemsT('baconBurger.description')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">15,50€</span>
@@ -122,13 +123,13 @@ export default function Home() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CHICKEN BURGER</h3>
+                    <h3 className="item-title">{menuItemsT('chickenBurger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 item-description">
-                    Poulet frit, cheddar, laitue, oignons frits, sauce Curry Mango
+                    {menuItemsT('chickenBurger.description')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">14,90€</span>
@@ -138,13 +139,13 @@ export default function Home() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">SALADE CÉSAR</h3>
+                    <h3 className="font-display text-xl font-bold text-[#E53935]">{menuItemsT('caesarSalad.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César
+                    {menuItemsT('caesarSalad.description')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">12,50€</span>

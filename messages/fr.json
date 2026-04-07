@@ -56,6 +56,7 @@
     "dailySpecial": "Plat du jour",
     "salads": "Salades",
     "drinks": "Boissons",
+    "veggieOption": "Option Veggie 🌱",
     "studentOffer": "Offre Étudiante 🎓",
     "studentPromo": "Hamburger + Frites",
     "studentDiscount": "Sur tous les burgers",
@@ -168,6 +169,63 @@
     "reservations": "Réservations",
     "eventQuestion": "Vous organisez un événement ? Contactez-nous pour réserver notre foodtruck !",
     "getQuote": "Demander un devis"
+  },
+  "MenuItems": {
+    "hamburger": {
+      "name": "HAMBURGER",
+      "description": "Steak au choix, laitue, tomates, oignons rouges, cornichons, ketchup, mayonnaise."
+    },
+    "cheesyBurger": {
+      "name": "CHEESY BURGER",
+      "description": "Steak au choix, cheddar, laitue, tomates, oignons rouges, cornichons, sauce cheese"
+    },
+    "baconBurger": {
+      "name": "BACON BURGER",
+      "description": "Steak au choix, laitue, tomates, oignons rouges, cornichons, cheddar, bacon, sauce BBQ"
+    },
+    "chickenBurger": {
+      "name": "CHICKEN BURGER",
+      "description": "Poulet frit, cheddar, laitue, oignons frits, sauce Curry Mango"
+    },
+    "racletteBurger": {
+      "name": "RACLETTE BURGER",
+      "description": "Steak au choix, raclette, oignons caramélisés, laitue, tomates, cornichons, sauce burger."
+    },
+    "fries": {
+      "name": "FRITES MAISON"
+    },
+    "tenders": {
+      "name": "TENDERS"
+    },
+    "smallSalad": {
+      "name": "PETITE SALADE"
+    },
+    "arugulaSalad": {
+      "name": "ROQUETTE & PARMESAN"
+    },
+    "caesarSalad": {
+      "name": "SALADE CÉSAR",
+      "description": "Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César"
+    },
+    "dailySalad": {
+      "name": "SALADE DU MOMENT",
+      "description": "Retrouvez-la sur notre pancarte ou nos réseaux (Instagram, Facebook)."
+    },
+    "softDrink": {
+      "name": "CANETTE"
+    },
+    "water": {
+      "name": "EAU"
+    },
+    "beer": {
+      "name": "BIÈRE HEINEKEN"
+    },
+    "coffee": {
+      "name": "CAFÉ"
+    },
+    "wine": {
+      "name": "BOUTEILLE DE VIN"
+    }
   },
   "Navigation": {
     "menu": "Menu",

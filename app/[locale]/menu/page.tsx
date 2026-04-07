@@ -14,6 +14,8 @@ import { LanguageToggle } from "@/components/language-toggle"
 export default function MenuPage() {
   const t = useTranslations('MenuPage')
   const navT = useTranslations('Navigation')
+  const menuItemsT = useTranslations('MenuItems')
+  const iconsT = useTranslations('FoodIcons')
 
   return (
     <div className="min-h-screen bg-menu-cream">
@@ -46,27 +48,27 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">HAMBURGER</h3>
+                    <h3 className="item-title">{menuItemsT('hamburger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, laitue, tomates, oignons rouges, cornichons, ketchup, mayonnaise. {t('servingSuggestion')}
+                    {menuItemsT('hamburger.description')} {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="price">12,9€</span>
-                    <span className="text-xs text-green-600 font-semibold">{t('burgers').toLowerCase().includes('veggie') ? '' : 'Option Veggie 🌱'}</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('veggieOption')}</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">BACON BURGER</h3>
+                    <h3 className="item-title">{menuItemsT('baconBurger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/bacon.jpeg" 
-                        alt="Bacon Burger" 
+                        alt={menuItemsT('baconBurger.name')} 
                         width={64} 
                         height={64} 
                         className="object-cover w-full h-full"
@@ -74,21 +76,21 @@ export default function MenuPage() {
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, laitue, tomates, oignons rouges, cornichons, cheddar, bacon, sauce BBQ. {t('servingSuggestion')}
+                    {menuItemsT('baconBurger.description')}. {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="price">15,5€</span>
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('veggieOption')}</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CHEESY BURGER</h3>
+                    <h3 className="item-title">{menuItemsT('cheesyBurger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <Image 
                         src="/images/burgers/cheese.jpeg" 
-                        alt="Cheesy Burger" 
+                        alt={menuItemsT('cheesyBurger.name')} 
                         width={64} 
                         height={64} 
                         className="object-cover w-full h-full"
@@ -96,11 +98,11 @@ export default function MenuPage() {
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, cheddar, laitue, tomates, oignons rouges, cornichons, sauce cheese. {t('servingSuggestion')}
+                    {menuItemsT('cheesyBurger.description')}. {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">14,5€</span>
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('veggieOption')}</span>
                   </div>
                 </div>
               </div>
@@ -108,33 +110,33 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-600">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CHICKEN BURGER</h3>
+                    <h3 className="item-title">{menuItemsT('chickenBurger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Poulet frit, cheddar, laitue, oignons frits, sauce Curry Mango. {t('servingSuggestion')}
+                    {menuItemsT('chickenBurger.description')}. {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">14,9€</span>
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('veggieOption')}</span>
                   </div>
                 </div>
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-700">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">RACLETTE BURGER</h3>
+                    <h3 className="item-title">{menuItemsT('racletteBurger.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
                       <FoodIcon name="burger" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Steak au choix, raclette, oignons caramélisés, laitue, tomates, cornichons, sauce burger. {t('servingSuggestion')}
+                    {menuItemsT('racletteBurger.description')} {t('servingSuggestion')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">16,9€</span>
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
+                    <span className="text-xs text-green-600 font-semibold">{t('veggieOption')}</span>
                   </div>
                 </div>
               </div>
@@ -157,7 +159,7 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">FRITES MAISON</h3>
+                    <h3 className="item-title">{menuItemsT('fries.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="fries" size={32} className="text-[#FF5722]" />
                     </div>
@@ -169,7 +171,7 @@ export default function MenuPage() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">TENDERS X4</h3>
+                    <h3 className="item-title">{menuItemsT('tenders.name')} X4</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
@@ -181,7 +183,7 @@ export default function MenuPage() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">TENDERS X6</h3>
+                    <h3 className="item-title">{menuItemsT('tenders.name')} X6</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
@@ -195,7 +197,7 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">TENDERS X8</h3>
+                    <h3 className="item-title">{menuItemsT('tenders.name')} X8</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="tenders" size={32} className="text-[#FF5722]" />
                     </div>
@@ -207,7 +209,7 @@ export default function MenuPage() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">PETITE SALADE</h3>
+                    <h3 className="item-title">{menuItemsT('smallSalad.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
@@ -219,7 +221,7 @@ export default function MenuPage() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">ROQUETTE & PARMESAN</h3>
+                    <h3 className="item-title">{menuItemsT('arugulaSalad.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
@@ -271,13 +273,13 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">SALADE CÉSAR</h3>
+                    <h3 className="item-title">{menuItemsT('caesarSalad.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Laitue, poulet, tomates cerise, oeuf mollet, croûtons, parmesan, sauce César
+                    {menuItemsT('caesarSalad.description')}
                   </p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="price">12,50€</span>
@@ -288,13 +290,13 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">SALADE DU MOMENT</h3>
+                    <h3 className="item-title">{menuItemsT('dailySalad.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="salad" size={32} className="text-[#FF5722]" />
                     </div>
                   </div>
                   <p className="mt-2 text-sm text-gray-700">
-                    Retrouvez-la sur notre pancarte ou nos réseaux (Instagram, Facebook).
+                    {menuItemsT('dailySalad.description')}
                   </p>
                 </div>
               </div>
@@ -310,7 +312,7 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CANETTE</h3>
+                    <h3 className="item-title">{menuItemsT('softDrink.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
@@ -322,7 +324,7 @@ export default function MenuPage() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">EAU</h3>
+                    <h3 className="item-title">{menuItemsT('water.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
@@ -334,7 +336,7 @@ export default function MenuPage() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">BIÈRE HEINEKEN</h3>
+                    <h3 className="item-title">{menuItemsT('beer.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
@@ -348,7 +350,7 @@ export default function MenuPage() {
               <div className="space-y-6">
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CAFÉ</h3>
+                    <h3 className="item-title">{menuItemsT('coffee.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
@@ -360,7 +362,7 @@ export default function MenuPage() {
 
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">BOUTEILLE DE VIN</h3>
+                    <h3 className="item-title">{menuItemsT('wine.name')}</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
                       <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
                     </div>
@@ -388,37 +390,37 @@ export default function MenuPage() {
                 <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD54F]">
                   <FoodIcon name="bobun" size={24} className="text-[#FF5722]" />
                 </div>
-                <h4 className="font-bold">Bobuns</h4>
+                <h4 className="font-bold">{iconsT('bobun')}</h4>
               </div>
               <div className="bg-white rounded-lg p-4 text-center">
                 <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD54F]">
                   <FoodIcon name="pokebowl" size={24} className="text-[#FF5722]" />
                 </div>
-                <h4 className="font-bold">Pokebowls</h4>
+                <h4 className="font-bold">{iconsT('pokebowl')}</h4>
               </div>
               <div className="bg-white rounded-lg p-4 text-center">
                 <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD54F]">
                   <FoodIcon name="wrap" size={24} className="text-[#FF5722]" />
                 </div>
-                <h4 className="font-bold">Wraps</h4>
+                <h4 className="font-bold">{iconsT('wrap')}</h4>
               </div>
               <div className="bg-white rounded-lg p-4 text-center">
                 <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD54F]">
                   <FoodIcon name="friture" size={24} className="text-[#FF5722]" />
                 </div>
-                <h4 className="font-bold">Fritures</h4>
+                <h4 className="font-bold">{iconsT('friture')}</h4>
               </div>
               <div className="bg-white rounded-lg p-4 text-center">
                 <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD54F]">
                   <FoodIcon name="dessert" size={24} className="text-[#FF5722]" />
                 </div>
-                <h4 className="font-bold">Desserts</h4>
+                <h4 className="font-bold">{iconsT('dessert')}</h4>
               </div>
               <div className="bg-white rounded-lg p-4 text-center">
                 <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFD54F]">
                   <FoodIcon name="specialite" size={24} className="text-[#FF5722]" />
                 </div>
-                <h4 className="font-bold">Spécialités</h4>
+                <h4 className="font-bold">{iconsT('specialite')}</h4>
               </div>
             </div>
             <div className="mt-6 text-center">

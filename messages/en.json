@@ -56,6 +56,7 @@
     "dailySpecial": "Daily Special",
     "salads": "Salads",
     "drinks": "Drinks",
+    "veggieOption": "Happyvore Veggie Option 🌱",
     "studentOffer": "Student Offer 🎓",
     "studentPromo": "Burger + Fries",
     "studentDiscount": "On all burgers",
@@ -168,6 +169,63 @@
     "reservations": "Reservations",
     "eventQuestion": "Organizing an event? Contact us to book our foodtruck!",
     "getQuote": "Request a quote"
+  },
+  "MenuItems": {
+    "hamburger": {
+      "name": "HAMBURGER",
+      "description": "Steak of choice, lettuce, tomatoes, red onions, pickles, ketchup, mayonnaise."
+    },
+    "cheesyBurger": {
+      "name": "CHEESY BURGER",
+      "description": "Steak of choice, cheddar, lettuce, tomatoes, red onions, pickles, cheese sauce"
+    },
+    "baconBurger": {
+      "name": "BACON BURGER",
+      "description": "Steak of choice, lettuce, tomatoes, red onions, pickles, cheddar, bacon, BBQ sauce"
+    },
+    "chickenBurger": {
+      "name": "CHICKEN BURGER",
+      "description": "Fried chicken, cheddar, lettuce, fried onions, Curry Mango sauce"
+    },
+    "racletteBurger": {
+      "name": "RACLETTE BURGER",
+      "description": "Steak of choice, raclette, caramelized onions, lettuce, tomatoes, pickles, burger sauce."
+    },
+    "fries": {
+      "name": "HOMEMADE FRIES"
+    },
+    "tenders": {
+      "name": "CHICKEN TENDERS"
+    },
+    "smallSalad": {
+      "name": "SMALL SALAD"
+    },
+    "arugulaSalad": {
+      "name": "ARUGULA & PARMESAN"
+    },
+    "caesarSalad": {
+      "name": "CAESAR SALAD",
+      "description": "Lettuce, chicken, cherry tomatoes, soft-boiled egg, croutons, parmesan, Caesar sauce"
+    },
+    "dailySalad": {
+      "name": "SALAD OF THE MOMENT",
+      "description": "Find it on our board or our social media (Instagram, Facebook)."
+    },
+    "softDrink": {
+      "name": "SOFT DRINK (CAN)"
+    },
+    "water": {
+      "name": "WATER"
+    },
+    "beer": {
+      "name": "HEINEKEN BEER"
+    },
+    "coffee": {
+      "name": "COFFEE"
+    },
+    "wine": {
+      "name": "BOTTLE OF WINE"
+    }
   },
   "Navigation": {
     "menu": "Menu",
