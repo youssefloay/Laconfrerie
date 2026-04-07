@@ -45,7 +45,23 @@ export default function Home() {
               <p className="mt-4 text-xl font-medium text-gray-700 animate-fade-in-up animation-delay-200">
                 {t('hero.description')}
               </p>
-              <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start animate-fade-in-up animation-delay-400">
+              <div className="mt-6 flex flex-col items-center gap-2 md:items-start animate-fade-in-up animation-delay-300">
+                <div className="flex items-center gap-3 rounded-full bg-white/50 px-5 py-2 backdrop-blur-sm border border-menu-blue/10 shadow-sm transition-all hover:shadow-md hover:bg-white/80 group cursor-default">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-menu-blue text-white group-hover:scale-110 transition-transform duration-300">
+                    <Phone className="h-5 w-5" strokeWidth={2.5} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF5722]">{t('contact.reservations')}</span>
+                    <a 
+                      href={`tel:${t('hero.phone').replace(/\s/g, '')}`} 
+                      className="text-xl font-black text-menu-blue hover:text-[#FF5722] transition-colors font-display leading-none"
+                    >
+                      {t('hero.phone')}
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start animate-fade-in-up animation-delay-400">
                 <Link href="/locations">
                   <Button className="h-12 min-w-[160px] bg-menu-red hover:bg-[#C62828] text-white px-8 text-lg font-bold transition-all hover:scale-105 hover:shadow-lg border-0">
                     <MapPin className="mr-2 h-5 w-5" />
