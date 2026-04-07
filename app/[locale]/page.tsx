@@ -27,59 +27,56 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-menu-cream">
       {/* Hero Section */}
-      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden">
-        {/* Hero Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/menu/Dish Composition [5_4-2304x2880] a4e.jpg"
-            alt="La Confrérie Foodtruck"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
-        </div>
+      <section className="relative overflow-hidden">
+        <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-menu-yellow opacity-70 animate-float"></div>
+        <div className="absolute top-40 -right-20 h-48 w-48 rounded-full bg-menu-red opacity-60 animate-float animation-delay-1000"></div>
+        <div className="absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-menu-blue opacity-50 animate-float animation-delay-2000"></div>
 
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <div className="flex justify-end mb-8 absolute top-8 right-8">
+        <div className="container relative mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          <div className="flex justify-end mb-4">
             <LanguageToggle />
           </div>
-          <div className="mx-auto mb-8 flex h-40 w-40 items-center justify-center rounded-full bg-white/10 p-4 backdrop-blur-md animate-fade-in border-2 border-white/20">
-            <SiteLogo className="h-full w-full text-white drop-shadow-lg" />
-          </div>
-          <h1 className="font-display text-5xl font-extrabold tracking-tight text-white sm:text-7xl drop-shadow-xl animate-fade-in-up uppercase">
-            {t('hero.title')}
-            <span className="block text-[#FFD54F] mt-2">{t('hero.subtitle')}</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-xl font-medium text-white/90 drop-shadow-md animate-fade-in-up animation-delay-200">
-            {t('hero.description')}
-          </p>
-          <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-in-up animation-delay-400 font-display">
-            <Link href="/locations">
-              <Button className="h-12 min-w-[180px] border-2 border-[#FFD54F] bg-[#FFD54F] px-8 text-lg font-bold text-menu-blue transition-all hover:bg-transparent hover:text-[#FFD54F] shadow-lg hover:shadow-[#FFD54F]/20">
-                <MapPin className="mr-2 h-5 w-5" />
-                {t('hero.findUs')}
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button className="h-12 min-w-[180px] border-2 border-white bg-transparent px-8 text-lg font-bold text-white transition-all hover:bg-white hover:text-menu-blue shadow-lg hover:shadow-white/10">
-                <Phone className="mr-2 h-5 w-5" />
-                {t('hero.contactUs')}
-              </Button>
-            </Link>
-            <a 
-              href="https://www.ubereats.com/fr/store/la-confrerie/8FcWf8cVSG-PBm69V6POGQ?effect=" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Button className="h-12 min-w-[180px] border-2 border-[#06C167] bg-[#06C167] px-8 text-lg font-bold text-white transition-all hover:bg-transparent hover:text-[#06C167] shadow-lg hover:shadow-[#06C167]/20">
-                <svg viewBox="0 0 24 24" className="mr-2 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                  <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
-                </svg>
-                {navT('orderUberEats')}
-              </Button>
-            </a>
+          <div className="flex flex-col items-center justify-between gap-8 md:flex-row text-menu-blue">
+            <div className="text-center md:text-left">
+              <h1 className="font-display text-5xl font-extrabold tracking-tight sm:text-7xl animate-fade-in-up">
+                {t('hero.title')}
+                <span className="block text-menu-red">{t('hero.subtitle')}</span>
+              </h1>
+              <p className="mt-4 text-xl font-medium text-gray-700 animate-fade-in-up animation-delay-200">
+                {t('hero.description')}
+              </p>
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-4 md:justify-start animate-fade-in-up animation-delay-400">
+                <Link href="/locations">
+                  <Button className="h-12 min-w-[160px] bg-menu-red hover:bg-[#C62828] text-white px-8 text-lg font-bold transition-all hover:scale-105 hover:shadow-lg border-0">
+                    <MapPin className="mr-2 h-5 w-5" />
+                    {t('hero.findUs')}
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="outline" className="h-12 min-w-[160px] border-2 border-menu-blue bg-transparent px-8 text-lg font-bold text-menu-blue hover:bg-menu-blue hover:text-white transition-all hover:scale-105 hover:shadow-lg">
+                    <Phone className="mr-2 h-5 w-5" />
+                    {t('hero.contactUs')}
+                  </Button>
+                </Link>
+                <a 
+                  href="https://www.ubereats.com/fr/store/la-confrerie/8FcWf8cVSG-PBm69V6POGQ?effect=" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Button className="h-12 min-w-[160px] border-0 bg-[#06C167] px-8 text-lg font-bold text-white transition-all hover:bg-[#05a357] hover:scale-105 hover:shadow-lg">
+                    <svg viewBox="0 0 24 24" className="mr-2 h-5 w-5 fill-current" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                      <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/>
+                    </svg>
+                    {navT('orderUberEats')}
+                  </Button>
+                </a>
+              </div>
+            </div>
+            <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80 animate-bounce-gentle">
+              <SiteLogo size="large" background="yellow" />
+            </div>
           </div>
         </div>
       </section>
