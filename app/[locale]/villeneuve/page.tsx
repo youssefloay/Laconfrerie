@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { MapPin, Clock, Phone, Mail, Instagram, Facebook } from "lucide-react"
 import { Link } from '@/src/i18n/routing'
@@ -108,14 +108,12 @@ const UI: Record<Lang, {
 export default function VilleneuveHome() {
   const [lang, setLang] = useState<Lang>("fr")
 
-  import("react").then(({ useEffect }) => {
-    useEffect(() => {
-      const saved = localStorage.getItem("preferredLang") as Lang
-      if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
-        setLang(saved)
-      }
-    }, [])
-  })
+  useEffect(() => {
+    const saved = localStorage.getItem("preferredLang") as Lang
+    if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
+      setLang(saved)
+    }
+  }, [])
 
   const handleLangChange = (newLang: Lang) => {
     setLang(newLang)

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { MapPin, Waves, Building2 } from "lucide-react"
 import { SiteLogo } from "@/components/site-logo"
@@ -39,14 +39,12 @@ export default function LocationSelector() {
   const router = useRouter()
   const [lang, setLang] = useState<Lang>("fr")
 
-  import("react").then(({ useEffect }) => {
-    useEffect(() => {
-      const saved = localStorage.getItem("preferredLang") as Lang
-      if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
-        setLang(saved)
-      }
-    }, [])
-  })
+  useEffect(() => {
+    const saved = localStorage.getItem("preferredLang") as Lang
+    if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
+      setLang(saved)
+    }
+  }, [])
 
   const handleLangChange = (newLang: Lang) => {
     setLang(newLang)

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 import { Link } from "@/src/i18n/routing"
@@ -127,14 +127,12 @@ function TenderRow({ label, price }: { label: string; price: string }) {
 export default function VilleneuveMenuPage() {
   const [lang, setLang] = useState<Lang>("fr")
 
-  import("react").then(({ useEffect }) => {
-    useEffect(() => {
-      const saved = localStorage.getItem("preferredLang") as Lang
-      if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
-        setLang(saved)
-      }
-    }, [])
-  })
+  useEffect(() => {
+    const saved = localStorage.getItem("preferredLang") as Lang
+    if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
+      setLang(saved)
+    }
+  }, [])
 
   const handleLangChange = (newLang: Lang) => {
     setLang(newLang)
