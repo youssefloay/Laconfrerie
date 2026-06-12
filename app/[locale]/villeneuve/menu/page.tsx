@@ -126,6 +126,21 @@ function TenderRow({ label, price }: { label: string; price: string }) {
 
 export default function VilleneuveMenuPage() {
   const [lang, setLang] = useState<Lang>("fr")
+
+  import("react").then(({ useEffect }) => {
+    useEffect(() => {
+      const saved = localStorage.getItem("preferredLang") as Lang
+      if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
+        setLang(saved)
+      }
+    }, [])
+  })
+
+  const handleLangChange = (newLang: Lang) => {
+    setLang(newLang)
+    localStorage.setItem("preferredLang", newLang)
+  }
+
   const ui = UI[lang]
   const items = ITEMS[lang]
 
@@ -144,7 +159,7 @@ export default function VilleneuveMenuPage() {
             {LANGS.map((l) => (
               <button
                 key={l.code}
-                onClick={() => setLang(l.code)}
+                onClick={() => handleLangChange(l.code)}
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
                   lang === l.code ? "bg-menu-blue text-white shadow-sm scale-105" : "text-gray-500 hover:bg-menu-cream hover:text-menu-blue"
                 }`}
@@ -222,7 +237,7 @@ export default function VilleneuveMenuPage() {
               <div className="flex items-center justify-between mb-2">
                 <h3 className="item-title">{ui.kidsMenu}</h3>
                 <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F] flex-shrink-0 ml-2">
-                  <Image src="/images/menu/Tenders [5_4-440x550] be6.jpg" alt="Kids Menu" width={128} height={128} className="object-cover w-full h-full" />
+                  <Image src="/images/menu/kids_menu.png" alt="Kids Menu" width={128} height={128} className="object-cover w-full h-full" />
                 </div>
               </div>
               <p className="mt-2 item-description">{items.kids}</p>
@@ -264,18 +279,22 @@ export default function VilleneuveMenuPage() {
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-6 md:grid-cols-2">
               {[
-                { name: items.cafe, price: "2€" },
-                { name: items.canette, price: "3,50€" },
-                { name: items.biereHK, price: "4€" },
-                { name: items.eau, price: "2€" },
-                { name: items.biereArt, price: "6,50€" },
-                { name: items.rose, price: "12€" },
+                { name: items.cafe, price: "2€", img: "/images/menu/coffee.png" },
+                { name: items.canette, price: "3,50€", img: "/images/menu/soft_drink.png" },
+                { name: items.biereHK, price: "4€", img: "/images/menu/beer.png" },
+                { name: items.eau, price: "2€", img: "/images/menu/water.png" },
+                { name: items.biereArt, price: "6,50€", img: "/images/menu/craft_beer.png" },
+                { name: items.rose, price: "12€", img: "/images/menu/rose_wine.png" },
               ].map((d) => (
-                <div key={d.name} className="rounded-lg bg-[#FFF8E1] p-4">
+                <div key={d.name} className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{d.name}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] flex-shrink-0 ml-2">
-                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F] flex-shrink-0 ml-2">
+                      {d.img ? (
+                        <Image src={d.img} alt={d.name} width={128} height={128} className="object-cover w-full h-full" />
+                      ) : (
+                        <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                      )}
                     </div>
                   </div>
                   <div className="mt-2"><span className="price">{d.price}</span></div>

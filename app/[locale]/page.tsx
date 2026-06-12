@@ -38,14 +38,27 @@ export default function LocationSelector() {
   const locale = useLocale()
   const router = useRouter()
   const [lang, setLang] = useState<Lang>("fr")
+
+  import("react").then(({ useEffect }) => {
+    useEffect(() => {
+      const saved = localStorage.getItem("preferredLang") as Lang
+      if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
+        setLang(saved)
+      }
+    }, [])
+  })
+
+  const handleLangChange = (newLang: Lang) => {
+    setLang(newLang)
+    if (typeof window !== "undefined") {
+      localStorage.setItem("preferredLang", newLang)
+    }
+  }
+
   const t = T[lang]
 
   const go = (path: string) => {
-    // For ES/IT/DE, route through the current locale (fr/en)
     const routeLocale = (lang === "en") ? "en" : locale
-    if (typeof window !== "undefined") {
-      localStorage.setItem("preferredLang", lang)
-    }
     router.push(`/${routeLocale}${path}`)
   }
 
@@ -80,7 +93,7 @@ export default function LocationSelector() {
               {LANGS.map((l) => (
                 <button
                   key={l.code}
-                  onClick={() => setLang(l.code)}
+                  onClick={() => handleLangChange(l.code)}
                   className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex-1 justify-center ${
                     lang === l.code
                       ? "bg-white text-gray-800 shadow-sm"

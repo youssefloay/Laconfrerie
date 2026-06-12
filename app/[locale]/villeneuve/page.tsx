@@ -107,6 +107,21 @@ const UI: Record<Lang, {
 
 export default function VilleneuveHome() {
   const [lang, setLang] = useState<Lang>("fr")
+
+  import("react").then(({ useEffect }) => {
+    useEffect(() => {
+      const saved = localStorage.getItem("preferredLang") as Lang
+      if (saved && ["fr", "en", "es", "it", "de"].includes(saved)) {
+        setLang(saved)
+      }
+    }, [])
+  })
+
+  const handleLangChange = (newLang: Lang) => {
+    setLang(newLang)
+    localStorage.setItem("preferredLang", newLang)
+  }
+
   const ui = UI[lang]
 
   return (
@@ -124,7 +139,7 @@ export default function VilleneuveHome() {
               {LANGS.map((l) => (
                 <button
                   key={l.code}
-                  onClick={() => setLang(l.code)}
+                  onClick={() => handleLangChange(l.code)}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
                     lang === l.code ? "bg-menu-blue text-white shadow-sm scale-105" : "text-gray-500 hover:bg-menu-cream hover:text-menu-blue"
                   }`}

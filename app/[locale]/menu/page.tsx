@@ -370,11 +370,11 @@ export default function MenuPage() {
           <div className="rounded-2xl bg-white p-6 shadow-lg md:p-8">
             <div className="grid gap-8 md:grid-cols-2">
               <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('softDrink.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image src="/images/menu/soft_drink.png" alt={menuItemsT('softDrink.name')} width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -382,11 +382,11 @@ export default function MenuPage() {
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('water.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image src="/images/menu/water.png" alt={menuItemsT('water.name')} width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -394,11 +394,11 @@ export default function MenuPage() {
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('beer.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image src="/images/menu/beer.png" alt={menuItemsT('beer.name')} width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -408,11 +408,11 @@ export default function MenuPage() {
               </div>
 
               <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('coffee.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image src="/images/menu/coffee.png" alt={menuItemsT('coffee.name')} width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
@@ -420,11 +420,11 @@ export default function MenuPage() {
                   </div>
                 </div>
 
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
+                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="item-title">{menuItemsT('wine.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F]">
-                      <FoodIcon name="drink" size={32} className="text-[#FF5722]" />
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
+                      <Image src="/images/menu/rose_wine.png" alt={menuItemsT('wine.name')} width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
                   <div className="mt-2 flex items-center justify-between">
