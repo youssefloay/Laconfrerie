@@ -77,13 +77,48 @@
     "discoverOnSite": "Venez les découvrir sur place !"
   },
   "LocationsPage": {
-    "title": "Notre emplacement",
+    "title": "Choisissez votre emplacement",
+    "subtitle": "Deux spots, une même passion — trouvez le plus proche de vous",
+    "chooseLocation": "Choisir cet emplacement",
+    "getDirections": "Y aller",
+    "viewMenu": "Voir le menu",
     "practicalInfo": "Informations pratiques",
     "tramStop": "Arrêt de tram :",
     "payment": "Paiement :",
     "goodToKnow": "Bon à savoir :",
     "paymentDesc": "Espèces, CB",
-    "goodToKnowDesc": "Possibilité de commander à l'avance par téléphone"
+    "goodToKnowDesc": "Possibilité de commander à l'avance par téléphone",
+    "open": "Ouvert maintenant",
+    "location1": {
+      "name": "Malbosc",
+      "badge": "Spot Originel",
+      "address": "191 Avenue de Fes",
+      "city": "34090 Montpellier",
+      "hours": "Lun – Ven · 11h30 – 14h30",
+      "tram": "Malbosc – Domaine d'Ô",
+      "description": "Notre spot phare au cœur du quartier universitaire de Montpellier. Garez-vous à proximité et profitez d’une vraie pause déjeuner."
+    },
+    "location2": {
+      "name": "Villeneuve-lès-Maguelone",
+      "badge": "Beach Spot 🏖️",
+      "address": "Plage du Pilou · Entrée N°3",
+      "city": "Villeneuve-lès-Maguelone",
+      "hours": "Ouvert cet été",
+      "tram": "À côté de la Stèle aux Démineurs du Languedoc",
+      "description": "Notre spot plage — mêmes burgers délicieux, avec le sable sous les pieds et la Méditerranée devant vous."
+    }
+  },
+  "VilleneuvePage": {
+    "title": "La Confrérie · Plage",
+    "badge": "Spot Plage 🏖️",
+    "subtitle": "Des burgers à la plage, l'été à fond !",
+    "address": "Plage du Pilou · Entrée Plage N°3",
+    "addressDesc": "À côté de la Stèle aux Démineurs du Languedoc",
+    "city": "Villeneuve-lès-Maguelone",
+    "menuOption": "Menu : +5€ · Frites + Boisson Soft avec tout burger",
+    "backToSelector": "Choisir l'emplacement",
+    "getDirections": "Y aller",
+    "phone": "+33 6 62 35 09 53"
   },
   "EventsPage": {
     "title": "La Confrérie pour votre événement",

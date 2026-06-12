@@ -77,13 +77,74 @@
     "discoverOnSite": "Come and discover them on site!"
   },
   "LocationsPage": {
-    "title": "Our Location",
+    "title": "Choose Your Location",
+    "subtitle": "Two spots, same passion — find the one closest to you",
+    "chooseLocation": "Choose this location",
+    "getDirections": "Get directions",
+    "viewMenu": "View menu",
     "practicalInfo": "Practical Information",
     "tramStop": "Tram stop:",
     "payment": "Payment:",
     "goodToKnow": "Good to know:",
     "paymentDesc": "Cash, Credit Card",
-    "goodToKnowDesc": "Possibility to order in advance by phone"
+    "goodToKnowDesc": "Possibility to order in advance by phone",
+    "open": "Open now",
+    "location1": {
+      "name": "Malbosc",
+      "badge": "Original Spot",
+      "address": "191 Avenue de Fes",
+      "city": "34090 Montpellier",
+      "hours": "Mon – Fri · 11:30 AM – 2:30 PM",
+      "tram": "Malbosc – Domaine d'Ô",
+      "description": "Our flagship spot in the heart of Montpellier's university district. Park nearby and enjoy a proper lunch break."
+    },
+    "location2": {
+      "name": "Villeneuve-lès-Maguelone",
+      "badge": "Beach Spot 🏖️",
+      "address": "Plage du Pilou · Entrée N°3",
+      "city": "Villeneuve-lès-Maguelone",
+      "hours": "Open this summer",
+      "tram": "Next to the Stèle aux Démineurs du Languedoc",
+      "description": "Our beach location — same great burgers, with sand between your toes and the Mediterranean in front of you."
+    }
+  },
+  "VilleneuvePage": {
+    "title": "La Confrérie · Plage",
+    "badge": "Beach Location 🏖️",
+    "subtitle": "Burgers at the beach, pure summer vibes",
+    "address": "Plage du Pilou · Entrée Plage N°3",
+    "addressDesc": "À côté de la Stèle aux Démineurs du Languedoc",
+    "city": "Villeneuve-lès-Maguelone",
+    "menuOption": "Menu deal: +5€ · Add Fries & Soft Drink to any burger",
+    "backToSelector": "Change location",
+    "getDirections": "Get directions",
+    "phone": "+33 6 62 35 09 53",
+    "sections": {
+      "burgers": "Burgers",
+      "salads": "Salads",
+      "tenders": "Chicken Tenders",
+      "kidsMenu": "Kids Menu",
+      "sides": "Sides",
+      "drinks": "Drinks"
+    },
+    "items": {
+      "cheeseBurger": { "name": "CHEESE BURGER / VEGGIE BURGER", "description": "Steak, lettuce, tomato, onion, pickles, cheddar, cheese sauce", "price": "12.5€" },
+      "baconBurger": { "name": "BACON BURGER", "description": "Steak, lettuce, tomato, onion, pickles, cheddar, bacon, BBQ sauce", "price": "13€" },
+      "burgerDuMoment": { "name": "BURGER OF THE MOMENT", "description": "Find it on our board or our socials!", "price": "?" },
+      "saladeCesar": { "name": "CAESAR SALAD", "description": "Lettuce, chicken, cherry tomatoes, soft-boiled egg, croutons, parmesan, Caesar sauce", "price": "11.5€" },
+      "tenders4": { "name": "4 pieces", "price": "7€" },
+      "tenders6": { "name": "6 pieces", "price": "9€" },
+      "tenders8": { "name": "8 pieces", "price": "11€" },
+      "kidsMenu": { "name": "KIDS MENU", "description": "2 Tenders + Fries + Rocket", "price": "8€" },
+      "frites": { "name": "HOMEMADE FRIES", "price": "4€" },
+      "beignet": { "name": "DONUT", "price": "3€" },
+      "cafe": { "name": "COFFEE", "price": "2€" },
+      "canette": { "name": "SOFT DRINK (CAN)", "price": "3.5€" },
+      "biereHK": { "name": "HEINEKEN BEER", "price": "4€" },
+      "eau": { "name": "WATER", "price": "2€" },
+      "biereArtisanale": { "name": "CRAFT BEER", "price": "6.5€" },
+      "vinRose": { "name": "ROSÉ WINE", "price": "12€" }
+    }
   },
   "EventsPage": {
     "title": "La Confrérie for your event",

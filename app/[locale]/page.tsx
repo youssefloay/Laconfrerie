@@ -1,589 +1,146 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
-import { MapPin, Clock, Phone, Mail, Instagram, Facebook } from "lucide-react"
-import { useTranslations } from 'next-intl'
-import { Link } from '@/src/i18n/routing'
-
-import { Button } from "@/components/ui/button"
-import { FoodIcon } from "@/components/food-icon"
+import { MapPin, Waves, Building2 } from "lucide-react"
 import { SiteLogo } from "@/components/site-logo"
-import { SocialNav } from "@/components/social-nav"
-import { LanguageToggle } from "@/components/language-toggle"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { useRouter } from "next/navigation"
+import { useLocale } from "next-intl"
 
-export default function Home() {
-  const t = useTranslations('HomePage')
-  const navT = useTranslations('Navigation')
-  const iconsT = useTranslations('FoodIcons')
-  const menuItemsT = useTranslations('MenuItems')
+type Lang = "fr" | "en" | "es" | "it" | "de"
+
+const LANGS: { code: Lang; flag: string; label: string }[] = [
+  { code: "fr", flag: "🇫🇷", label: "FR" },
+  { code: "en", flag: "🇬🇧", label: "EN" },
+  { code: "es", flag: "🇪🇸", label: "ES" },
+  { code: "it", flag: "🇮🇹", label: "IT" },
+  { code: "de", flag: "🇩🇪", label: "DE" },
+]
+
+const T: Record<Lang, {
+  tagline: string
+  choose: string
+  malbosc: string
+  malboscSub: string
+  villeneuve: string
+  villeneuveSub: string
+  malboscBadge: string
+  villeneuveBadge: string
+}> = {
+  fr: { tagline: "Deux spots, une même passion", choose: "Où êtes-vous ?", malbosc: "Malbosc · Montpellier", malboscSub: "191 Avenue de Fès", villeneuve: "Plage du Pilou", villeneuveSub: "Villeneuve-lès-Maguelone", malboscBadge: "Spot Urbain", villeneuveBadge: "Spot Plage 🏖️" },
+  en: { tagline: "Two spots, one passion", choose: "Where are you?", malbosc: "Malbosc · Montpellier", malboscSub: "191 Avenue de Fès", villeneuve: "Plage du Pilou", villeneuveSub: "Villeneuve-lès-Maguelone", malboscBadge: "City Spot", villeneuveBadge: "Beach Spot 🏖️" },
+  es: { tagline: "Dos spots, una misma pasión", choose: "¿Dónde estás?", malbosc: "Malbosc · Montpellier", malboscSub: "191 Avenue de Fès", villeneuve: "Plage du Pilou", villeneuveSub: "Villeneuve-lès-Maguelone", malboscBadge: "Spot Urbano", villeneuveBadge: "Spot Playa 🏖️" },
+  it: { tagline: "Due spot, una stessa passione", choose: "Dove sei?", malbosc: "Malbosc · Montpellier", malboscSub: "191 Avenue de Fès", villeneuve: "Plage du Pilou", villeneuveSub: "Villeneuve-lès-Maguelone", malboscBadge: "Spot Urbano", villeneuveBadge: "Spot Spiaggia 🏖️" },
+  de: { tagline: "Zwei Spots, eine Leidenschaft", choose: "Wo bist du?", malbosc: "Malbosc · Montpellier", malboscSub: "191 Avenue de Fès", villeneuve: "Plage du Pilou", villeneuveSub: "Villeneuve-lès-Maguelone", malboscBadge: "Stadtspot", villeneuveBadge: "Strandspot 🏖️" },
+}
+
+export default function LocationSelector() {
+  const locale = useLocale()
+  const router = useRouter()
+  const [lang, setLang] = useState<Lang>("fr")
+  const t = T[lang]
+
+  const go = (path: string) => {
+    // For ES/IT/DE, route through the current locale (fr/en)
+    const routeLocale = (lang === "en") ? "en" : locale
+    if (typeof window !== "undefined") {
+      localStorage.setItem("preferredLang", lang)
+    }
+    router.push(`/${routeLocale}${path}`)
+  }
 
   return (
-    <div className="min-h-screen bg-menu-cream">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-64 w-64 rounded-full bg-menu-yellow opacity-70 animate-float"></div>
-        <div className="absolute top-40 -right-20 h-48 w-48 rounded-full bg-menu-red opacity-60 animate-float animation-delay-1000"></div>
-        <div className="absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-menu-blue opacity-50 animate-float animation-delay-2000"></div>
-
-        <div className="container relative mx-auto px-4 py-8 sm:px-6 lg:px-8">
-          <div className="flex justify-end mb-4">
-            <LanguageToggle />
-          </div>
-          <div className="flex flex-col items-center justify-between gap-8 md:flex-row text-menu-blue">
-            <div className="text-center md:text-left">
-              <h1 className="font-display text-5xl font-extrabold tracking-tight sm:text-7xl animate-fade-in-up">
-                {t('hero.title')}
-                <span className="block text-menu-red">{t('hero.subtitle')}</span>
-              </h1>
-              <p className="mt-4 text-xl font-medium text-gray-700 animate-fade-in-up animation-delay-200">
-                {t('hero.description')}
-              </p>
-              <div className="mt-6 flex flex-col items-center gap-2 md:items-start animate-fade-in-up animation-delay-300">
-                <div className="flex items-center gap-3 rounded-full bg-white/50 px-5 py-2 backdrop-blur-sm border border-menu-blue/10 shadow-sm transition-all hover:shadow-md hover:bg-white/80 group cursor-default">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-menu-blue text-white group-hover:scale-110 transition-transform duration-300">
-                    <Phone className="h-5 w-5" strokeWidth={2.5} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#FF5722]">{t('contact.reservations')}</span>
-                    <a 
-                      href={`tel:${t('hero.phone').replace(/\s/g, '')}`} 
-                      className="text-xl font-black text-menu-blue hover:text-[#FF5722] transition-colors font-display leading-none"
-                    >
-                      {t('hero.phone')}
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start animate-fade-in-up animation-delay-400">
-                <Link href="/locations">
-                  <Button className="h-12 min-w-[160px] bg-menu-red hover:bg-[#C62828] text-white px-8 text-lg font-bold transition-all hover:scale-105 hover:shadow-lg border-0">
-                    <MapPin className="mr-2 h-5 w-5" />
-                    {t('hero.findUs')}
-                  </Button>
-                </Link>
-                <Link href="/contact">
-                  <Button variant="outline" className="h-12 min-w-[160px] border-2 border-menu-blue bg-transparent px-8 text-lg font-bold text-menu-blue hover:bg-menu-blue hover:text-white transition-all hover:scale-105 hover:shadow-lg">
-                    <Phone className="mr-2 h-5 w-5" />
-                    {t('hero.contactUs')}
-                  </Button>
-                </Link>
-                <a 
-                  href="https://www.ubereats.com/fr/store/la-confrerie/8FcWf8cVSG-PBm69V6POGQ?effect=" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="block transition-transform hover:scale-105"
-                >
-                  <Image 
-                    src="/images/uber-eats-button.png" 
-                    alt="Order online with Uber Eats" 
-                    width={180} 
-                    height={48} 
-                    className="h-12 w-auto shadow-lg rounded-xl"
-                  />
-                </a>
-              </div>
-            </div>
-            <div className="relative flex h-64 w-64 items-center justify-center md:h-80 md:w-80 animate-bounce-gentle">
-              <SiteLogo size="large" background="yellow" />
-            </div>
-          </div>
-        </div>
-      </section>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <SocialNav />
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/menu/Dish Composition [5_4-2304x2880] a4e.jpg"
+          alt="La Confrérie"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/55" />
       </div>
 
-      {/* Menu Section */}
-      <section id="menu" className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">{t('menu.title')}</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
+      {/* Card */}
+      <div className="relative z-10 w-full max-w-sm mx-4 animate-fade-in-up">
+        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl overflow-hidden">
+
+          {/* Logo */}
+          <div className="flex flex-col items-center pt-8 pb-4 px-6">
+            <SiteLogo size="medium" background="yellow" />
+            <h1 className="mt-3 font-display text-2xl font-extrabold text-white tracking-tight text-center">LA CONFRÉRIE</h1>
+            <p className="text-white/60 text-sm mt-0.5 text-center">{t.tagline}</p>
           </div>
 
-          <div className="mx-auto max-w-4xl rounded-2xl bg-white p-6 shadow-lg md:p-8">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">{menuItemsT('cheesyBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
-                      <Image 
-                        src="/images/menu/cheesy+ frites.jpeg" 
-                        alt={menuItemsT('cheesyBurger.name')} 
-                        width={128} 
-                        height={128} 
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  </div>
-                  <p className="mt-2 item-description">
-                    {menuItemsT('cheesyBurger.description')}
-                  </p>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">14,50€</span>
-                    <span className="text-xs text-green-600 font-semibold">{t('menu.veggieOption')}</span>
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">{menuItemsT('baconBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
-                      <Image 
-                        src="/images/menu/bacon+ frites.jpeg" 
-                        alt={menuItemsT('baconBurger.name')} 
-                        width={128} 
-                        height={128} 
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  </div>
-                  <p className="mt-2 item-description">
-                    {menuItemsT('baconBurger.description')}
-                  </p>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">15,50€</span>
-                    <span className="text-xs text-green-600 font-semibold">{t('menu.veggieOption')}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">{menuItemsT('chickenBurger.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
-                      <Image 
-                        src="/images/menu/chicken+frites.jpeg" 
-                        alt={menuItemsT('chickenBurger.name')} 
-                        width={128} 
-                        height={128} 
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  </div>
-                  <p className="mt-2 item-description">
-                    {menuItemsT('chickenBurger.description')}
-                  </p>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">14,90€</span>
-                    <span className="text-xs text-green-600 font-semibold">{t('menu.veggieOption')}</span>
-                  </div>
-                </div>
-
-                <div className="rounded-lg bg-[#FFF8E1] p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-display text-xl font-bold text-[#E53935]">{menuItemsT('caesarSalad.name')}</h3>
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden transition-transform duration-300 hover:scale-110 hover:rotate-3 border-2 border-[#FFD54F]">
-                      <Image 
-                        src="/images/menu/salade cesar.jpeg" 
-                        alt={menuItemsT('caesarSalad.name')} 
-                        width={128} 
-                        height={128} 
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  </div>
-                  <p className="mt-2 text-sm text-gray-700">
-                    {menuItemsT('caesarSalad.description')}
-                  </p>
-                  <div className="mt-2 flex items-center justify-between">
-                    <span className="font-bold text-[#FF5722]">12,50€</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <div className="flex items-center justify-center rounded-full bg-[#FFD54F] p-3 text-center mx-auto max-w-xs mb-4">
-                <p className="font-display font-bold text-[#E53935]">
-                  <span className="text-sm font-bold text-gray-700">{t('menu.dailySpecial')}</span>
-                  <br />
-                  <span className="text-xs text-gray-700">{t('menu.dailySpecialDesc')}</span>
-                </p>
-              </div>
-              <div className="text-center">
-                <Link href="/menu">
-                  <Button className="bg-[#E53935] hover:bg-[#C62828]">{t('menu.viewFull')}</Button>
-                </Link>
-              </div>
+          {/* Language picker */}
+          <div className="px-6 pb-4">
+            <div className="flex items-center justify-center gap-1 bg-white/10 rounded-2xl p-1.5">
+              {LANGS.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => setLang(l.code)}
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex-1 justify-center ${
+                    lang === l.code
+                      ? "bg-white text-gray-800 shadow-sm"
+                      : "text-white/70 hover:text-white hover:bg-white/10"
+                  }`}
+                >
+                  <span>{l.flag}</span>
+                  <span className="hidden sm:inline">{l.label}</span>
+                </button>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Gallery Section */}
-      <section className="py-16 bg-[#FFF8E1]">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up uppercase tracking-widest">{t('gallery.title')}</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
-            <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300 italic">
-              {t('gallery.subtitle')}
-            </p>
-          </div>
+          {/* Divider */}
+          <div className="mx-6 h-px bg-white/15 mb-5" />
 
-          <div className="mx-auto max-w-5xl px-12">
-            <Carousel
-              opts={{
-                align: "center",
-                loop: true,
-              }}
-              className="w-full"
+          {/* Choose label */}
+          <p className="text-center text-white/80 text-sm font-semibold uppercase tracking-widest px-6 mb-4">{t.choose}</p>
+
+          {/* Location buttons */}
+          <div className="px-4 pb-6 space-y-3">
+
+            {/* Malbosc */}
+            <button
+              onClick={() => go("/montpellier")}
+              className="group w-full flex items-center gap-4 bg-menu-blue hover:bg-[#1a5a90] active:scale-[0.98] transition-all duration-200 rounded-2xl p-4 text-left shadow-lg hover:shadow-xl"
             >
-              <CarouselContent className="-ml-2 md:-ml-4">
-                {[
-                  { src: "Dish Composition [5_4-2304x2880] a4e.jpg", alt: "La Confrérie Foodtruck" },
-                  { src: "Tenders [5_4-440x550] be6.jpg", alt: "Tenders" },
-                  { src: "cheesy+ frites.jpeg", alt: "Cheesy Burger" },
-                  { src: "bacon+ frites.jpeg", alt: "Bacon Burger" },
-                  { src: "chicken+frites.jpeg", alt: "Chicken Burger" },
-                  { src: "raclette+frites.jpeg", alt: "Raclette Burger" },
-                  { src: "salade cesar.jpeg", alt: "Salade César" },
-                  { src: "roquette et parmesan.jpeg", alt: "Roquette & Parmesan" },
-                  { src: "frites.jpeg", alt: "Frites Maison" },
-                ].map((item, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                      <div className="relative h-72 overflow-hidden rounded-2xl border-4 border-white shadow-xl group cursor-pointer transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-                        <Image
-                          src={`/images/menu/${item.src}`}
-                          alt={item.alt}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <span className="text-white font-display font-medium text-lg uppercase tracking-wider">{item.alt}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden md:flex -left-4 md:-left-12 bg-white text-menu-blue hover:bg-menu-blue hover:text-white border-0 shadow-lg" />
-              <CarouselNext className="hidden md:flex -right-4 md:-right-12 bg-white text-menu-blue hover:bg-menu-blue hover:text-white border-0 shadow-lg" />
-            </Carousel>
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white/20 group-hover:bg-white/30 transition-colors">
+                <Building2 className="h-5 w-5 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-menu-yellow">{t.malboscBadge}</span>
+                </div>
+                <p className="font-display font-bold text-white text-base leading-tight">{t.malbosc}</p>
+                <p className="text-white/60 text-xs mt-0.5 flex items-center gap-1"><MapPin className="h-3 w-3" />{t.malboscSub}</p>
+              </div>
+              <svg className="h-5 w-5 text-white/40 group-hover:text-white group-hover:translate-x-0.5 transition-all flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </button>
+
+            {/* Villeneuve */}
+            <button
+              onClick={() => go("/villeneuve")}
+              className="group w-full flex items-center gap-4 bg-gradient-to-r from-[#FF7043] to-[#FFB300] hover:from-[#E64A19] hover:to-[#FF8F00] active:scale-[0.98] transition-all duration-200 rounded-2xl p-4 text-left shadow-lg hover:shadow-xl"
+            >
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-white/20 group-hover:bg-white/30 transition-colors">
+                <Waves className="h-5 w-5 text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-0.5">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-white/80">{t.villeneuveBadge}</span>
+                </div>
+                <p className="font-display font-bold text-white text-base leading-tight">{t.villeneuve}</p>
+                <p className="text-white/70 text-xs mt-0.5 flex items-center gap-1"><MapPin className="h-3 w-3" />{t.villeneuveSub}</p>
+              </div>
+              <svg className="h-5 w-5 text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </button>
           </div>
         </div>
-      </section>
-
-      {/* Locations & Hours Section */}
-      <section id="locations" className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">{t('locations.title')}</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
-          </div>
-
-          <div className="mx-auto max-w-4xl">
-            <div className="rounded-lg bg-white p-6 shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-start gap-4">
-                  <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#FF5722]" />
-                  <div>
-                    <h3 className="font-display text-lg font-bold">{t('locations.address')}</h3>
-                    <p className="text-gray-700">{t('locations.city')}</p>
-                    <div className="mt-2 flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-[#1E88E5]" />
-                      <span>{t('locations.hours')}</span>
-                    </div>
-                    <div className="mt-3 space-y-1 text-sm text-gray-600">
-                      <p><span className="font-semibold">{t('locations.tram')}</span> {t('locations.tramDesc')}</p>
-                      <p><span className="font-semibold">{t('locations.parking')}</span> {t('locations.parkingDesc')}</p>
-                    </div>
-                    <div className="mt-4">
-                      <div className="flex gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="text-xs border-[#FF5722] text-[#FF5722] hover:bg-[#FF5722] hover:text-white"
-                          onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${t('locations.address')}, ${t('locations.city')}`)}`, "_blank")}
-                        >
-                          <MapPin className="mr-1 h-3 w-3" />{t('locations.getDirections')}
-                        </Button>
-                        <Link href="/locations">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="text-xs border-[#1E88E5] text-[#1E88E5] hover:bg-[#1E88E5] hover:text-white"
-                          >
-                            {t('locations.moreInfo')}
-                          </Button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="h-[300px] w-full overflow-hidden rounded-lg border border-gray-200">
-                  <iframe
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(`${t('locations.address')}, ${t('locations.city')}`)}&output=embed`}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Événements Section */}
-      <section id="evenements" className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">{t('events.title')}</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200"></div>
-            <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">
-              {t('events.description')}
-            </p>
-          </div>
-
-          <div className="mx-auto max-w-4xl">
-            <div className="grid gap-8 md:grid-cols-3">
-              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-400">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-[#FF5722]"
-                  >
-                    <path d="M19 8.5v-1a2.5 2.5 0 0 0-5 0v1a2.5 2.5 0 0 0 5 0Z" />
-                    <path d="M10 9.5V10a2.5 2.5 0 0 0 5 0V9" />
-                    <path d="M19 9.5V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4.5" />
-                  </svg>
-                </div>
-                <h4 className="font-display text-lg font-bold text-[#E53935]">{t('events.weddings')}</h4>
-                <p className="mt-2 text-sm text-gray-700">{t('events.weddingsDesc')}</p>
-              </div>
-
-              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-500">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-[#FF5722]"
-                  >
-                    <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
-                    <circle cx="17" cy="7" r="5" />
-                  </svg>
-                </div>
-                <h4 className="font-display text-lg font-bold text-[#E53935]">{t('events.festivals')}</h4>
-                <p className="mt-2 text-sm text-gray-700">{t('events.festivalsDesc')}</p>
-              </div>
-
-              <div className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-600">
-                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] transition-transform duration-300 hover:scale-110 hover:rotate-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="text-[#FF5722]"
-                  >
-                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
-                    <line x1="16" x2="16" y1="2" y2="6" />
-                    <line x1="8" x2="8" y1="2" y2="6" />
-                    <line x1="3" x2="21" y1="10" y2="10" />
-                    <path d="M8 14h.01" />
-                    <path d="M12 14h.01" />
-                    <path d="M16 14h.01" />
-                    <path d="M8 18h.01" />
-                    <path d="M12 18h.01" />
-                    <path d="M16 18h.01" />
-                  </svg>
-                </div>
-                <h4 className="font-display text-lg font-bold text-[#E53935]">{t('events.corporate')}</h4>
-                <p className="mt-2 text-sm text-gray-700">{t('events.corporateDesc')}</p>
-              </div>
-            </div>
-
-            <div className="mt-8 bg-[#F5F5F5] p-6 rounded-lg">
-              <h3 className="font-display text-xl font-bold text-[#1E88E5] mb-4 text-center">
-                {t('events.specialties')}
-              </h3>
-
-              <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
-                <div className="bg-white rounded-lg p-3 text-center">
-                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
-                    <FoodIcon name="bobun" size={20} className="text-[#FF5722]" />
-                  </div>
-                  <p className="text-xs font-bold">{iconsT('bobun')}</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-3 text-center">
-                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
-                    <FoodIcon name="pokebowl" size={20} className="text-[#FF5722]" />
-                  </div>
-                  <p className="text-xs font-bold">{iconsT('pokebowl')}</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-3 text-center">
-                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
-                    <FoodIcon name="wrap" size={20} className="text-[#FF5722]" />
-                  </div>
-                  <p className="text-xs font-bold">{iconsT('wrap')}</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-3 text-center">
-                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
-                    <FoodIcon name="friture" size={20} className="text-[#FF5722]" />
-                  </div>
-                  <p className="text-xs font-bold">{iconsT('friture')}</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-3 text-center">
-                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
-                    <FoodIcon name="dessert" size={20} className="text-[#FF5722]" />
-                  </div>
-                  <p className="text-xs font-bold">{iconsT('dessert')}</p>
-                </div>
-
-                <div className="bg-white rounded-lg p-3 text-center">
-                  <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FFD54F]">
-                    <FoodIcon name="specialite" size={20} className="text-[#FF5722]" />
-                  </div>
-                  <p className="text-xs font-bold">{iconsT('specialite')}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 text-center">
-              <Link href="/evenements">
-                <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">
-                  {t('events.learnMore')}
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">{t('contact.title')}</h2>
-            <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F]"></div>
-          </div>
-
-          <div className="mx-auto max-w-2xl rounded-2xl bg-white p-6 shadow-lg md:p-8">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-[#1E88E5]" />
-                  <a href="mailto:contact@laconfrerietruck.fr" className="text-lg hover:text-[#FF5722]">
-                    contact@laconfrerietruck.fr
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-[#1E88E5]" />
-                  <a href="tel:0662350953" className="text-lg hover:text-[#FF5722]">
-                    06 62 35 09 53
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Instagram className="h-5 w-5 text-[#1E88E5]" />
-                  <a
-                    href="https://instagram.com/laconfrerietruck"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg hover:text-[#FF5722]"
-                  >
-                    @laconfrerietruck
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <Facebook className="h-5 w-5 text-[#1E88E5]" />
-                  <a
-                    href="https://facebook.com/laconfrerietruck"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg hover:text-[#FF5722]"
-                  >
-                    La Confrérie Foodtruck
-                  </a>
-                </div>
-              </div>
-
-              <div>
-                <div className="mb-4 flex justify-center">
-                  <SiteLogo size="medium" background="yellow" />
-                </div>
-                <h3 className="mb-4 font-display text-xl font-bold text-[#1E88E5] text-center">{t('contact.reservations')}</h3>
-                <p className="mb-4 text-gray-700">
-                  {t('contact.reservationsDesc')}
-                </p>
-                <Link href="/devis">
-                  <Button className="w-full bg-[#FF5722] hover:bg-[#E64A19] transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in-up animation-delay-400">{t('contact.getQuote')}</Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-[#1E88E5] py-8 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div className="flex items-center gap-2">
-              <SiteLogo size="small" background="white" />
-              <span className="font-display text-xl font-bold">{t('hero.title')}</span>
-            </div>
-
-            <div className="flex gap-6">
-              <Link href="/menu" className="hover:text-[#FFD54F]">
-                {navT('menu')}
-              </Link>
-              <Link href="/locations" className="hover:text-[#FFD54F]">
-                {navT('locations')}
-              </Link>
-              <Link href="/evenements" className="hover:text-[#FFD54F]">
-                {navT('events')}
-              </Link>
-              <Link href="/contact" className="hover:text-[#FFD54F]">
-                {navT('contact')}
-              </Link>
-            </div>
-
-            <div className="text-sm">{t('footer.rights', { year: new Date().getFullYear() })}</div>
-          </div>
-        </div>
-      </footer>
+      </div>
     </div>
   )
 }
