@@ -1,25 +1,113 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { MapPin, Clock, Phone, Mail, Instagram, Facebook } from "lucide-react"
-import { useTranslations } from 'next-intl'
 import { Link } from '@/src/i18n/routing'
 import { Button } from "@/components/ui/button"
-import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
 import { SocialNav } from "@/components/social-nav"
-import { LanguageToggle } from "@/components/language-toggle"
 import {
   Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious,
 } from "@/components/ui/carousel"
 
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Plage+du+Pilou+Villeneuve-les-Maguelone"
 
+type Lang = "fr" | "en" | "es" | "it" | "de"
+
+const LANGS: { code: Lang; flag: string; label: string }[] = [
+  { code: "fr", flag: "🇫🇷", label: "FR" },
+  { code: "en", flag: "🇬🇧", label: "EN" },
+  { code: "es", flag: "🇪🇸", label: "ES" },
+  { code: "it", flag: "🇮🇹", label: "IT" },
+  { code: "de", flag: "🇩🇪", label: "DE" },
+]
+
+const UI: Record<Lang, {
+  subtitle: string
+  findUs: string
+  viewMenu: string
+  menuTitle: string
+  cheeseDesc: string
+  baconDesc: string
+  cesarDesc: string
+  dailySpecial: string
+  dailyDesc: string
+  seeFullMenu: string
+  galleryTitle: string
+  galleryDesc: string
+  locationTitle: string
+  openSummer: string
+  moreInfo: string
+  eventsTitle: string
+  eventsDesc: string
+  weddings: string
+  weddingsDesc: string
+  festivals: string
+  festivalsDesc: string
+  corporate: string
+  corporateDesc: string
+  eventsBtn: string
+  contactTitle: string
+  reservations: string
+  reservationsDesc: string
+  quoteBtn: string
+}> = {
+  fr: {
+    subtitle: "Des burgers à la plage, l'été à fond !", findUs: "Nous trouver", viewMenu: "Voir le menu", menuTitle: "MENU",
+    cheeseDesc: "Steak, salade, tomate, oignon, cornichon, cheddar, sauce cheese", baconDesc: "Steak, salade, tomate, oignon, cornichon, cheddar, bacon, sauce BBQ",
+    cesarDesc: "Laitue, poulet, tomates cerise, œuf mollet, croutons, parmesan, sauce César", dailySpecial: "Burger du Moment", dailyDesc: "Découvrez-le sur nos réseaux !",
+    seeFullMenu: "Voir le menu complet", galleryTitle: "GALERIE PHOTOS", galleryDesc: "Découvrez nos préparations maison en images",
+    locationTitle: "OÙ NOUS TROUVER", openSummer: "Ouvert cet été", moreInfo: "Plus d'infos",
+    eventsTitle: "ÉVÉNEMENTS", eventsDesc: "La Confrérie se déplace pour tous vos événements", weddings: "Mariages & Lendemains", weddingsDesc: "Un repas convivial pour le plus beau jour de votre vie.",
+    festivals: "Festivals & Concerts", festivalsDesc: "Une restauration rapide et de qualité pour les grands rassemblements.", corporate: "Événements d'Entreprise", corporateDesc: "Séminaires, repas d'équipe ou fêtes de fin d'année.",
+    eventsBtn: "Découvrir nos offres", contactTitle: "CONTACT", reservations: "Réservations & Privatisation", reservationsDesc: "Pour vos événements, demandez un devis gratuit en quelques clics.", quoteBtn: "Demander un devis"
+  },
+  en: {
+    subtitle: "Burgers at the beach, summer vibes!", findUs: "Find Us", viewMenu: "View Menu", menuTitle: "MENU",
+    cheeseDesc: "Beef patty, lettuce, tomato, onion, pickles, cheddar, cheese sauce", baconDesc: "Beef patty, lettuce, tomato, onion, pickles, cheddar, bacon, BBQ sauce",
+    cesarDesc: "Lettuce, chicken, cherry tomatoes, soft-boiled egg, croutons, parmesan, Caesar dressing", dailySpecial: "Burger of the Moment", dailyDesc: "Find it on our socials!",
+    seeFullMenu: "See full menu", galleryTitle: "PHOTO GALLERY", galleryDesc: "Discover our homemade food in pictures",
+    locationTitle: "WHERE TO FIND US", openSummer: "Open this summer", moreInfo: "More info",
+    eventsTitle: "EVENTS", eventsDesc: "La Confrérie comes to all your events", weddings: "Weddings & Next Day", weddingsDesc: "A friendly meal for the best day of your life.",
+    festivals: "Festivals & Concerts", festivalsDesc: "Fast and quality catering for large gatherings.", corporate: "Corporate Events", corporateDesc: "Seminars, team meals, or end-of-year parties.",
+    eventsBtn: "Discover our offers", contactTitle: "CONTACT", reservations: "Reservations & Privatization", reservationsDesc: "For your events, request a free quote in a few clicks.", quoteBtn: "Request a quote"
+  },
+  es: {
+    subtitle: "¡Hamburguesas en la playa, a tope el verano!", findUs: "Encuéntranos", viewMenu: "Ver Menú", menuTitle: "MENÚ",
+    cheeseDesc: "Carne, lechuga, tomate, cebolla, pepinillos, cheddar, salsa de queso", baconDesc: "Carne, lechuga, tomate, cebolla, pepinillos, cheddar, bacon, salsa BBQ",
+    cesarDesc: "Lechuga, pollo, tomates cherry, huevo mollet, picatostes, parmesano, salsa César", dailySpecial: "Burger del Momento", dailyDesc: "¡Descúbrelo en nuestras redes!",
+    seeFullMenu: "Ver menú completo", galleryTitle: "GALERÍA DE FOTOS", galleryDesc: "Descubre nuestras preparaciones caseras en imágenes",
+    locationTitle: "DÓNDE ENCONTRARNOS", openSummer: "Abierto este verano", moreInfo: "Más información",
+    eventsTitle: "EVENTOS", eventsDesc: "La Confrérie se desplaza para todos tus eventos", weddings: "Bodas y Tornabodas", weddingsDesc: "Una comida amigable para el mejor día de tu vida.",
+    festivals: "Festivales y Conciertos", festivalsDesc: "Catering rápido y de calidad para grandes eventos.", corporate: "Eventos Corporativos", corporateDesc: "Seminarios, comidas de equipo o fiestas de fin de año.",
+    eventsBtn: "Descubrir ofertas", contactTitle: "CONTACTO", reservations: "Reservas y Privatización", reservationsDesc: "Para tus eventos, solicita un presupuesto gratuito en unos pocos clics.", quoteBtn: "Solicitar presupuesto"
+  },
+  it: {
+    subtitle: "Burger in spiaggia, estate al top!", findUs: "Dove Siamo", viewMenu: "Vedi Menù", menuTitle: "MENÙ",
+    cheeseDesc: "Carne, lattuga, pomodoro, cipolla, cetriolini, cheddar, salsa al formaggio", baconDesc: "Carne, lattuga, pomodoro, cipolla, cetriolini, cheddar, bacon, salsa BBQ",
+    cesarDesc: "Lattuga, pollo, pomodorini, uovo barzotto, crostini, parmigiano, salsa César", dailySpecial: "Burger del Momento", dailyDesc: "Scoprilo sui nostri social!",
+    seeFullMenu: "Vedi menù completo", galleryTitle: "GALLERIA FOTO", galleryDesc: "Scopri le nostre preparazioni fatte in casa",
+    locationTitle: "DOVE TROVARCI", openSummer: "Aperto quest'estate", moreInfo: "Più info",
+    eventsTitle: "EVENTI", eventsDesc: "La Confrérie viene a tutti i tuoi eventi", weddings: "Matrimoni & Giorno Dopo", weddingsDesc: "Un pasto conviviale per il giorno più bello della tua vita.",
+    festivals: "Festival & Concerti", festivalsDesc: "Ristorazione rapida e di qualità per grandi eventi.", corporate: "Eventi Aziendali", corporateDesc: "Seminari, pranzi di squadra o feste di fine anno.",
+    eventsBtn: "Scopri le nostre offerte", contactTitle: "CONTATTO", reservations: "Prenotazioni & Privatizzazione", reservationsDesc: "Per i tuoi eventi, richiedi un preventivo gratuito in pochi clic.", quoteBtn: "Richiedi preventivo"
+  },
+  de: {
+    subtitle: "Burger am Strand, Sommer pur!", findUs: "Finde Uns", viewMenu: "Menü ansehen", menuTitle: "MENÜ",
+    cheeseDesc: "Rindfleisch, Salat, Tomate, Zwiebel, Gurken, Cheddar, Käsesauce", baconDesc: "Rindfleisch, Salat, Tomate, Zwiebel, Gurken, Cheddar, Bacon, BBQ-Sauce",
+    cesarDesc: "Salat, Huhn, Kirschtomaten, weiches Ei, Croutons, Parmesan, Caesar-Dressing", dailySpecial: "Burger des Tages", dailyDesc: "Finde ihn auf Social Media!",
+    seeFullMenu: "Komplettes Menü", galleryTitle: "FOTOGALERIE", galleryDesc: "Entdecke unsere hausgemachten Speisen",
+    locationTitle: "WO SIE UNS FINDEN", openSummer: "Diesen Sommer geöffnet", moreInfo: "Mehr Info",
+    eventsTitle: "VERANSTALTUNGEN", eventsDesc: "La Confrérie kommt zu allen Ihren Veranstaltungen", weddings: "Hochzeiten & Danach", weddingsDesc: "Ein geselliges Essen für den schönsten Tag Ihres Lebens.",
+    festivals: "Festivals & Konzerte", festivalsDesc: "Schnelles und hochwertiges Catering für Großveranstaltungen.", corporate: "Firmenfeiern", corporateDesc: "Seminare, Teamessen oder Jahresendfeiern.",
+    eventsBtn: "Unsere Angebote", contactTitle: "KONTAKT", reservations: "Reservierungen & Privatisierung", reservationsDesc: "Für Ihre Veranstaltungen fordern Sie in wenigen Klicks ein kostenloses Angebot an.", quoteBtn: "Angebot anfordern"
+  }
+}
+
 export default function VilleneuveHome() {
-  const t = useTranslations('HomePage')
-  const navT = useTranslations('Navigation')
-  const iconsT = useTranslations('FoodIcons')
-  const menuItemsT = useTranslations('MenuItems')
+  const [lang, setLang] = useState<Lang>("fr")
+  const ui = UI[lang]
 
   return (
     <div className="min-h-screen bg-menu-cream">
@@ -30,8 +118,22 @@ export default function VilleneuveHome() {
         <div className="absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-menu-blue opacity-50 animate-float animation-delay-2000" />
 
         <div className="container relative mx-auto px-4 py-8 sm:px-6 lg:px-8">
+          {/* 5-language switcher (like the menu) */}
           <div className="flex justify-end mb-4">
-            <LanguageToggle />
+            <div className="flex items-center gap-1 bg-white rounded-2xl p-1.5 shadow-md border border-gray-100 z-50">
+              {LANGS.map((l) => (
+                <button
+                  key={l.code}
+                  onClick={() => setLang(l.code)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 ${
+                    lang === l.code ? "bg-menu-blue text-white shadow-sm scale-105" : "text-gray-500 hover:bg-menu-cream hover:text-menu-blue"
+                  }`}
+                >
+                  <span>{l.flag}</span>
+                  <span className="hidden sm:inline">{l.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
           <div className="flex flex-col items-center justify-between gap-8 md:flex-row text-menu-blue">
             <div className="text-center md:text-left">
@@ -40,10 +142,10 @@ export default function VilleneuveHome() {
                 <span className="block text-menu-red">PLAGE 🏖️</span>
               </h1>
               <p className="mt-4 text-xl font-medium text-gray-700 animate-fade-in-up animation-delay-200">
-                Des burgers à la plage, l'été à fond !
+                {ui.subtitle}
               </p>
 
-              {/* Location chip */}
+              {/* Location chip - REMOVED the meal deal banner */}
               <div className="mt-6 flex flex-col items-center gap-2 md:items-start animate-fade-in-up animation-delay-300">
                 <div className="flex items-center gap-3 rounded-full bg-white/50 px-5 py-2 backdrop-blur-sm border border-menu-blue/10 shadow-sm">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-menu-blue text-white">
@@ -54,21 +156,17 @@ export default function VilleneuveHome() {
                     <span className="text-sm font-bold text-menu-blue leading-none">Plage du Pilou · Entrée N°3</span>
                   </div>
                 </div>
-                {/* Menu deal badge */}
-                <div className="flex items-center gap-2 rounded-full bg-[#FF7043] text-white px-5 py-2 shadow-md">
-                  <span className="text-sm font-bold">🍟 Menu +5€ · Frites + Boisson avec tout burger</span>
-                </div>
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:justify-start animate-fade-in-up animation-delay-400">
                 <Link href="/villeneuve/locations">
                   <Button className="h-12 min-w-[160px] bg-menu-red hover:bg-[#C62828] text-white px-8 text-lg font-bold transition-all hover:scale-105 hover:shadow-lg border-0">
-                    <MapPin className="mr-2 h-5 w-5" />Nous trouver
+                    <MapPin className="mr-2 h-5 w-5" />{ui.findUs}
                   </Button>
                 </Link>
                 <Link href="/villeneuve/menu">
                   <Button variant="outline" className="h-12 min-w-[160px] border-2 border-menu-blue bg-transparent px-8 text-lg font-bold text-menu-blue hover:bg-menu-blue hover:text-white transition-all hover:scale-105 hover:shadow-lg">
-                    <Phone className="mr-2 h-5 w-5" />Voir le menu
+                    <Phone className="mr-2 h-5 w-5" />{ui.viewMenu}
                   </Button>
                 </Link>
               </div>
@@ -88,7 +186,7 @@ export default function VilleneuveHome() {
       <section id="menu" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">MENU</h2>
+            <h2 className="section-title animate-fade-in-up">{ui.menuTitle}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200" />
           </div>
 
@@ -98,15 +196,14 @@ export default function VilleneuveHome() {
                 {/* Cheese Burger */}
                 <div className="rounded-lg bg-[#FFF8E1] p-4 transition-all duration-300 hover:shadow-xl hover:scale-105 hover:bg-[#FFF3C4] animate-fade-in-up animation-delay-300">
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="item-title">CHEESE / VEGGIE BURGER</h3>
+                    <h3 className="item-title">CHEESE BURGER</h3>
                     <div className="flex h-16 w-16 items-center justify-center rounded-full overflow-hidden border-2 border-[#FFD54F]">
                       <Image src="/images/menu/cheesy+ frites.jpeg" alt="Cheese Burger" width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
-                  <p className="mt-2 item-description">Steak, salade, tomate, oignon, cornichon, cheddar, sauce cheese</p>
+                  <p className="mt-2 item-description">{ui.cheeseDesc}</p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">12,50€</span>
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
 
@@ -118,10 +215,9 @@ export default function VilleneuveHome() {
                       <Image src="/images/menu/bacon+ frites.jpeg" alt="Bacon Burger" width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
-                  <p className="mt-2 item-description">Steak, salade, tomate, oignon, cornichon, cheddar, bacon, sauce BBQ</p>
+                  <p className="mt-2 item-description">{ui.baconDesc}</p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">13€</span>
-                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
               </div>
@@ -135,9 +231,10 @@ export default function VilleneuveHome() {
                       <Image src="/images/menu/salade cesar.jpeg" alt="Salade César" width={128} height={128} className="object-cover w-full h-full" />
                     </div>
                   </div>
-                  <p className="mt-2 item-description">Laitue, poulet, tomates cerise, œuf mollet, croutons, parmesan, sauce César</p>
+                  <p className="mt-2 item-description">{ui.cesarDesc}</p>
                   <div className="mt-2 flex items-center justify-between">
                     <span className="font-bold text-[#FF5722]">11,50€</span>
+                    <span className="text-xs text-green-600 font-semibold">Option Veggie 🌱</span>
                   </div>
                 </div>
 
@@ -145,8 +242,8 @@ export default function VilleneuveHome() {
                 <div className="rounded-lg bg-[#FFF8E1] p-4">
                   <div className="flex items-center justify-center rounded-full bg-[#FFD54F] p-3 text-center mx-auto max-w-xs mb-2">
                     <p className="font-display font-bold text-[#E53935] text-sm">
-                      Burger du Moment<br />
-                      <span className="text-xs text-gray-700">Découvrez-le sur nos réseaux !</span>
+                      {ui.dailySpecial}<br />
+                      <span className="text-xs text-gray-700">{ui.dailyDesc}</span>
                     </p>
                   </div>
                 </div>
@@ -155,7 +252,7 @@ export default function VilleneuveHome() {
 
             <div className="mt-6 text-center">
               <Link href="/villeneuve/menu">
-                <Button className="bg-[#E53935] hover:bg-[#C62828]">Voir le menu complet</Button>
+                <Button className="bg-[#E53935] hover:bg-[#C62828]">{ui.seeFullMenu}</Button>
               </Link>
             </div>
           </div>
@@ -166,10 +263,10 @@ export default function VilleneuveHome() {
       <section className="py-16 bg-[#FFF8E1]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up uppercase tracking-widest">GALERIE PHOTOS</h2>
+            <h2 className="section-title animate-fade-in-up uppercase tracking-widest">{ui.galleryTitle}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200" />
             <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300 italic">
-              Découvrez nos préparations maison en images
+              {ui.galleryDesc}
             </p>
           </div>
 
@@ -207,7 +304,7 @@ export default function VilleneuveHome() {
       <section id="locations" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">OÙ NOUS TROUVER</h2>
+            <h2 className="section-title animate-fade-in-up">{ui.locationTitle}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200" />
           </div>
 
@@ -222,7 +319,7 @@ export default function VilleneuveHome() {
                     <p className="text-sm text-gray-500 mt-1">À côté de la Stèle aux Démineurs du Languedoc</p>
                     <div className="mt-2 flex items-center gap-2">
                       <Clock className="h-4 w-4 text-[#1E88E5]" />
-                      <span>Ouvert cet été</span>
+                      <span>{ui.openSummer}</span>
                     </div>
                     <div className="mt-4 flex gap-2">
                       <Button variant="outline" size="sm" className="text-xs border-[#FF5722] text-[#FF5722] hover:bg-[#FF5722] hover:text-white" onClick={() => window.open(MAPS_URL, "_blank")}>
@@ -230,7 +327,7 @@ export default function VilleneuveHome() {
                       </Button>
                       <Link href="/villeneuve/locations">
                         <Button variant="outline" size="sm" className="text-xs border-[#1E88E5] text-[#1E88E5] hover:bg-[#1E88E5] hover:text-white">
-                          Plus d'infos
+                          {ui.moreInfo}
                         </Button>
                       </Link>
                     </div>
@@ -252,16 +349,16 @@ export default function VilleneuveHome() {
       <section id="evenements" className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">{t('events.title')}</h2>
+            <h2 className="section-title animate-fade-in-up">{ui.eventsTitle}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F] animate-fade-in-up animation-delay-200" />
-            <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">{t('events.description')}</p>
+            <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto animate-fade-in-up animation-delay-300">{ui.eventsDesc}</p>
           </div>
           <div className="mx-auto max-w-4xl">
             <div className="grid gap-8 md:grid-cols-3">
               {[
-                { title: t('events.weddings'), desc: t('events.weddingsDesc'), emoji: "💍" },
-                { title: t('events.festivals'), desc: t('events.festivalsDesc'), emoji: "🎪" },
-                { title: t('events.corporate'), desc: t('events.corporateDesc'), emoji: "🏢" },
+                { title: ui.weddings, desc: ui.weddingsDesc, emoji: "💍" },
+                { title: ui.festivals, desc: ui.festivalsDesc, emoji: "🎪" },
+                { title: ui.corporate, desc: ui.corporateDesc, emoji: "🏢" },
               ].map((item) => (
                 <div key={item.title} className="rounded-lg bg-[#FFF8E1] p-4 text-center transition-all duration-300 hover:shadow-xl hover:scale-105">
                   <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[#FFD54F] text-2xl">{item.emoji}</div>
@@ -272,7 +369,7 @@ export default function VilleneuveHome() {
             </div>
             <div className="mt-6 text-center">
               <Link href="/villeneuve/evenements">
-                <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">{t('events.learnMore')}</Button>
+                <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">{ui.eventsBtn}</Button>
               </Link>
             </div>
           </div>
@@ -283,7 +380,7 @@ export default function VilleneuveHome() {
       <section id="contact" className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
-            <h2 className="section-title animate-fade-in-up">{t('contact.title')}</h2>
+            <h2 className="section-title animate-fade-in-up">{ui.contactTitle}</h2>
             <div className="mx-auto mt-2 h-1 w-24 bg-[#FFD54F]" />
           </div>
           <div className="mx-auto max-w-2xl rounded-2xl bg-white p-6 shadow-lg md:p-8">
@@ -308,10 +405,10 @@ export default function VilleneuveHome() {
               </div>
               <div>
                 <div className="mb-4 flex justify-center"><SiteLogo size="medium" background="yellow" /></div>
-                <h3 className="mb-4 font-display text-xl font-bold text-[#1E88E5] text-center">{t('contact.reservations')}</h3>
-                <p className="mb-4 text-gray-700">{t('contact.reservationsDesc')}</p>
+                <h3 className="mb-4 font-display text-xl font-bold text-[#1E88E5] text-center">{ui.reservations}</h3>
+                <p className="mb-4 text-gray-700">{ui.reservationsDesc}</p>
                 <Link href="/devis">
-                  <Button className="w-full bg-[#FF5722] hover:bg-[#E64A19] transition-all duration-300 hover:scale-105">{t('contact.getQuote')}</Button>
+                  <Button className="w-full bg-[#FF5722] hover:bg-[#E64A19] transition-all duration-300 hover:scale-105">{ui.quoteBtn}</Button>
                 </Link>
               </div>
             </div>
