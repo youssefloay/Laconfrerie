@@ -8,7 +8,7 @@ import { SiteLogo } from "@/components/site-logo"
 import { SocialNav } from "@/components/social-nav"
 import { LanguageToggle } from "@/components/language-toggle"
 
-const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Plage+du+Pilou+Villeneuve-les-Maguelone"
+const MAPS_URL = "https://maps.app.goo.gl/qqWYoJfGuXGZj1pM7"
 
 export default function VilleneuveLocationsPage() {
   const t = useTranslations('LocationsPage')
@@ -51,7 +51,7 @@ export default function VilleneuveLocationsPage() {
 
                 <div className="mt-4 h-[400px] w-full overflow-hidden rounded-lg border border-gray-200">
                   <iframe
-                    src="https://www.google.com/maps?q=Plage+du+Pilou+Villeneuve-les-Maguelone&output=embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736.5823434069232!2d3.8841219203894712!3d43.506965565791376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6b1d991f5a3c9%3A0x6b74c029cdc4784d!2sLa%20Confr%C3%A9rie%20Foodtruck!5e1!3m2!1sen!2sfr!4v1781303011695!5m2!1sen!2sfr"
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
                   />
                 </div>
