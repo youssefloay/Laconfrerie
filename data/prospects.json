@@ -7,8 +7,13 @@
     "category": "entreprise",
     "location": "Montpellier (Millénaire)",
     "description": "Entreprise tech / scale-up, friande d'afterworks conviviaux et de déjeuners d'équipe décontractés.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:35:55.558Z",
+    "generatedEmail": {
+      "subject": "Un foodtruck gourmet pour les équipes Swile au Millénaire ?",
+      "body": "Bonjour à l'équipe Culture & Events de Swile,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé ici à Montpellier. En tant que scale-up tech, vous savez qu'un bon moment partagé est essentiel pour souder une équipe.\n\nNous venons régulièrement sur le secteur du Millénaire pour régaler les entreprises avec nos burgers gourmets (pains boulangers locaux) et nos pokebowls frais. Notre force ? Une autonomie totale : on arrive sur votre parvis, on sert 100+ personnes par heure, et on repart sans laisser de trace. Zéro logistique pour vous, zéro vaisselle, juste du plaisir.\n\nVous pouvez jeter un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nÇa vous dirait qu'on échange 5 minutes par téléphone sur vos prochains besoins d'afterwork ou de déjeuner d'équipe ? Je suis joignable au 06 62 35 09 53.\n\nAu plaisir de vous croiser,\n\nLe fondateur, La Confrérie Foodtruck",
+      "generatedAt": "2026-10-28T22:35:55.560Z"
+    }
   },
   {
     "id": "lead-002",
@@ -748,6 +753,72 @@
     "category": "coworking",
     "location": "Montpellier (Port Marianne)",
     "description": "Hub créatif de grande envergure cherchant à diversifier son offre de restauration éphémère pour satisfaire une communauté de plus de 150 freelances et startups.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp0w6y-1crb",
+    "company": "Viasanté Mutuelle (Siège Régional)",
+    "contactName": "Responsable des Ressources Humaines",
+    "email": "contact-lr@viasante.fr",
+    "category": "entreprise",
+    "location": "Montpellier (Millénaire)",
+    "description": "Entreprise de plus de 100 collaborateurs cherchant des solutions de restauration rapide et qualitative pour les afterworks hebdomadaires.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp0w6y-fucv",
+    "company": "Work&Co",
+    "contactName": "Community Manager",
+    "email": "hello@workandco.fr",
+    "category": "coworking",
+    "location": "Montpellier (Millénaire)",
+    "description": "Espace de coworking dynamique souhaitant animer son parvis pour favoriser le réseautage entre entrepreneurs et freelances.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp0w6y-7mu9",
+    "company": "CGI France (Agences Montpellier)",
+    "contactName": "Office Manager",
+    "email": "montpellier.recrutement@cgi.com",
+    "category": "entreprise",
+    "location": "Montpellier (Millénaire)",
+    "description": "Structure technologique d'envergure organisant régulièrement des séminaires et déjeuners d'équipe pour ses effectifs nombreux.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp0w6y-velk",
+    "company": "Domaine de la Banquière",
+    "contactName": "Propriétaire exploitant",
+    "email": "contact@domainedelabanquiere.fr",
+    "category": "domaine",
+    "location": "Mauguio",
+    "description": "Domaine viticole événementiel recherchant des partenaires foodtrucks pour ses soirées privées et lendemains de mariage.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp0w6y-lvg6",
+    "company": "I-Cockpit",
+    "contactName": "Responsable CSE",
+    "email": "contact@i-cockpit.fr",
+    "category": "entreprise",
+    "location": "Montpellier (Millénaire)",
+    "description": "Société innovante organisant des événements de cohésion d'équipe et cherchant une offre de restauration gourmande et nomade.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp0w6y-7k54",
+    "company": "Le 144 Coworking",
+    "contactName": "Directeur de site",
+    "email": "contact@le144.fr",
+    "category": "coworking",
+    "location": "Montpellier",
+    "description": "Espace de travail collaboratif cherchant à proposer une offre culinaire diversifiée à ses membres lors de pauses déjeuners thématiques.",
     "status": "ready",
     "lastContactDate": null
   }

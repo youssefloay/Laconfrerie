@@ -25,18 +25,33 @@ export const MONTPELLIER_ZONES = [
   'Parc d\'Activités Eurêka et Castelnau-le-Lez',
   'Parc d\'Activités Fréjorgues Ouest et Est (Mauguio / Aéroport)',
   'Zone d\'Activités Garosud et Tournezy (Montpellier Sud)',
-  'Parc d\'Activités du Mas de Grille (Saint-Jean-de-Védas)',
+  'Parc d\'Activités du Mas de Grille et La Lauze (Saint-Jean-de-Védas)',
   'Pôle tertiaire Port Marianne, Antigone et Bassin Jacques Cœur',
-  'Parc d\'Activités de Lattes, Maurin et Boirargues',
-  'Parc d\'Activités de Pérols et littoral Palavas-les-Flots',
+  'Parc d\'Activités de Lattes, Maurin, Boirargues et Vasconia',
+  'Zone commerciale et tertiaire de Pérols et Sud de France Arena',
   'Villeneuve-lès-Maguelone, Mireval et Vic-la-Gardiole',
   'Pôle Euromédecine et Parc 2000 (Montpellier Nord / Hôpitaux-Facultés)',
-  'Parc d\'Activités de Saint-Aunès, Vendargues et Baillargues',
-  'Domaines viticoles, Châteaux et Mas de réceptions de mariage (Hérault / Pic Saint-Loup)',
-  'Lieux de réception et domaines de mariage (Vallée de l\'Hérault et Bassin de Thau)',
-  'Centres de coworking, pépinières et incubateurs de la Métropole de Montpellier',
-  'Agences événementielles, agences de communication et d\'incentive de Montpellier',
-  'Zone d\'Activités de Jacou, Clapiers et Montferrier-sur-Lez'
+  'Ecoparc et Parcs d\'Activités de Saint-Aunès, Vendargues et Baillargues',
+  'Domaines viticoles, Châteaux et Mas de réceptions de mariage (Pic Saint-Loup : Saint-Mathieu-de-Tréviers, Assas, Valflaunès)',
+  'Lieux de réception et domaines de mariage (Vallée de l\'Hérault : Gignac, Aniane, Montpeyroux)',
+  'Domaines et châteaux de mariage autour du Bassin de Thau (Mèze, Bouzigues, Loupian, Marseillan)',
+  'Domaines et mas de charme pour séminaires et mariages (Pézenas et Biterrois)',
+  'Centres de coworking, tiers-lieux et incubateurs (The Babel Community, Halle Tropisme, Le Réservoir, Start Way, WIGI)',
+  'Pépinières d\'entreprises innovantes et French Tech (Cap Alpha, Cap Omega, MIBI)',
+  'Agences événementielles, agences de communication et wedding planners de l\'Hérault',
+  'Cabinets d\'avocats d\'affaires, experts-comptables et cabinets de conseil de Montpellier',
+  'Entreprises du BTP, promoteurs immobiliers et architectes de la Métropole',
+  'Concessions automobiles, concessions motos et bateaux (Route de la Mer, Garosud, Castelnau)',
+  'Clubs de padel, complexes sportifs indoor, tennis et golfs (Massane, Fontcaude, 4Padel, My Center Padel)',
+  'Cliniques privées, centres médicaux et sièges de mutuelles / santé (Occitanie)',
+  'Écoles supérieures privées, campus étudiants et BDE de Montpellier',
+  'Hôtels 3*, 4*, 5* et résidences hôtelières séminaires de Montpellier et du littoral',
+  'Parcs d\'activités de Juvignac, Saint-Georges-d\'Orques et Grabels',
+  'Parcs d\'activités de Jacou, Clapiers, Montferrier-sur-Lez et Prades-le-Lez',
+  'Zone artisanale et commerciale de Castries et Lunel',
+  'Sièges sociaux agroalimentaires et coopératives viticoles de l\'Hérault',
+  'Agences immobilières de prestige et conciergeries haut de gamme (Littoral & Métropole)',
+  'Agences web, studios digitaux et startups du digital de Montpellier'
 ]
 
 function getLeads(): ProspectLead[] {
@@ -51,7 +66,8 @@ function saveLeads(leads: ProspectLead[]) {
 export async function scrapeLeadsWithGemini(
   zone?: string,
   category?: 'entreprise' | 'domaine' | 'coworking',
-  count: number = 8
+  count: number = 8,
+  excludeCompanies: string[] = []
 ): Promise<Partial<ProspectLead>[]> {
   const apiKey = process.env.GEMINI_API_KEY
   if (!apiKey) {
@@ -61,22 +77,27 @@ export async function scrapeLeadsWithGemini(
   const selectedZone = zone || MONTPELLIER_ZONES[Math.floor(Math.random() * MONTPELLIER_ZONES.length)]
   const catInstruction = category 
     ? `Cible exclusivement la catégorie : ${category}.`
-    : `Varie les profils : entreprises de 15 à 200 salariés (afterworks), domaines de mariage/réception (lendemains de mariage), coworkings.`
+    : `Varie les profils : entreprises de 15 à 250 salariés (afterworks, déjeuners d'équipe), domaines de mariage/réception (lendemains de mariage, brunch retour de noces), coworkings et tiers-lieux.`
+
+  const exclusionText = excludeCompanies.length > 0
+    ? `\nIMPORTANT : Exclus STRICTEMENT les entreprises suivantes déjà enregistrées pour éviter tout doublon :\n${excludeCompanies.slice(-50).join(', ')}\n`
+    : ''
 
   const prompt = `
-Tu es un agent d'exploration B2B spécialisé dans le tissu économique de Montpellier et de l'Hérault (Occitanie).
+Tu es un agent expert en prospection B2B spécialisé dans le tissu économique réel de Montpellier et de l'Hérault (Occitanie).
 Zone ciblée : "${selectedZone}".
 ${catInstruction}
+${exclusionText}
 
-Trouve ${count} entreprises, domaines de mariage ou coworkings réels situés dans cette zone ou la métropole de Montpellier qui ont un potentiel pour privatiser un Foodtruck traiteur gourmet (afterwork, séminaire, retour de noces, animation parvis).
+Trouve ${count} entreprises, domaines de mariage ou coworkings réels situés dans cette zone ou la métropole de Montpellier qui ont un potentiel fort pour privatiser un Foodtruck traiteur gourmet (afterwork, séminaire d'entreprise, lendemain de mariage/retour de noces, animation parvis).
 
 Pour chaque entité, fournis :
-- "company": Le nom officiel de l'entreprise ou du domaine
-- "email": L'email de contact public ou vraisemblable (ex: contact@..., evenements@..., bonjour@...)
-- "contactName": Titre ou nom du contact idéal (ex: "Office Manager", "Responsable CSE", "Direction Événements")
+- "company": Le nom officiel de l'entreprise ou du domaine (exclus toute entité déjà citée)
+- "email": L'email de contact public ou de direction (ex: contact@..., evenements@..., direction@..., bonjour@...)
+- "contactName": Titre ou fonction du contact idéal (ex: "Office Manager", "Responsable CSE", "Direction Événements", "Propriétaire du domaine")
 - "category": STRICTEMENT une de ces 3 valeurs : "entreprise", "domaine", "coworking"
-- "location": Ville précise ou zone (ex: "Montpellier (Millénaire)", "Castelnau", "Villeneuve-lès-Maguelone")
-- "description": 1 phrase percutante expliquant pourquoi ils ont besoin d'un foodtruck gourmet (ex: "60 collaborateurs, friands d'afterworks sans logistique").
+- "location": Ville précise ou zone (ex: "Montpellier (Millénaire)", "Castelnau-le-Lez", "Villeneuve-lès-Maguelone", "Pérols")
+- "description": 1 phrase percutante expliquant leur besoin d'un foodtruck gourmet (ex: "50 collaborateurs, recherche d'une formule burgers gourmets sans contrainte logistique").
 
 Réponds STRICTEMENT sous forme d'un tableau JSON pur sans aucun texte introductif :
 [
@@ -91,25 +112,44 @@ Réponds STRICTEMENT sous forme d'un tableau JSON pur sans aucun texte introduct
 ]
 `
 
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${apiKey}`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: {
-        responseMimeType: "application/json"
-      }
-    })
-  })
+  const modelsToTry = [
+    'gemini-3.1-flash-lite-preview',
+    'gemini-2.5-flash',
+    'gemini-flash-latest'
+  ]
 
-  if (!res.ok) {
-    const errorText = await res.text()
-    throw new Error(`Erreur Gemini Scraping (${res.status}): ${errorText}`)
+  let rawText = ''
+  let lastError = ''
+
+  for (const model of modelsToTry) {
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            responseMimeType: "application/json"
+          }
+        })
+      })
+
+      if (res.ok) {
+        const data = await res.json()
+        rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text || ''
+        if (rawText) break
+      } else {
+        lastError = await res.text()
+      }
+    } catch (e: any) {
+      lastError = e.message
+    }
   }
 
-  const data = await res.json()
-  const rawText = data?.candidates?.[0]?.content?.parts?.[0]?.text
-  if (!rawText) return []
+  if (!rawText) {
+    console.error('Erreur scraping Gemini sur tous les modèles:', lastError)
+    return []
+  }
 
   try {
     const parsed = JSON.parse(rawText)
@@ -171,19 +211,25 @@ export async function runAutopilotCycle(options?: {
   const sendImmediately = options?.sendImmediately ?? true
   const zone = options?.zone || MONTPELLIER_ZONES[Math.floor(Math.random() * MONTPELLIER_ZONES.length)]
 
-  logs.push(`🔍 [1/3] Gemini explore la zone : "${zone}"...`)
-  const discovered = await scrapeLeadsWithGemini(zone, options?.category, scrapeCount)
+  const leads = getLeads()
+  const existingCompanies = leads.map(l => l.company)
+  const existingEmails = new Set(leads.map(l => l.email.toLowerCase().trim()))
+  const existingNames = new Set(leads.map(l => l.company.toLowerCase().trim()))
+
+  logs.push(`🔍 [1/3] Gemini explore la zone : "${zone}" (avec exclusion des entreprises déjà connues)...`)
+  const discovered = await scrapeLeadsWithGemini(zone, options?.category, scrapeCount, existingCompanies)
   logs.push(`✨ ${discovered.length} structures locales identifiées par Gemini.`)
 
-  const leads = getLeads()
-  const existingEmails = new Set(leads.map(l => l.email.toLowerCase().trim()))
   let addedCount = 0
   const newlyAddedLeads: ProspectLead[] = []
 
   for (const item of discovered) {
     if (!item.company || !item.email || !item.email.includes('@')) continue
     const cleanEmail = item.email.toLowerCase().trim()
-    if (existingEmails.has(cleanEmail)) continue
+    const cleanName = item.company.toLowerCase().trim()
+
+    // DÉDUPLICATION STRICTE (email ET nom de société)
+    if (existingEmails.has(cleanEmail) || existingNames.has(cleanName)) continue
 
     const newLead: ProspectLead = {
       id: `lead-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 6)}`,
@@ -200,24 +246,27 @@ export async function runAutopilotCycle(options?: {
     leads.push(newLead)
     newlyAddedLeads.push(newLead)
     existingEmails.add(cleanEmail)
+    existingNames.add(cleanName)
     addedCount++
   }
 
   saveLeads(leads)
-  logs.push(`💾 [2/3] Base actualisée : +${addedCount} nouveaux prospects qualifiés enregistrés.`)
+  logs.push(`💾 [2/3] Base actualisée : +${addedCount} nouveaux prospects qualifiés enregistrés. (Total base: ${leads.length})`)
 
   let sentCount = 0
-  if (sendImmediately && addedCount > 0) {
-    const toSend = newlyAddedLeads.slice(0, maxSend)
-    logs.push(`🚀 [3/3] Rédaction par Gemini & envoi automatique par Resend pour ${toSend.length} prospects...`)
+  const readyQueue = leads.filter(l => l.status === 'ready')
+
+  if (sendImmediately && readyQueue.length > 0) {
+    const toSend = readyQueue.slice(0, maxSend)
+    logs.push(`🚀 [3/3] Rédaction par Gemini & expédition par Resend pour ${toSend.length} prospects en attente...`)
 
     for (let i = 0; i < toSend.length; i++) {
       const lead = toSend[i]
       try {
-        logs.push(`📝 Rédaction sur-mesure pour ${lead.company}...`)
+        logs.push(`📝 [${i + 1}/${toSend.length}] Rédaction sur-mesure pour ${lead.company}...`)
         const generated = await generateProspectEmailWithGemini(lead)
         
-        logs.push(`✉️ Envoi du mail officiel avec logo et visuels à ${lead.email}...`)
+        logs.push(`✉️ Expédition mail officiel à ${lead.email} ("${generated.subject}")...`)
         await sendOutboundEmail(lead.email, generated.subject, generated.body, lead)
 
         lead.status = 'contacted'
@@ -228,17 +277,18 @@ export async function runAutopilotCycle(options?: {
           generatedAt: new Date().toISOString()
         }
         sentCount++
+        saveLeads(leads)
         logs.push(`✅ Succès pour ${lead.company}`)
       } catch (err: any) {
         logs.push(`❌ Échec pour ${lead.company}: ${err.message}`)
+        lead.status = 'replied' // Marqué pour ne pas bloquer la file
+        saveLeads(leads)
       }
-      // Pause anti-spam de 2.5 secondes
-      await new Promise(r => setTimeout(r, 2500))
+      // Pause de courtoisie de 3 secondes
+      await new Promise(r => setTimeout(r, 3000))
     }
-
-    saveLeads(leads)
   } else {
-    logs.push(`ℹ️ Envoi automatique désactivé ou aucun nouveau lead. Les prospects restent au statut "Prêt".`)
+    logs.push(`ℹ️ Aucun prospect en attente d'envoi ou envoi désactivé.`)
   }
 
   logs.push(`🎉 Cycle Autopilot terminé avec succès !`)

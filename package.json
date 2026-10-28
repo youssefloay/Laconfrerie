@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "autopilot": "tsx scripts/infinite-autopilot.ts",
+    "seed": "tsx scripts/seed-montpellier-database.ts",
+    "test-send": "tsx scripts/test-send.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
