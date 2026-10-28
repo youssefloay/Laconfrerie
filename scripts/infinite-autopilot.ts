@@ -21,13 +21,16 @@ import {
 } from '../lib/autopilot-engine'
 import { 
   ProspectLead, 
-  generateProspectEmailWithGemini, 
-  formatOutboundEmailHTML 
+  generateProspectEmailWithGemini 
 } from '../lib/prospect-engine'
+import {
+  safeDispatchEmail,
+  isEmailAlreadySent,
+  acquireAutopilotLock,
+  releaseAutopilotLock
+} from '../lib/email-guard'
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'prospects.json')
-const RESEND_API_KEY = process.env.RESEND_API_KEY
-const SENDER_EMAIL = 'La Confrérie Foodtruck <contact@laconfrerietruck.fr>'
 
 function getLeads(): ProspectLead[] {
   if (!fs.existsSync(DATA_PATH)) return []
@@ -38,43 +41,20 @@ function saveLeads(leads: ProspectLead[]) {
   fs.writeFileSync(DATA_PATH, JSON.stringify(leads, null, 2), 'utf-8')
 }
 
-async function sendEmailViaResend(to: string, subject: string, bodyText: string, lead?: Partial<ProspectLead>) {
-  if (!RESEND_API_KEY) throw new Error('RESEND_API_KEY non configurée.')
-
-  const htmlBody = formatOutboundEmailHTML(bodyText, lead)
-
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${RESEND_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      from: SENDER_EMAIL,
-      to,
-      subject,
-      html: htmlBody,
-      reply_to: 'contact@laconfrerietruck.fr'
-    })
-  })
-
-  if (!res.ok) {
-    const errText = await res.text()
-    throw new Error(`Resend (${res.status}): ${errText}`)
-  }
-
-  return await res.json()
-}
-
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 let isRunning = true
 process.on('SIGINT', () => {
-  console.log('\n\n🛑 Interruption demandée (Ctrl+C). Sauvegarde de l\'état et arrêt propre...')
+  console.log('\n\n🛑 Interruption demandée (Ctrl+C). Libération du verrou et arrêt propre...')
   isRunning = false
-  setTimeout(() => process.exit(0), 1000)
+  releaseAutopilotLock()
+  setTimeout(() => process.exit(0), 500)
+})
+
+process.on('exit', () => {
+  releaseAutopilotLock()
 })
 
 async function runInfiniteAutopilot() {
@@ -84,10 +64,21 @@ async function runInfiniteAutopilot() {
   console.log('║   Scraping continu de nouvelles zones + Envoi non-stop sans doublon      ║')
   console.log('╚══════════════════════════════════════════════════════════════════════════╝\n')
 
-  console.log('🛡️ Règle absolue : ZÉRO DUPLICATION (contrôle email + nom entreprise)')
+  console.log('🛡️ Règle absolue : GARDE-FOU ANTI-DUPLICATION STRICT (base + registre historique)')
   console.log('⏱️ Pacing anti-spam : 15 secondes de pause entre chaque envoi (délivrabilité)')
   console.log('📍 Zones couvertes : ' + MONTPELLIER_ZONES.length + ' micro-secteurs d\'entreprises et domaines')
   console.log('🛑 Pour quitter : Appuie sur Ctrl + C à tout moment (l\'avancement est sauvegardé)\n')
+
+  // Acquisition du verrou de processus
+  if (!acquireAutopilotLock('cli')) {
+    console.error('⚠️ ATTENTION : Un autre processus Autopilot (Web ou CLI) est actuellement en cours.')
+    console.error('Pour éviter les conflits d\'envoi et les doublons, ce script attend 15 secondes avant de réessayer...')
+    await sleep(15000)
+    if (!acquireAutopilotLock('cli')) {
+      console.error('❌ Impossible de démarrer : le verrou est toujours actif. Arrête l\'autre instance avant.')
+      process.exit(1)
+    }
+  }
 
   let totalSentSession = 0
   let totalDiscoveredSession = 0
@@ -99,8 +90,8 @@ async function runInfiniteAutopilot() {
 
     // 1. Lire la base actuelle
     const leads = getLeads()
-    const readyCount = leads.filter(l => l.status === 'ready').length
-    const contactedCount = leads.filter(l => l.status === 'contacted').length
+    const readyCount = leads.filter(l => l.status === 'ready' && !isEmailAlreadySent(l.email)).length
+    const contactedCount = leads.filter(l => l.status === 'contacted' || isEmailAlreadySent(l.email)).length
     const existingCompanies = leads.map(l => l.company)
     const existingEmails = new Set(leads.map(l => l.email.toLowerCase().trim()))
     const existingNames = new Set(leads.map(l => l.company.toLowerCase().trim()))
@@ -120,14 +111,14 @@ async function runInfiniteAutopilot() {
       console.error(`⚠️ Erreur de scraping (${err.message}). On continue avec les prospects en attente...`)
     }
 
-    // 3. Déduplication stricte et enregistrement
+    // 3. Déduplication stricte et enregistrement (Base + Historique permanent)
     let newLeadsAdded = 0
     for (const item of discovered) {
       if (!item.company || !item.email || !item.email.includes('@')) continue
       const cleanEmail = item.email.toLowerCase().trim()
       const cleanName = item.company.toLowerCase().trim()
 
-      if (existingEmails.has(cleanEmail) || existingNames.has(cleanName)) {
+      if (existingEmails.has(cleanEmail) || existingNames.has(cleanName) || isEmailAlreadySent(cleanEmail)) {
         continue
       }
 
@@ -157,8 +148,8 @@ async function runInfiniteAutopilot() {
       console.log(`ℹ️ [2/3] Pas de nouveaux leads dans ce lot, traitement de la file d'attente existante.`)
     }
 
-    // 4. Traitement continu de la file des prospects en attente ("ready")
-    const pendingLeads = leads.filter(l => l.status === 'ready')
+    // 4. Traitement continu de la file des prospects en attente ("ready" ET JAMAIS contactés)
+    const pendingLeads = leads.filter(l => l.status === 'ready' && !isEmailAlreadySent(l.email))
     const batchSize = Math.min(3, pendingLeads.length)
 
     if (batchSize > 0) {
@@ -176,9 +167,24 @@ async function runInfiniteAutopilot() {
         try {
           const generated = await generateProspectEmailWithGemini(lead)
           console.log(`✉️ Objet : "${generated.subject}"`)
-          console.log(`📤 Expédition via Resend avec photos du foodtruck et plaquette...`)
+          console.log(`📤 Expédition sécurisée via Resend...`)
 
-          await sendEmailViaResend(lead.email, generated.subject, generated.body, lead)
+          // 🛡️ Passerelle sécurisée avec garde-fou infranchissable
+          const dispatch = await safeDispatchEmail({
+            to: lead.email,
+            subject: generated.subject,
+            bodyText: generated.body,
+            lead,
+            source: 'autopilot_cli'
+          })
+
+          if (dispatch.skipped) {
+            console.log(`⏭️ [DOUBLON ÉVITÉ] Cet email a déjà été contacté dans l'historique : ${lead.email}`)
+          } else {
+            totalSentSession++
+            console.log(`✅ SUCCÈS ! Email délivré à ${lead.company}`)
+            console.log(`📈 Bilan Session : ${totalSentSession} envoyés | ${totalDiscoveredSession} sourcés`)
+          }
 
           lead.status = 'contacted'
           lead.lastContactDate = new Date().toISOString()
@@ -188,10 +194,6 @@ async function runInfiniteAutopilot() {
             generatedAt: new Date().toISOString()
           }
           saveLeads(leads)
-
-          totalSentSession++
-          console.log(`✅ SUCCÈS ! Email délivré à ${lead.company}`)
-          console.log(`📈 Bilan Session : ${totalSentSession} envoyés | ${totalDiscoveredSession} sourcés`)
         } catch (err: any) {
           console.error(`❌ Échec envoi pour ${lead.company} : ${err.message}`)
           lead.status = 'replied' // Ne bloque pas la file
@@ -205,7 +207,7 @@ async function runInfiniteAutopilot() {
         }
       }
     } else {
-      console.log(`ℹ️ Tous les prospects en base ont déjà été contactés ! Recherche de nouvelles zones...`)
+      console.log(`ℹ️ Tous les prospects en attente ont été contactés ! Recherche de nouvelles zones...`)
     }
 
     // Pause de 8 secondes avant de passer au secteur suivant
@@ -215,9 +217,13 @@ async function runInfiniteAutopilot() {
     }
   }
 
+  releaseAutopilotLock()
   console.log(`\n🏁 Session Autopilot terminée. Bilan final :`)
   console.log(`   - Emails envoyés : ${totalSentSession}`)
   console.log(`   - Nouveaux établissements découverts : ${totalDiscoveredSession}`)
 }
 
-runInfiniteAutopilot().catch(console.error)
+runInfiniteAutopilot().catch((err) => {
+  releaseAutopilotLock()
+  console.error(err)
+})

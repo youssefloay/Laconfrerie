@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 import { generateProspectEmail, generateProspectEmailWithGemini, generateFollowUpEmail, formatOutboundEmailHTML, ProspectLead } from '@/lib/prospect-engine'
+import { safeDispatchEmail } from '@/lib/email-guard'
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'prospects.json')
 const RESEND_API_KEY = process.env.RESEND_API_KEY
@@ -39,32 +40,31 @@ export async function POST(req: Request) {
     if (action === 'send') {
       const { leadId, subject, bodyText, toEmail } = body
       const lead = leads.find(l => l.id === leadId)
-      const recipient = toEmail || lead?.email
+      const recipient = (toEmail || lead?.email || '').toLowerCase().trim()
 
       if (!recipient) {
         return NextResponse.json({ error: 'Email destinataire manquant' }, { status: 400 })
       }
 
-      const htmlBody = formatOutboundEmailHTML(bodyText, lead || { company: recipient })
-
-      const res = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${RESEND_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          from: SENDER_EMAIL,
-          to: recipient,
-          subject,
-          html: htmlBody,
-          reply_to: 'contact@laconfrerietruck.fr'
-        })
+      // 🛡️ Garde-fou Anti-Duplication Centralisé
+      const dispatchResult = await safeDispatchEmail({
+        to: recipient,
+        subject,
+        bodyText,
+        lead,
+        source: 'manual_dashboard'
       })
 
-      if (!res.ok) {
-        const errorText = await res.text()
-        return NextResponse.json({ error: `Erreur Resend: ${errorText}` }, { status: 500 })
+      if (dispatchResult.skipped) {
+        if (lead) {
+          lead.status = 'contacted'
+          saveLeads(leads)
+        }
+        return NextResponse.json({ 
+          success: false, 
+          skipped: true, 
+          error: dispatchResult.reason || 'Cet email a déjà été contacté précédemment (doublon bloqué).' 
+        }, { status: 409 })
       }
 
       if (lead) {

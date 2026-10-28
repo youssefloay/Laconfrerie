@@ -23,8 +23,13 @@
     "category": "entreprise",
     "location": "Pérols / Montpellier",
     "description": "Société IoT de 60+ collaborateurs, habituée à organiser des pots de rentrée et des déjeuners foodtruck.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:36:14.688Z",
+    "generatedEmail": {
+      "subject": "Un foodtruck gourmet pour les équipes de Matooma ?",
+      "body": "Bonjour à l'équipe Matooma,\n\nEn tant qu'amateurs de bons produits à deux pas de chez vous, nous suivons le développement de Matooma à Pérols. Avec vos 60 collaborateurs, on sait que l'organisation des déjeuners d'équipe peut vite devenir un casse-tête.\n\nChez La Confrérie, on propose une solution « zéro contrainte » pour vos prochains événements. Que ce soit pour un déjeuner efficace ou un afterwork, on s’occupe de tout sur votre parking : burgers gourmets au pain boulanger local, poke bowls frais, et surtout une logistique autonome pour servir plus de 100 personnes par heure sans que vous ayez à lever le petit doigt (ni à faire de vaisselle !).\n\nCurieux de voir ce qu'on peut vous proposer ? Jetez un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nDisponibles pour un échange informel de 5 minutes ? Je serais ravi de vous présenter notre concept autour d'un café.\n\nÀ très vite,\n\nLe Fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:36:14.688Z"
+    }
   },
   {
     "id": "lead-003",
@@ -34,8 +39,13 @@
     "category": "coworking",
     "location": "Montpellier",
     "description": "Tiers-lieu créatif et pôle d'entreprises, événements récurrents, marchés, afterworks et séminaires.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:36:32.293Z",
+    "generatedEmail": {
+      "subject": "Une touche gourmande pour les événements de la Halle Tropisme ?",
+      "body": "Bonjour l'équipe de la Halle Tropisme,\n\nJe suis un grand fan de l'effervescence créative que vous avez insufflée à Montpellier. Je suis le fondateur de La Confrérie Foodtruck, et je me disais que nos burgers gourmets (avec pain boulanger local) ou nos pokebowls frais pourraient parfaitement s'accorder avec vos afterworks du jeudi ou vos journées de séminaire.\n\nPourquoi nous choisir ? Nous sommes 100% autonomes : on se gare sur le parvis et on gère tout sans vous demander le moindre effort logistique ou vaisselle. Avec une capacité de plus de 100 couverts par heure, on assure le rythme, même quand la Halle est pleine.\n\nJe vous laisse jeter un œil à notre univers et à nos formules ici : https://laconfrerietruck.fr/fr/plaquette\n\nÇa vous dirait qu'on échange 5 minutes par téléphone la semaine prochaine ? Je serais ravi de discuter d'une collaboration simple et efficace pour régaler votre communauté.\n\nÀ très vite,\n\nLe fondateur, La Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:36:32.293Z"
+    }
   },
   {
     "id": "lead-004",
@@ -45,8 +55,13 @@
     "category": "coworking",
     "location": "Montpellier Centre",
     "description": "Espace de coliving et coworking moderne avec communauté jeune et dynamique.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:36:45.395Z",
+    "generatedEmail": {
+      "subject": "Des burgers et pokés pour animer vos afterworks à The Babel Community ?",
+      "body": "Bonjour à l'équipe de The Babel Community,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé ici à Montpellier. Je vois passer votre actualité et votre communauté dynamique : ça donne envie d'y apporter une touche gourmande.\n\nNous proposons des burgers artisanaux (pain du boulanger) et des pokebowls frais, parfaits pour vos déjeuners sur le parvis ou vos afterworks du jeudi. Le gros avantage pour vous ? On est 100% autonomes en logistique, on s'installe devant chez vous et on gère tout le service minute sans aucune contrainte pour vos équipes.\n\nC’est rapide, qualitatif et convivial. Vous pouvez jeter un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nÇa vous dirait qu’on se passe un coup de fil rapide de 5 minutes cette semaine pour voir si on peut dynamiser vos prochains événements ?\n\nBien à vous,\n\nLe fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:36:45.395Z"
+    }
   },
   {
     "id": "lead-005",
@@ -56,8 +71,13 @@
     "category": "domaine",
     "location": "Castelnau-le-Lez",
     "description": "Domaine viticole et hôtelier de prestige, recherche de partenaires foodtruck premium pour lendemains de mariage (brunch retour de noces).",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:37:05.460Z",
+    "generatedEmail": {
+      "subject": "Partenariat brunch : La Confrérie Foodtruck pour vos retours de noces",
+      "body": "Bonjour à l'équipe du Domaine de Verchant,\n\nFélicitations pour la saison qui s'annonce. Je vous contacte car nous partageons une exigence commune : offrir une expérience mémorable aux mariés et à leurs invités.\n\nFondateur de La Confrérie Foodtruck, je propose une solution clé en main pour vos lendemains de mariage à Castelnau-le-Lez. Nous cuisinons des burgers gourmets avec pains boulangers locaux et des pokebowls frais, le tout avec une logistique 100% autonome. Aucun impact sur votre cuisine, pas de vaisselle à gérer, et une capacité d'envoi rapide pour fluidifier vos brunchs.\n\nVous pouvez découvrir notre approche ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un échange informel de 5 minutes la semaine prochaine ? J'adorerais discuter de la façon dont nous pourrions accompagner vos futurs événements avec simplicité et qualité.\n\nÀ très vite,\n\nThomas\nLa Confrérie Foodtruck\n06 62 35 09 53\nhttps://laconfrerietruck.fr",
+      "generatedAt": "2026-10-28T22:37:05.460Z"
+    }
   },
   {
     "id": "lead-006",
@@ -67,8 +87,13 @@
     "category": "domaine",
     "location": "Montpellier",
     "description": "Folie montpelliéraine accueillant mariages et soirées d'entreprise privatisées.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:37:25.794Z",
+    "generatedEmail": {
+      "subject": "Une touche gourmande pour les lendemains de mariage au Château de Flaugergues",
+      "body": "Bonjour l'équipe événementielle du Château de Flaugergues,\n\nEn tant qu'amoureux du patrimoine montpelliérain, je suis toujours impressionné par l'élégance de vos réceptions. Je me permets de vous contacter pour proposer une solution clé en main pour vos lendemains de mariage ou événements privés.\n\nAvec \"La Confrérie Foodtruck\", nous apportons une alternative gourmande et décontractée : burgers maisons au pain artisanal et pokebowls frais. Notre force ? Une autonomie totale (zéro logistique pour vous, pas de vaisselle) et une cadence capable de servir plus de 100 personnes à l'heure, sans attente.\n\nNos produits sont locaux, frais, et notre installation est pensée pour respecter le cachet de vos lieux d'exception.\n\nJe vous invite à jeter un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nAuriez-vous 5 minutes cette semaine pour un échange informel par téléphone ? Je serais ravi de vous expliquer comment nous pouvons simplifier vos lendemains de fête.\n\nÀ très vite,\n\nLe fondateur de La Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:37:25.794Z"
+    }
   },
   {
     "id": "lead-007",
@@ -78,8 +103,13 @@
     "category": "domaine",
     "location": "Lavérune",
     "description": "Lieu de réception d'exception pour mariages champêtres et séminaires au vert.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:37:43.432Z",
+    "generatedEmail": {
+      "subject": "Partenariat gourmand : brunchs au Mas de Biar",
+      "body": "Bonjour à l'équipe du Mas de Biar,\n\nFélicitations pour la qualité de votre domaine, un écrin magnifique pour les mariages champêtres à Lavérune.\n\nJe suis fondateur de La Confrérie Foodtruck, basé entre Montpellier et Villeneuve-lès-Maguelone. Nous accompagnons les lieux d'exception pour les lendemains de mariage avec une formule brunch clé en main, conviviale et gourmande.\n\nPourquoi nous choisir ?\n- Zéro contrainte : nous sommes 100% autonomes (logistique, déchets, pas de vaisselle à gérer).\n- Qualité : burgers maison avec pains boulangers locaux et pokebowls ultra-frais.\n- Rapidité : un service minute pour plus de 100 personnes/heure, parfait pour fluidifier vos fins d'événements.\n\nJe vous invite à découvrir notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un échange informel de 5 minutes la semaine prochaine ? J'adorerais discuter d'une collaboration pour simplifier et sublimer les brunchs de vos futurs mariés.\n\nÀ très vite,\n\nL'équipe La Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:37:43.433Z"
+    }
   },
   {
     "id": "lead-008",
@@ -89,8 +119,13 @@
     "category": "entreprise",
     "location": "Castelnau / Eurêka",
     "description": "Écosystème de startups et PME innovantes, friands de formats street food festifs sur le parvis.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:38:08.583Z",
+    "generatedEmail": {
+      "subject": "Rythmer les déjeuners au Parc Eurêka avec La Confrérie",
+      "body": "Bonjour,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé à quelques kilomètres de chez vous. En connaissant l'effervescence du Parc Eurêka, j'imagine que vos équipes et startups apprécieraient une pause déjeuner aussi gourmande qu'efficace sur le parvis.\n\nNous proposons une offre de burgers gourmets (pains boulangers locaux) et pokebowls frais, conçue pour les structures comme la vôtre : zéro logistique pour vous, pas de vaisselle à gérer, et une capacité d'envoi rapide (plus de 100 personnes/heure) pour ne pas empiéter sur leur emploi du temps.\n\nQue ce soit pour un déjeuner ponctuel ou un afterwork festif, nous venons avec tout le nécessaire pour transformer le parking en lieu de convivialité.\n\nVous pouvez jeter un œil à notre offre ici : https://laconfrerietruck.fr/fr/plaquette.\n\nSeriez-vous disponible pour un bref échange téléphonique de 5 minutes cette semaine ? Je serais ravi de vous expliquer comment nous pourrions animer vos prochains événements.\n\nÀ très vite,\n\nL'équipe La Confrérie\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:38:08.583Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-7gpk",
@@ -100,8 +135,13 @@
     "category": "entreprise",
     "location": "Montpellier (Castelnau)",
     "description": "Studio de 300+ créateurs de jeux vidéo, friands d'afterworks burgers et de foodtrucks sur place.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:38:25.887Z",
+    "generatedEmail": {
+      "subject": "Une pause gourmande pour les équipes d'Ubisoft Montpellier ?",
+      "body": "Bonjour,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé juste à côté de chez vous. Connaissant la créativité qui bouillonne chez Ubisoft, j’imagine que vos 300 collaborateurs apprécieraient une pause déjeuner ou un afterwork qui change de l'ordinaire.\n\nNous nous occupons de tout : de la sélection des pains chez notre boulanger local à la préparation minute de nos burgers gourmets et pokebowls frais. Zéro logistique pour vous, pas de vaisselle, et une cadence taillée pour servir vos équipes sans attente.\n\nVous pouvez jeter un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette.\n\nSeriez-vous disponible pour un échange informel de 5 minutes cette semaine ? Ce serait l’occasion de discuter d’une future intervention sur votre site.\n\nÀ très vite,\n\nL'équipe de La Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:38:25.887Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-krc0",
@@ -111,8 +151,13 @@
     "category": "entreprise",
     "location": "Montpellier (Millénaire)",
     "description": "Campus de 900+ collaborateurs, habitués à privatiser des foodtrucks pour les déjeuners d'été.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:38:39.406Z",
+    "generatedEmail": {
+      "subject": "Une pause gourmande pour les équipes Dell Montpellier ? 🍔",
+      "body": "Bonjour à l'équipe événements de Dell Technologies,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé à deux pas de votre campus du Millénaire. Nous sommes spécialisés dans les formats grands groupes (100+ couverts/heure) et avons l'habitude de régaler les entreprises avec nos burgers gourmets au pain boulanger et nos pokebowls frais.\n\nLe concept pour Dell ? Zéro stress pour vous. Nous arrivons en totale autonomie logistique sur votre parvis. C’est du \"fait maison\" servi à la minute, sans vaisselle à gérer, parfait pour vos déjeuners d’été ou afterworks.\n\nVous pouvez découvrir nos formules ici : https://laconfrerietruck.fr/fr/plaquette\n\nAuriez-vous 5 minutes pour un échange informel cette semaine ? Je serais ravi de vous présenter nos solutions pour vos prochaines dates.\n\nÀ très vite,\n\nLe fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53\nhttps://laconfrerietruck.fr",
+      "generatedAt": "2026-10-28T22:38:39.407Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-6fex",
@@ -122,8 +167,13 @@
     "category": "entreprise",
     "location": "Montpellier (Millénaire)",
     "description": "ESN de 250+ consultants tech, événements d'intégration et pots du jeudi soir.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:38:56.453Z",
+    "generatedEmail": {
+      "subject": "Une pause gourmande pour les équipes de Capgemini Montpellier ?",
+      "body": "Bonjour,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé ici à Montpellier. Je sais que vous accueillez plus de 250 consultants au Millénaire, et je me disais qu'un peu de convivialité culinaire pour vos prochains afterworks ou déjeuners d'équipe serait une excellente idée.\n\nPourquoi nous choisir ? Nous gérons tout de A à Z. Zéro contrainte logistique pour vous, pas de vaisselle, et un service ultra-rapide (plus de 100 couverts/heure) avec des pains de boulangers locaux et des produits ultra-frais.\n\nQue ce soit pour un pot du jeudi soir ou un événement d'intégration, nous apportons le goût et l'ambiance sans vous donner de travail supplémentaire.\n\nVous pouvez jeter un œil à nos prestations ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un court échange informel de 5 minutes la semaine prochaine ? Je serais ravi de vous présenter ce qu'on peut concocter pour vos collaborateurs.\n\nÀ très vite,\n\nL'équipe La Confrérie Foodtruck\n06 62 35 09 53\nhttps://laconfrerietruck.fr",
+      "generatedAt": "2026-10-28T22:38:56.453Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-jldy",
@@ -133,8 +183,13 @@
     "category": "entreprise",
     "location": "Montpellier (Eurêka)",
     "description": "Agence tech de 150 personnes, séminaires internes et repas d'équipe décontractés.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:39:14.974Z",
+    "generatedEmail": {
+      "subject": "Une pause gourmande pour les équipes de CGI Montpellier ?",
+      "body": "Bonjour à l'équipe de CGI Montpellier,\n\nJe suis le fondateur de \"La Confrérie Foodtruck\". Basés à Montpellier, nous accompagnons déjà de nombreuses agences tech pour leurs déjeuners d'équipe ou afterworks, et j'adorerais proposer notre savoir-faire à vos 150 collaborateurs sur le parc Eurêka.\n\nPourquoi nous choisir ? Nous gérons tout de A à Z : zéro logistique pour vous, pas de vaisselle, et une capacité d'envoi rapide (100+ couverts/heure) pour que personne ne perde de temps. Nous travaillons avec du pain de boulanger local et des produits frais pour des burgers gourmets et pokebowls qui changent du quotidien.\n\nVous pouvez jeter un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nAuriez-vous 5 minutes cette semaine pour un échange informel ? Je serais ravi de vous expliquer comment on peut organiser une parenthèse gourmande sur votre parking sans aucune contrainte pour vous.\n\nÀ très vite,\n\nLe fondateur, La Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:39:14.974Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-xvgl",
@@ -144,8 +199,13 @@
     "category": "entreprise",
     "location": "Montpellier Centre",
     "description": "Scale-up adtech internationale, ambiance jeune et festive pour afterworks terrasse.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:39:27.852Z",
+    "generatedEmail": {
+      "subject": "Du frais et du local pour vos prochains afterworks chez Teads ?",
+      "body": "Bonjour l'équipe People & Culture chez Teads,\n\nJe suis le fondateur de La Confrérie Foodtruck, basés entre Montpellier et Villeneuve-lès-Maguelone. On connaît bien l'ambiance dynamique de votre scale-up et on s'est dit qu'un bon burger gourmet ou un pokebowl frais sur votre terrasse, ça matcherait parfaitement avec l'esprit Teads.\n\nNotre promesse est simple : on arrive, on s'installe, et on régale toute votre équipe en un temps record (100+ personnes/heure). Zéro logistique pour vous, pas de vaisselle à gérer, et surtout, du pain boulanger local et des produits ultra-frais.\n\nVous pouvez jeter un œil à notre offre ici : https://laconfrerietruck.fr/fr/plaquette\n\nÇa vous dirait un échange informel de 5 minutes par téléphone pour voir comment on pourrait animer votre prochain afterwork ou déjeuner d'équipe ?\n\nÀ très vite,\n\nLe fondateur de La Confrérie\n06 62 35 09 53\nhttps://laconfrerietruck.fr",
+      "generatedAt": "2026-10-28T22:39:27.852Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-ebng",
@@ -155,8 +215,13 @@
     "category": "entreprise",
     "location": "Jacou (Montpellier Nord)",
     "description": "Société pharmaceutique innovante de 140 salariés avec grand patio extérieur idéal pour foodtruck.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:39:46.944Z",
+    "generatedEmail": {
+      "subject": "Une touche gourmande pour les équipes de MedinCell ? 🍔",
+      "body": "Bonjour l'équipe Communication & CSE de MedinCell,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé juste à côté, à Montpellier. En passant devant vos locaux à Jacou, j'ai tout de suite imaginé notre camion installé sur votre magnifique patio.\n\nNous accompagnons les entreprises locales pour leurs événements d'équipe (déjeuners ou afterworks) avec une promesse simple : zéro logistique pour vous. On arrive avec nos pains boulangers, nos produits frais, notre expertise en burgers gourmets et pokebowls, et on repart en laissant le site impeccable. Avec une capacité de 100+ couverts/heure, vos 140 collaborateurs profiteront d’un vrai moment de convivialité sans attente interminable.\n\nVous pouvez découvrir notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un échange informel de 5 minutes dans la semaine ? J'aimerais beaucoup discuter de la manière dont nous pourrions régaler vos équipes lors de votre prochain événement.\n\nBien à vous,\n\nLe fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:39:46.944Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-1wly",
@@ -166,8 +231,13 @@
     "category": "entreprise",
     "location": "Labège / Pérols",
     "description": "Éditeur logiciel de 200+ personnes à Pérols, pots de départ et déjeuners thématiques.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:40:04.879Z",
+    "generatedEmail": {
+      "subject": "Une touche gourmande pour vos événements chez Berger-Levrault ?",
+      "body": "Bonjour, je suis le fondateur de La Confrérie Foodtruck, basé juste à côté de chez vous. Connaissant bien l'effervescence de Berger-Levrault à Pérols, je me permets de vous contacter pour vos prochains déjeuners d'équipe ou pots de départ.\n\nNous proposons une solution 100% clé en main : nos burgers gourmets au pain boulanger local et nos pokebowls frais sont servis à la minute. Côté logistique, vous n'avez rien à gérer. Nous sommes totalement autonomes et garantissons un service rapide pour vos 200+ collaborateurs, sans aucune contrainte de vaisselle ou d'installation pour vos équipes.\n\nVous pouvez découvrir notre univers et nos menus ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un échange informel de 5 minutes dans la semaine ? Ce serait l'occasion de voir comment nous pouvons égayer vos prochains événements.\n\nBien à vous,\n\nLe fondateur de La Confrérie Foodtruck\n06 62 35 09 53\nhttps://laconfrerietruck.fr",
+      "generatedAt": "2026-10-28T22:40:04.881Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-susa",
@@ -177,8 +247,13 @@
     "category": "entreprise",
     "location": "Montpellier (Millénaire)",
     "description": "200 collaborateurs, forte demande de formats déjeuners conviviaux le vendredi midi.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:40:20.333Z",
+    "generatedEmail": {
+      "subject": "Un foodtruck gourmand pour les vendredis de Sopra Steria ?",
+      "body": "Bonjour l'équipe Office Management de Sopra Steria,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé ici à Montpellier. Je connais bien l'effervescence de vos bureaux au Millénaire et je sais combien un déjeuner convivial est le meilleur moyen de clore la semaine.\n\nNous proposons à vos 200 collaborateurs des burgers maison avec pains boulangers locaux et des pokebowls frais, le tout servi avec une efficacité redoutable (plus de 100 couverts/heure). Le gros avantage ? On s'occupe de tout. Zéro logistique pour vous, zéro contrainte de vaisselle, on arrive sur votre parvis et on régale tout le monde.\n\nVous pouvez découvrir nos formules ici : https://laconfrerietruck.fr/fr/plaquette.\n\nEst-ce que vous seriez disponible pour un échange informel de 5 minutes la semaine prochaine ? J'aimerais voir comment nous pourrions rythmer vos vendredis midis.\n\nÀ très vite,\n\nMarc\nLa Confrérie Foodtruck\n06 62 35 09 53\nhttps://laconfrerietruck.fr",
+      "generatedAt": "2026-10-28T22:40:20.334Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-rrpg",
@@ -188,8 +263,13 @@
     "category": "entreprise",
     "location": "Montpellier (Millénaire)",
     "description": "Éditeur SaaS pharma/biotech de 90 personnes, afterworks d'été et célébrations de milestones.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:40:26.170Z",
+    "generatedEmail": {
+      "subject": "Un foodtruck gourmet pour les équipes d'Inova Software ?",
+      "body": "Bonjour,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé ici à Montpellier. Je sais que chez Inova Software, vous célébrez régulièrement vos milestones ou moments d'équipe.\n\nPourquoi ne pas troquer le traiteur classique pour une expérience plus conviviale sur votre parking du Millénaire ? Nous proposons des burgers gourmets (pains artisanaux locaux) et pokebowls frais, avec une logistique zéro contrainte pour vous : on s'installe, on sert jusqu'à 100 personnes/heure et on laisse le site impeccable.\n\nC’est l’occasion idéale de marquer le coup pour un afterwork d'été ou un déjeuner décontracté, sans aucune gestion de vaisselle ou logistique de votre côté.\n\nJe vous invite à jeter un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nAuriez-vous 5 minutes pour un échange informel cette semaine ? Je serais ravi de vous expliquer comment nous pourrions simplifier vos futurs événements.\n\nAu plaisir,\n\nL'équipe La Confrérie\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:40:26.170Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-h9zt",
@@ -199,8 +279,13 @@
     "category": "entreprise",
     "location": "Montpellier (Millénaire)",
     "description": "Fintech internationale avec équipe dynamique, événements internes réguliers.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:40:35.272Z",
+    "generatedEmail": {
+      "subject": "Une pause gourmande pour l'équipe Kyriba ?",
+      "body": "Bonjour, en tant qu'Happiness Officer chez Kyriba, vous savez mieux que personne que la cohésion d'équipe passe souvent par un bon repas partagé.\n\nJe suis le fondateur de La Confrérie Foodtruck, basé ici à Montpellier. Nous proposons aux entreprises du Millénaire une solution clé en main pour vos afterworks ou déjeuners : des burgers gourmets (pains artisanaux locaux) et des pokebowls ultra-frais.\n\nPourquoi nous choisir ? \n- Zéro logistique pour vous : on gère tout sur votre parking (autonomie totale, pas de vaisselle).\n- Efficacité : on sert plus de 100 personnes à l'heure, idéal pour vos plannings serrés.\n\nJetez un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette.\n\nAuriez-vous 5 minutes cette semaine pour un échange informel ? Je serais ravi de vous expliquer comment on peut pimenter vos prochains événements internes.\n\nÀ très vite,\n\nLe Fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:40:35.273Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-fo98",
@@ -210,8 +295,13 @@
     "category": "entreprise",
     "location": "Saint-Aunès",
     "description": "Plateforme logistique et vétérinaire de 80 salariés, repas conviviaux du midi.",
-    "status": "ready",
-    "lastContactDate": null
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:40:41.392Z",
+    "generatedEmail": {
+      "subject": "Une pause gourmande pour vos équipes chez Idexx ?",
+      "body": "Bonjour l'équipe des Services Généraux d'Idexx,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé juste à côté, à Montpellier. Je connais bien votre site de Saint-Aunès et je pense que vos 80 collaborateurs méritent un déjeuner qui sort de l'ordinaire.\n\nNous proposons des burgers gourmets (pains artisanaux locaux) et des pokebowls frais, avec une organisation pensée pour les entreprises : nous sommes 100% autonomes et gérons toute la logistique sur votre parking. Zéro contrainte pour vous, pas de vaisselle à gérer, et une capacité d'envoi rapide pour que tout le monde profite de sa pause.\n\nVous pouvez jeter un œil à notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un échange informel de 5 minutes dans la semaine ? Ce serait l'occasion de voir comment nous pourrions organiser un déjeuner ou un afterwork convivial pour vos équipes.\n\nÀ très vite,\n\nLe fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:40:41.393Z"
+    }
   },
   {
     "id": "lead-mvsnn8vt-0dhq",
@@ -819,6 +909,347 @@
     "category": "coworking",
     "location": "Montpellier",
     "description": "Espace de travail collaboratif cherchant à proposer une offre culinaire diversifiée à ses membres lors de pauses déjeuners thématiques.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp238q-ywlu",
+    "company": "Medialis",
+    "contactName": "Office Manager",
+    "email": "contact@medialis.com",
+    "category": "entreprise",
+    "location": "Montpellier (Eurêka)",
+    "description": "Entreprise technologique en croissance de 80 salariés, en recherche de solutions de restauration rapide et qualitative pour leurs déjeuners d'équipe.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp238q-s2y1",
+    "company": "La Suite Coworking",
+    "contactName": "Community Manager",
+    "email": "hello@lasuite-coworking.fr",
+    "category": "coworking",
+    "location": "Castelnau-le-Lez",
+    "description": "Espace de travail partagé avec une forte communauté cherchant à organiser des afterworks gourmets mensuels pour favoriser le networking.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp238q-fj7w",
+    "company": "Domaine de la Perrière",
+    "contactName": "Propriétaire",
+    "email": "contact@domaine-perriere.fr",
+    "category": "domaine",
+    "location": "Saint-Gély-du-Fesc",
+    "description": "Domaine spécialisé dans les mariages haut de gamme souhaitant proposer une option foodtruck premium pour les brunchs du lendemain.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp238q-89bx",
+    "company": "Wework Montpellier",
+    "contactName": "Community Lead",
+    "email": "montpellier@wework.com",
+    "category": "coworking",
+    "location": "Montpellier (Centre)",
+    "description": "Hub dynamique de startups et freelances ayant un besoin récurrent de foodtrucks pour animer les pauses déjeuners sur le parvis.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp238q-z7tq",
+    "company": "ID Logistics",
+    "contactName": "Responsable RH",
+    "email": "contact@id-logistics.com",
+    "category": "entreprise",
+    "location": "Castelnau-le-Lez",
+    "description": "Site logistique administratif de 100+ employés cherchant une alternative gourmande pour dynamiser les pauses méridionales de fin de semaine.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp39se-23lz",
+    "company": "Groupe Icône",
+    "contactName": "Office Manager",
+    "email": "contact@groupe-icone.com",
+    "category": "entreprise",
+    "location": "Mauguio (Fréjorgues)",
+    "description": "Agence de communication forte de 40 collaborateurs recherchant des solutions de restauration conviviale pour leurs afterworks thématiques.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp39se-7ynw",
+    "company": "Domaine de la Providence",
+    "contactName": "Propriétaire du domaine",
+    "email": "contact@domainedelaprovidence.fr",
+    "category": "domaine",
+    "location": "Montpellier",
+    "description": "Lieu de réception de prestige pour mariages cherchant à diversifier ses offres de brunch pour les lendemains de noces en extérieur.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp39se-ehdw",
+    "company": "La Trinquette Coworking",
+    "contactName": "Responsable de site",
+    "email": "hello@latrinquette.fr",
+    "category": "coworking",
+    "location": "Montpellier (Port Marianne)",
+    "description": "Espace de coworking dynamique souhaitant animer son parvis pour favoriser le networking entre ses nombreux freelances et entreprises résidentes.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp39sf-vme3",
+    "company": "Sébastien Bâtiment",
+    "contactName": "Responsable CSE",
+    "email": "contact@sebastien-batiment.fr",
+    "category": "entreprise",
+    "location": "Mauguio (Fréjorgues)",
+    "description": "Entreprise du BTP avec plus de 80 salariés sur site, en quête de solutions de restauration rapide et qualitative pour leurs déjeuners d'équipe.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp39sf-ayrt",
+    "company": "Domaine de la Tour",
+    "contactName": "Directrice commerciale",
+    "email": "evenements@domainedelatour.fr",
+    "category": "domaine",
+    "location": "Castries",
+    "description": "Domaine événementiel haut de gamme recevant des séminaires d'entreprises nécessitant une prestation traiteur agile et gourmet.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp39sf-z1va",
+    "company": "Startway Montpellier",
+    "contactName": "Manager d'espace",
+    "email": "montpellier@startway.com",
+    "category": "coworking",
+    "location": "Montpellier (Millénaire)",
+    "description": "Hub de bureaux flexibles organisant régulièrement des événements de communauté, idéal pour l'accueil d'un foodtruck gourmet.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp39sf-f8mx",
+    "company": "Logisud",
+    "contactName": "Direction des ressources humaines",
+    "email": "contact@logisud.fr",
+    "category": "entreprise",
+    "location": "Mauguio (Fréjorgues)",
+    "description": "Plateforme logistique d'envergure regroupant plus de 100 salariés, cherchant une alternative gourmande pour les journées de cohésion interne.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp4j6e-olqu",
+    "company": "Kardham Montpellier",
+    "contactName": "Office Manager",
+    "email": "contact-montpellier@kardham.com",
+    "category": "entreprise",
+    "location": "Montpellier (Garosud)",
+    "description": "Agence d'architecture et ingénierie de 60 collaborateurs recherchant une solution de restauration nomade pour animer leurs afterworks sur le parvis.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp4j6e-tmqo",
+    "company": "Domaine de la Clapière",
+    "contactName": "Responsable Événementiel",
+    "email": "contact@domainedelaclapiere.fr",
+    "category": "domaine",
+    "location": "Montpellier",
+    "description": "Lieu de réception de prestige pour mariages cherchant des partenaires traiteurs foodtruck pour assurer des brunchs retours de noces qualitatifs.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp4j6e-k66r",
+    "company": "Espace Multiburo Montpellier",
+    "contactName": "Community Manager",
+    "email": "montpellier@multiburo.com",
+    "category": "coworking",
+    "location": "Montpellier (Zone Sud)",
+    "description": "Espace de coworking dynamique souhaitant organiser des déjeuners fédérateurs pour sa communauté d'entrepreneurs et de freelances.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp4j6e-zqps",
+    "company": "Groupe GCA Montpellier",
+    "contactName": "Responsable Ressources Humaines",
+    "email": "contact@groupe-gca.com",
+    "category": "entreprise",
+    "location": "Montpellier (Tournezy)",
+    "description": "Concession automobile majeure avec plus de 100 salariés cherchant une solution de restauration rapide et gourmande pour les journées séminaires internes.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp4j6e-4h7o",
+    "company": "Mas de Couran",
+    "contactName": "Propriétaire du domaine",
+    "email": "contact@masdecouran.com",
+    "category": "domaine",
+    "location": "Lattes",
+    "description": "Domaine d'exception proche de Montpellier Sud accueillant des séminaires d'entreprises nécessitant une restauration informelle type foodtruck gourmet.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp4j6e-94nj",
+    "company": "WorkingShare Montpellier",
+    "contactName": "Gestionnaire du site",
+    "email": "hello@workingshare.fr",
+    "category": "coworking",
+    "location": "Montpellier",
+    "description": "Tiers-lieu hybride en quête d'animations culinaires régulières pour dynamiser le déjeuner de ses membres résidents et nomades.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp4j6e-kgxs",
+    "company": "Suez Recyclage & Valorisation Montpellier",
+    "contactName": "Responsable CSE",
+    "email": "contact.languedoc@suez.com",
+    "category": "entreprise",
+    "location": "Montpellier (Garosud)",
+    "description": "Site industriel avec une centaine d'employés cherchant à organiser des journées de cohésion d'équipe avec un service traiteur clé en main.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp5kmm-ux12",
+    "company": "Eiffage Construction Sud",
+    "contactName": "Responsable des Ressources Humaines",
+    "email": "contact.sud@eiffage.com",
+    "category": "entreprise",
+    "location": "Saint-Jean-de-Védas",
+    "description": "Structure importante avec de nombreux ouvriers et cadres sur site, idéale pour un déjeuner convivial et rapide en extérieur.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp5kmm-lhrr",
+    "company": "Domaine de la Nartette",
+    "contactName": "Propriétaire du domaine",
+    "email": "contact@domainedelanartette.fr",
+    "category": "domaine",
+    "location": "Montpellier",
+    "description": "Lieu de réception prisé cherchant à diversifier ses offres de brunch pour les lendemains de mariage.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp5kmm-ez7g",
+    "company": "Cowork'in Saint-Roch",
+    "contactName": "Community Manager",
+    "email": "hello@coworkin-montpellier.com",
+    "category": "coworking",
+    "location": "Montpellier",
+    "description": "Espace de coworking dynamique souhaitant animer son parvis pour fidéliser ses membres lors des afterworks.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp5kmm-x3u1",
+    "company": "Groupe Synergie - Agence Montpellier",
+    "contactName": "Responsable d'Agence",
+    "email": "montpellier@synergie.fr",
+    "category": "entreprise",
+    "location": "Saint-Jean-de-Védas",
+    "description": "Recrutement et intérim en zone industrielle, recherche une solution de restauration mobile pour ses collaborateurs en déplacement.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp5kmm-d7uv",
+    "company": "Buro & Co",
+    "contactName": "Office Manager",
+    "email": "contact@buro-et-co.fr",
+    "category": "coworking",
+    "location": "Montpellier (Hôtel de Ville)",
+    "description": "Espace de travail collaboratif cherchant à organiser des événements de networking autour d'une cuisine gourmande.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp5kmm-o7tc",
+    "company": "Altrad Services",
+    "contactName": "Responsable CSE",
+    "email": "contact@altrad.com",
+    "category": "entreprise",
+    "location": "Montpellier (Parc Club du Millénaire)",
+    "description": "Siège social d'envergure internationale souhaitant dynamiser ses déjeuners d'équipe avec une offre traiteur premium.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp6l1c-h3p6",
+    "company": "Les Vignerons de Saint-Christol",
+    "contactName": "Responsable Événementiel",
+    "email": "contact@vignerons-saintchristol.fr",
+    "category": "entreprise",
+    "location": "Saint-Christol",
+    "description": "Coopérative viticole organisant régulièrement des journées portes ouvertes et des dégustations nécessitant une offre de restauration agile pour 100+ visiteurs.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp6l1c-74h9",
+    "company": "Domaine de la Firetière",
+    "contactName": "Propriétaire",
+    "email": "contact@domainedelafiretiere.fr",
+    "category": "domaine",
+    "location": "Murviel-lès-Montpellier",
+    "description": "Domaine de réception haut de gamme recherchant des partenaires traiteurs premium pour les brunchs et retours de noces dominicaux.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp6l1c-u8mj",
+    "company": "Le Tarmac Montpellier",
+    "contactName": "Community Manager",
+    "email": "contact@letarmac-coworking.fr",
+    "category": "coworking",
+    "location": "Montpellier (Mermoz)",
+    "description": "Espace de coworking dynamique de 80 membres souhaitant animer leur parvis lors d'afterworks thématiques mensuels.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp6l1c-dxh1",
+    "company": "Cave Coopérative Les Coteaux du Pic",
+    "contactName": "Responsable Commercial",
+    "email": "cave@coteauxdupic.fr",
+    "category": "entreprise",
+    "location": "Saint-Gély-du-Fesc",
+    "description": "Structure agroalimentaire régionale employant 60 salariés, idéale pour des déjeuners d'équipe conviviaux sur le site de production.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp6l1c-0j2q",
+    "company": "Domaine de Fourques",
+    "contactName": "Gestionnaire des réceptions",
+    "email": "contact@domainedefourques.com",
+    "category": "domaine",
+    "location": "Juvignac",
+    "description": "Domaine viticole organisant des événements professionnels et privés cherchant une solution de foodtruck gourmet pour les pauses déjeuner en plein air.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsp6l1c-po0h",
+    "company": "L'Espace Coworking de la Distillerie",
+    "contactName": "Office Manager",
+    "email": "bonjour@distillerie-coworking.com",
+    "category": "coworking",
+    "location": "Montpellier (Antigone)",
+    "description": "Coworking urbain de 40 coworkers en recherche d'une offre de restauration qualitative et régulière pour favoriser les échanges entre résidents.",
     "status": "ready",
     "lastContactDate": null
   }

@@ -190,6 +190,13 @@ async function sendOutboundEmail(to: string, subject: string, bodyText: string, 
   return await res.json()
 }
 
+import { 
+  safeDispatchEmail, 
+  isEmailAlreadySent, 
+  acquireAutopilotLock, 
+  releaseAutopilotLock 
+} from './email-guard'
+
 export interface AutopilotResult {
   zoneExplored: string
   scrapedCount: number
@@ -211,93 +218,124 @@ export async function runAutopilotCycle(options?: {
   const sendImmediately = options?.sendImmediately ?? true
   const zone = options?.zone || MONTPELLIER_ZONES[Math.floor(Math.random() * MONTPELLIER_ZONES.length)]
 
-  const leads = getLeads()
-  const existingCompanies = leads.map(l => l.company)
-  const existingEmails = new Set(leads.map(l => l.email.toLowerCase().trim()))
-  const existingNames = new Set(leads.map(l => l.company.toLowerCase().trim()))
-
-  logs.push(`🔍 [1/3] Gemini explore la zone : "${zone}" (avec exclusion des entreprises déjà connues)...`)
-  const discovered = await scrapeLeadsWithGemini(zone, options?.category, scrapeCount, existingCompanies)
-  logs.push(`✨ ${discovered.length} structures locales identifiées par Gemini.`)
-
-  let addedCount = 0
-  const newlyAddedLeads: ProspectLead[] = []
-
-  for (const item of discovered) {
-    if (!item.company || !item.email || !item.email.includes('@')) continue
-    const cleanEmail = item.email.toLowerCase().trim()
-    const cleanName = item.company.toLowerCase().trim()
-
-    // DÉDUPLICATION STRICTE (email ET nom de société)
-    if (existingEmails.has(cleanEmail) || existingNames.has(cleanName)) continue
-
-    const newLead: ProspectLead = {
-      id: `lead-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 6)}`,
-      company: item.company.trim(),
-      contactName: item.contactName?.trim(),
-      email: cleanEmail,
-      category: item.category || 'entreprise',
-      location: item.location?.trim() || 'Montpellier',
-      description: item.description?.trim() || 'Prospect sourcé automatiquement par Gemini.',
-      status: 'ready',
-      lastContactDate: null
+  // Verrou de concurrence pour éviter tout envoi simultané
+  const lockAcquired = acquireAutopilotLock('web')
+  if (!lockAcquired) {
+    logs.push("⚠️ Un autre processus Autopilot (Web ou CLI) est déjà actif. Cycle différé pour éviter les doublons.")
+    return {
+      zoneExplored: zone,
+      scrapedCount: 0,
+      newLeadsAdded: 0,
+      sentCount: 0,
+      logs
     }
-
-    leads.push(newLead)
-    newlyAddedLeads.push(newLead)
-    existingEmails.add(cleanEmail)
-    existingNames.add(cleanName)
-    addedCount++
   }
 
-  saveLeads(leads)
-  logs.push(`💾 [2/3] Base actualisée : +${addedCount} nouveaux prospects qualifiés enregistrés. (Total base: ${leads.length})`)
+  try {
+    const leads = getLeads()
+    const existingCompanies = leads.map(l => l.company)
+    const existingEmails = new Set(leads.map(l => l.email.toLowerCase().trim()))
+    const existingNames = new Set(leads.map(l => l.company.toLowerCase().trim()))
 
-  let sentCount = 0
-  const readyQueue = leads.filter(l => l.status === 'ready')
+    logs.push(`🔍 [1/3] Gemini explore la zone : "${zone}" (exclusion des entités déjà répertoriées)...`)
+    const discovered = await scrapeLeadsWithGemini(zone, options?.category, scrapeCount, existingCompanies)
+    logs.push(`✨ ${discovered.length} structures locales identifiées par Gemini.`)
 
-  if (sendImmediately && readyQueue.length > 0) {
-    const toSend = readyQueue.slice(0, maxSend)
-    logs.push(`🚀 [3/3] Rédaction par Gemini & expédition par Resend pour ${toSend.length} prospects en attente...`)
+    let addedCount = 0
+    const newlyAddedLeads: ProspectLead[] = []
 
-    for (let i = 0; i < toSend.length; i++) {
-      const lead = toSend[i]
-      try {
-        logs.push(`📝 [${i + 1}/${toSend.length}] Rédaction sur-mesure pour ${lead.company}...`)
-        const generated = await generateProspectEmailWithGemini(lead)
-        
-        logs.push(`✉️ Expédition mail officiel à ${lead.email} ("${generated.subject}")...`)
-        await sendOutboundEmail(lead.email, generated.subject, generated.body, lead)
+    for (const item of discovered) {
+      if (!item.company || !item.email || !item.email.includes('@')) continue
+      const cleanEmail = item.email.toLowerCase().trim()
+      const cleanName = item.company.toLowerCase().trim()
 
-        lead.status = 'contacted'
-        lead.lastContactDate = new Date().toISOString()
-        lead.generatedEmail = {
-          subject: generated.subject,
-          body: generated.body,
-          generatedAt: new Date().toISOString()
-        }
-        sentCount++
-        saveLeads(leads)
-        logs.push(`✅ Succès pour ${lead.company}`)
-      } catch (err: any) {
-        logs.push(`❌ Échec pour ${lead.company}: ${err.message}`)
-        lead.status = 'replied' // Marqué pour ne pas bloquer la file
-        saveLeads(leads)
+      // DÉDUPLICATION STRICTE (Base de données + Historique inaltérable)
+      if (existingEmails.has(cleanEmail) || existingNames.has(cleanName) || isEmailAlreadySent(cleanEmail)) {
+        continue
       }
-      // Pause de courtoisie de 3 secondes
-      await new Promise(r => setTimeout(r, 3000))
+
+      const newLead: ProspectLead = {
+        id: `lead-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 6)}`,
+        company: item.company.trim(),
+        contactName: item.contactName?.trim(),
+        email: cleanEmail,
+        category: item.category || 'entreprise',
+        location: item.location?.trim() || 'Montpellier',
+        description: item.description?.trim() || 'Prospect sourcé automatiquement par Gemini.',
+        status: 'ready',
+        lastContactDate: null
+      }
+
+      leads.push(newLead)
+      newlyAddedLeads.push(newLead)
+      existingEmails.add(cleanEmail)
+      existingNames.add(cleanName)
+      addedCount++
     }
-  } else {
-    logs.push(`ℹ️ Aucun prospect en attente d'envoi ou envoi désactivé.`)
-  }
 
-  logs.push(`🎉 Cycle Autopilot terminé avec succès !`)
+    saveLeads(leads)
+    logs.push(`💾 [2/3] Base actualisée : +${addedCount} nouveaux prospects qualifiés enregistrés. (Total base: ${leads.length})`)
 
-  return {
-    zoneExplored: zone,
-    scrapedCount: discovered.length,
-    newLeadsAdded: addedCount,
-    sentCount,
-    logs
+    let sentCount = 0
+    // Nettoie la file : exclut immédiatement tout email déjà présent dans l'historique d'envoi
+    const readyQueue = leads.filter(l => l.status === 'ready' && !isEmailAlreadySent(l.email))
+
+    if (sendImmediately && readyQueue.length > 0) {
+      const toSend = readyQueue.slice(0, maxSend)
+      logs.push(`🚀 [3/3] Expédition par Resend pour ${toSend.length} prospects en attente...`)
+
+      for (let i = 0; i < toSend.length; i++) {
+        const lead = toSend[i]
+        try {
+          logs.push(`📝 [${i + 1}/${toSend.length}] Rédaction sur-mesure pour ${lead.company}...`)
+          const generated = await generateProspectEmailWithGemini(lead)
+          
+          logs.push(`✉️ Expédition mail officiel à ${lead.email} ("${generated.subject}")...`)
+          const result = await safeDispatchEmail({
+            to: lead.email,
+            subject: generated.subject,
+            bodyText: generated.body,
+            lead,
+            source: 'autopilot_web'
+          })
+
+          if (result.skipped) {
+            logs.push(`⏭️ Doublon évité : ${lead.company} (${lead.email}) avait déjà été contacté.`)
+          } else {
+            sentCount++
+            logs.push(`✅ Succès pour ${lead.company}`)
+          }
+
+          lead.status = 'contacted'
+          lead.lastContactDate = new Date().toISOString()
+          lead.generatedEmail = {
+            subject: generated.subject,
+            body: generated.body,
+            generatedAt: new Date().toISOString()
+          }
+          saveLeads(leads)
+        } catch (err: any) {
+          logs.push(`❌ Échec pour ${lead.company}: ${err.message}`)
+          lead.status = 'replied' // Marqué pour ne pas bloquer la file
+          saveLeads(leads)
+        }
+        // Pause anti-spam de 3 secondes
+        await new Promise(r => setTimeout(r, 3000))
+      }
+    } else {
+      logs.push(`ℹ️ Aucun nouveau prospect en attente d'envoi ou envoi désactivé.`)
+    }
+
+    logs.push(`🎉 Cycle Autopilot terminé avec succès !`)
+
+    return {
+      zoneExplored: zone,
+      scrapedCount: discovered.length,
+      newLeadsAdded: addedCount,
+      sentCount,
+      logs
+    }
+  } finally {
+    releaseAutopilotLock()
   }
 }
