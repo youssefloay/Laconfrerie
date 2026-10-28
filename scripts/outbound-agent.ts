@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { generateProspectEmail, generateProspectEmailWithGemini, generateFollowUpEmail, ProspectLead } from '../lib/prospect-engine'
+import { generateProspectEmail, generateProspectEmailWithGemini, generateFollowUpEmail, formatOutboundEmailHTML, ProspectLead } from '../lib/prospect-engine'
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'prospects.json')
 // Charge les variables d'environnement depuis .env.local si non définies
@@ -31,15 +31,8 @@ function saveLeads(leads: ProspectLead[]) {
   fs.writeFileSync(DATA_PATH, JSON.stringify(leads, null, 2), 'utf-8')
 }
 
-async function sendEmailViaResend(to: string, subject: string, bodyText: string) {
-  const htmlBody = `
-    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1f2937; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;">
-      ${bodyText
-        .split('\n\n')
-        .map(p => `<p style="margin-bottom: 14px;">${p.replace(/\n/g, '<br/>')}</p>`)
-        .join('')}
-    </div>
-  `
+async function sendEmailViaResend(to: string, subject: string, bodyText: string, lead?: Partial<ProspectLead>) {
+  const htmlBody = formatOutboundEmailHTML(bodyText, lead)
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',

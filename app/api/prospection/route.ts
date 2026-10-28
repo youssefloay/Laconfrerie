@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
-import { generateProspectEmail, generateProspectEmailWithGemini, generateFollowUpEmail, ProspectLead } from '@/lib/prospect-engine'
+import { generateProspectEmail, generateProspectEmailWithGemini, generateFollowUpEmail, formatOutboundEmailHTML, ProspectLead } from '@/lib/prospect-engine'
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'prospects.json')
 const RESEND_API_KEY = process.env.RESEND_API_KEY
@@ -45,14 +45,7 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: 'Email destinataire manquant' }, { status: 400 })
       }
 
-      const htmlBody = `
-        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #1f2937; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;">
-          ${bodyText
-            .split('\n\n')
-            .map((p: string) => `<p style="margin-bottom: 14px;">${p.replace(/\n/g, '<br/>')}</p>`)
-            .join('')}
-        </div>
-      `
+      const htmlBody = formatOutboundEmailHTML(bodyText, lead || { company: recipient })
 
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',

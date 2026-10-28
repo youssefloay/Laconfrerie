@@ -614,5 +614,60 @@
     "description": "Espace convivial avec communauté de freelances et créatifs.",
     "status": "ready",
     "lastContactDate": null
+  },
+  {
+    "id": "lead-mvso4iea-pc6y",
+    "company": "Cap Oméga",
+    "contactName": "Office Manager",
+    "email": "contact@capomega.fr",
+    "category": "coworking",
+    "location": "Montpellier (Eurêka)",
+    "description": "Pépinière d'entreprises innovantes accueillant de nombreuses startups cherchant à dynamiser leurs pauses déjeuner et afterworks sur le parvis.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvso4iea-vbum",
+    "company": "Domaine de Verchant",
+    "contactName": "Responsable Événements",
+    "email": "reception@domainedeverchant.com",
+    "category": "domaine",
+    "location": "Castelnau-le-Lez",
+    "description": "Lieu de prestige pour mariages haut de gamme nécessitant une solution de restauration décontractée et gourmande pour les lendemains de noces.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvso4iea-pe0v",
+    "company": "Dell Technologies Montpellier",
+    "contactName": "Responsable CSE",
+    "email": "fr_contact_marketing@dell.com",
+    "category": "entreprise",
+    "location": "Montpellier (Millénaire)",
+    "description": "Grand site employant plus de 150 personnes, idéal pour des animations foodtruck lors d'événements de cohésion d'équipe.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvso5upa-syki",
+    "company": "Dell Technologies Montpellier",
+    "contactName": "Responsable CSE",
+    "email": "contact.france@dell.com",
+    "category": "entreprise",
+    "location": "Montpellier (Parc Eurêka)",
+    "description": "Un campus dynamique de grande envergure cherchant des solutions de restauration rapide et gourmande pour ses événements internes et afterworks.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvso5upa-fobf",
+    "company": "Bureaux & Co - Eurêka",
+    "contactName": "Community Manager",
+    "email": "eureka@bureauxandco.com",
+    "category": "coworking",
+    "location": "Montpellier (Parc Eurêka)",
+    "description": "Espace de coworking fédérant une communauté d'entrepreneurs, idéal pour animer le parvis lors de afterworks de networking hebdomadaires.",
+    "status": "ready",
+    "lastContactDate": null
   }
 ]

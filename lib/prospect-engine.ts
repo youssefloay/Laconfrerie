@@ -187,3 +187,179 @@ Excellente semaine,
 https://laconfrerietruck.fr`
   }
 }
+
+export function formatOutboundEmailHTML(bodyText: string, lead?: Partial<ProspectLead>): string {
+  // Format body text: bold markdown, paragraphs, linebreaks
+  const formattedBody = bodyText
+    .split(/\n\n+/)
+    .map(paragraph => {
+      const cleanP = paragraph
+        .trim()
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br/>')
+      return `<p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.65; color: #334155;">${cleanP}</p>`
+    })
+    .join('')
+
+  return `
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Confrérie Foodtruck</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f1f5f9; padding: 24px 12px;">
+    <tr>
+      <td align="center">
+        <!-- Main Card -->
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08); border: 1px solid #e2e8f0;">
+          
+          <!-- Header Banner -->
+          <tr>
+            <td align="center" style="background: linear-gradient(135deg, #090d16 0%, #1e293b 100%); padding: 32px 24px 28px 24px; border-bottom: 3px solid #f59e0b;">
+              <!-- Logo Container with glowing gold ring -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td align="center" style="background-color: #ffffff; width: 84px; height: 84px; border-radius: 50%; box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.35); padding: 8px;">
+                    <a href="https://www.laconfrerietruck.fr" target="_blank" style="text-decoration: none; display: block;">
+                      <img src="https://www.laconfrerietruck.fr/images/logo.png" alt="La Confrérie Foodtruck" width="70" height="70" style="display: block; border-radius: 50%; object-fit: contain; border: 0;" />
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <h1 style="margin: 16px 0 4px 0; color: #ffffff; font-size: 20px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase;">
+                La Confrérie Foodtruck
+              </h1>
+              <p style="margin: 0; color: #fbbf24; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;">
+                Traiteur Privatisations & Street Food Gourmet · Montpellier
+              </p>
+
+              <!-- Trust Rating Pill -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-top: 14px;">
+                <tr>
+                  <td style="background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(251, 191, 36, 0.4); border-radius: 20px; padding: 4px 14px;">
+                    <span style="color: #ffffff; font-size: 11px; font-weight: 700;">
+                      ⭐️ 5.0 sur Google · Camion 100% Autonome
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Message Body -->
+          <tr>
+            <td style="padding: 32px 28px 20px 28px; background-color: #ffffff;">
+              ${formattedBody}
+            </td>
+          </tr>
+
+          <!-- Food Imagery Showcase -->
+          <tr>
+            <td style="padding: 0 28px 24px 28px; background-color: #ffffff;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; padding: 14px;">
+                <tr>
+                  <td width="50%" align="center" style="padding: 6px;">
+                    <img src="https://www.laconfrerietruck.fr/images/burgers/cheese.jpeg" alt="Burger Artisanal La Confrérie" width="100%" style="display: block; max-width: 250px; border-radius: 12px; height: 140px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.06);" />
+                    <p style="margin: 8px 0 0 0; font-size: 11px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">Burgers Gourmets Minute</p>
+                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Pain frais boulanger local</p>
+                  </td>
+                  <td width="50%" align="center" style="padding: 6px;">
+                    <img src="https://www.laconfrerietruck.fr/images/burgers/bacon.jpeg" alt="Frites & Sauces Maison" width="100%" style="display: block; max-width: 250px; border-radius: 12px; height: 140px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.06);" />
+                    <p style="margin: 8px 0 0 0; font-size: 11px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">Options Fraîches & Veggie</p>
+                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Pokebowls, frites croustillantes</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Key Pillars Grid -->
+          <tr>
+            <td style="padding: 0 28px 28px 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="border-top: 1px solid #f1f5f9; padding-top: 20px;">
+                <tr>
+                  <td width="50%" valign="top" style="padding: 6px 8px;">
+                    <p style="margin: 0; font-size: 12px; font-weight: 800; color: #0f172a;">⚡️ Cadence Ultra-Fluide</p>
+                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Jusqu'à 120 convives servis par heure</p>
+                  </td>
+                  <td width="50%" valign="top" style="padding: 6px 8px;">
+                    <p style="margin: 0; font-size: 12px; font-weight: 800; color: #0f172a;">🚚 Zéro Logistique</p>
+                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Camion autonome, zéro vaisselle</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Primary CTA Button -->
+          <tr>
+            <td align="center" style="padding: 0 28px 32px 28px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; max-width: 440px;">
+                <tr>
+                  <td align="center" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius: 14px; box-shadow: 0 8px 20px -3px rgba(245, 158, 11, 0.4);">
+                    <a href="https://www.laconfrerietruck.fr/fr/plaquette" target="_blank" style="display: block; padding: 16px 28px; font-size: 15px; font-weight: 900; color: #0f172a; text-decoration: none; text-align: center; letter-spacing: 0.3px;">
+                      👉 Consulter notre Plaquette & Formules
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin: 12px 0 0 0; font-size: 12px; color: #64748b;">
+                Ou configurez directement votre événement sur <a href="https://www.laconfrerietruck.fr/fr/devis" target="_blank" style="color: #2563eb; font-weight: 700; text-decoration: underline;">notre simulateur en ligne</a>
+              </p>
+            </td>
+          </tr>
+
+          <!-- Founder Direct Signature Card -->
+          <tr>
+            <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 24px 28px;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td>
+                    <p style="margin: 0; font-size: 13px; font-weight: 800; color: #0f172a;">Youssef — La Confrérie Foodtruck</p>
+                    <p style="margin: 2px 0 0 0; font-size: 12px; color: #64748b;">Artisan Traiteur Événementiel · Montpellier & Villeneuve</p>
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin-top: 8px;">
+                      <tr>
+                        <td style="padding-right: 14px;">
+                          <a href="tel:+33662350953" style="font-size: 12px; font-weight: 700; color: #0284c7; text-decoration: none;">
+                            📞 06 62 35 09 53
+                          </a>
+                        </td>
+                        <td>
+                          <a href="mailto:contact@laconfrerietruck.fr" style="font-size: 12px; font-weight: 700; color: #0284c7; text-decoration: none;">
+                            ✉️ contact@laconfrerietruck.fr
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer Legal & Opt-out -->
+          <tr>
+            <td align="center" style="background-color: #0f172a; padding: 20px 24px; color: #94a3b8; font-size: 11px; line-height: 1.5;">
+              <p style="margin: 0 0 4px 0; color: #cbd5e1; font-weight: 600;">
+                La Confrérie Foodtruck · <a href="https://www.laconfrerietruck.fr" target="_blank" style="color: #fbbf24; text-decoration: none;">laconfrerietruck.fr</a>
+              </p>
+              <p style="margin: 0; color: #64748b;">
+                Vous recevez cette proposition personnalisée car vous organisez des réceptions ou moments d'équipe.<br/>
+                Pour ne plus recevoir nos offres, répondez simplement « Stop » à cet email.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+  `
+}
+
