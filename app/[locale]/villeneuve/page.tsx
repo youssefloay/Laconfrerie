@@ -381,7 +381,7 @@ export default function VilleneuveHome() {
               ))}
             </div>
             <div className="mt-6 text-center">
-              <Link href="/villeneuve/evenements">
+              <Link href="/devis">
                 <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">{ui.eventsBtn}</Button>
               </Link>
             </div>
@@ -440,7 +440,7 @@ export default function VilleneuveHome() {
             <div className="flex gap-6">
               <Link href="/villeneuve/menu" className="hover:text-[#FFD54F]">Menu</Link>
               <Link href="/villeneuve/locations" className="hover:text-[#FFD54F]">Localisation</Link>
-              <Link href="/villeneuve/evenements" className="hover:text-[#FFD54F]">Événements</Link>
+              <Link href="/devis" className="hover:text-[#FFD54F]">Événements</Link>
               <Link href="/villeneuve/contact" className="hover:text-[#FFD54F]">Contact</Link>
             </div>
             <div className="text-sm">© {new Date().getFullYear()} La Confrérie Foodtruck</div>

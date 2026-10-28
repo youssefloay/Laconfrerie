@@ -185,7 +185,7 @@
   "QuotePage": {
     "title": "Customized Quote Request",
     "description": "Fill out this form and we will propose a tailor-made offer for your event.",
-    "backToEvents": "Back to events",
+    "backToEvents": "Back to home",
     "firstName": "First Name *",
     "lastName": "Last Name *",
     "email": "Email *",

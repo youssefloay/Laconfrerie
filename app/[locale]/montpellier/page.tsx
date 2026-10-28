@@ -479,7 +479,7 @@ export default function Home() {
             </div>
 
             <div className="mt-6 text-center">
-              <Link href="/evenements">
+              <Link href="/devis">
                 <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">
                   {t('events.learnMore')}
                 </Button>
@@ -572,7 +572,7 @@ export default function Home() {
               <Link href="/locations" className="hover:text-[#FFD54F]">
                 {navT('locations')}
               </Link>
-              <Link href="/evenements" className="hover:text-[#FFD54F]">
+              <Link href="/devis" className="hover:text-[#FFD54F]">
                 {navT('events')}
               </Link>
               <Link href="/contact" className="hover:text-[#FFD54F]">

@@ -159,7 +159,7 @@
   "QuotePage": {
     "title": "Demande de devis personnalisé",
     "description": "Remplissez ce formulaire et nous vous proposerons une offre sur mesure pour votre événement.",
-    "backToEvents": "Retour aux événements",
+    "backToEvents": "Retour à l'accueil",
     "firstName": "Prénom *",
     "lastName": "Nom *",
     "email": "Email *",

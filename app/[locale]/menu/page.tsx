@@ -484,7 +484,7 @@ export default function MenuPage() {
               </div>
             </div>
             <div className="mt-6 text-center">
-              <Link href="/evenements">
+              <Link href="/devis">
                 <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">{t('eventCTA')}</Button>
               </Link>
             </div>

@@ -157,7 +157,7 @@ export default function DevisPage() {
     <div className="min-h-screen bg-[#FFF8E1]">
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8">
-          <Link href="/evenements">
+          <Link href="/">
             <Button variant="ghost" className="text-[#1E88E5]">
               <ArrowLeft className="mr-2 h-4 w-4" />
               {t('backToEvents')}
