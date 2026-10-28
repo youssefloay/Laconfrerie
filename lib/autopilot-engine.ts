@@ -20,15 +20,23 @@ const DATA_PATH = path.join(process.cwd(), 'data', 'prospects.json')
 const RESEND_API_KEY = process.env.RESEND_API_KEY
 const SENDER_EMAIL = 'La Confrérie Foodtruck <contact@laconfrerietruck.fr>'
 
-const MONTPELLIER_ZONES = [
+export const MONTPELLIER_ZONES = [
   'Parc Scientifique et Technologique du Millénaire (Montpellier)',
   'Parc d\'Activités Eurêka et Castelnau-le-Lez',
   'Parc d\'Activités Fréjorgues Ouest et Est (Mauguio / Aéroport)',
   'Zone d\'Activités Garosud et Tournezy (Montpellier Sud)',
   'Parc d\'Activités du Mas de Grille (Saint-Jean-de-Védas)',
+  'Pôle tertiaire Port Marianne, Antigone et Bassin Jacques Cœur',
+  'Parc d\'Activités de Lattes, Maurin et Boirargues',
+  'Parc d\'Activités de Pérols et littoral Palavas-les-Flots',
+  'Villeneuve-lès-Maguelone, Mireval et Vic-la-Gardiole',
+  'Pôle Euromédecine et Parc 2000 (Montpellier Nord / Hôpitaux-Facultés)',
+  'Parc d\'Activités de Saint-Aunès, Vendargues et Baillargues',
   'Domaines viticoles, Châteaux et Mas de réceptions de mariage (Hérault / Pic Saint-Loup)',
+  'Lieux de réception et domaines de mariage (Vallée de l\'Hérault et Bassin de Thau)',
   'Centres de coworking, pépinières et incubateurs de la Métropole de Montpellier',
-  'Pôles tertiaires et agences de communication de Montpellier Centre et Port Marianne'
+  'Agences événementielles, agences de communication et d\'incentive de Montpellier',
+  'Zone d\'Activités de Jacou, Clapiers et Montferrier-sur-Lez'
 ]
 
 function getLeads(): ProspectLead[] {

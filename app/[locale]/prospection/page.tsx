@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { 
   Building2, 
   Castle, 
@@ -56,35 +56,58 @@ export default function ProspectionPage() {
 
   // Autopilot state
   const [autopilotRunning, setAutopilotRunning] = useState(false)
+  const [isLooping, setIsLooping] = useState(false)
   const [autopilotLogs, setAutopilotLogs] = useState<string[]>([])
   const [showAutopilotModal, setShowAutopilotModal] = useState(false)
+  const stopRequested = useRef(false)
 
-  const handleRunAutopilot = async () => {
+  const handleStartNonStop = async () => {
+    stopRequested.current = false
+    setIsLooping(true)
     setAutopilotRunning(true)
     setShowAutopilotModal(true)
     setAutopilotLogs([
-      "🚀 Initialisation de l'Autopilot Gemini...",
-      "🔍 Exploration du tissu économique de Montpellier en cours..."
+      "🔥 MODE NON-STOP ACTIVÉ : Scraping et envois en boucle continue...",
+      "🛡️ Déduplication stricte : aucun contact ne recevra d'email en double."
     ])
 
-    try {
-      const res = await fetch('/api/prospection/autopilot', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ scrapeCount: 6, maxSendLimit: 3, sendImmediately: true })
-      })
-      const data = await res.json()
-      if (data.success && data.result) {
-        setAutopilotLogs(data.result.logs)
-        await fetchLeads()
-      } else {
-        setAutopilotLogs(prev => [...prev, `❌ Erreur: ${data.error || 'Erreur inconnue'}`])
+    let cycleNum = 0
+    while (!stopRequested.current) {
+      cycleNum++
+      setAutopilotLogs(prev => [...prev, `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`, `🔄 Démarrage du cycle #${cycleNum}...`])
+
+      try {
+        const res = await fetch('/api/prospection/autopilot', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ scrapeCount: 6, maxSendLimit: 4, sendImmediately: true })
+        })
+        const data = await res.json()
+        if (data.success && data.result) {
+          setAutopilotLogs(prev => [...prev, ...data.result.logs])
+          await fetchLeads()
+        } else {
+          setAutopilotLogs(prev => [...prev, `⚠️ Erreur cycle : ${data.error || 'Erreur inconnue'}`])
+        }
+      } catch (err: any) {
+        setAutopilotLogs(prev => [...prev, `⚠️ Échec requête cycle : ${err.message}`])
       }
-    } catch (err: any) {
-      setAutopilotLogs(prev => [...prev, `❌ Échec: ${err.message}`])
-    } finally {
-      setAutopilotRunning(false)
+
+      if (stopRequested.current) break
+      setAutopilotLogs(prev => [...prev, "⏳ Pause de 15s avant la zone géographique suivante..."])
+      await new Promise(r => setTimeout(r, 15000))
     }
+
+    setIsLooping(false)
+    setAutopilotRunning(false)
+    setAutopilotLogs(prev => [...prev, "🛑 Mode Non-Stop arrêté par l'utilisateur."])
+  }
+
+  const handleStopNonStop = () => {
+    stopRequested.current = true
+    setIsLooping(false)
+    setAutopilotRunning(false)
+    setAutopilotLogs(prev => [...prev, "🛑 Demande d'arrêt reçue, finalisation du cycle en cours..."])
   }
 
   const handleCSVUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -336,12 +359,15 @@ export default function ProspectionPage() {
 
             <div className="flex flex-wrap items-center gap-3">
               <Button 
-                onClick={handleRunAutopilot}
-                disabled={autopilotRunning}
-                className="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black gap-2 shadow-lg shadow-amber-500/25 rounded-xl border border-amber-300"
+                onClick={isLooping ? handleStopNonStop : handleStartNonStop}
+                className={`${
+                  isLooping 
+                    ? 'bg-red-600 hover:bg-red-500 text-white shadow-red-600/30' 
+                    : 'bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 shadow-amber-500/25 border border-amber-300'
+                } font-black gap-2 shadow-lg rounded-xl transition-all`}
               >
-                <Bot className={`w-4 h-4 ${autopilotRunning ? 'animate-spin' : ''}`} />
-                <span>{autopilotRunning ? 'Autopilot en cours...' : '🤖 Lancer Autopilot Gemini'}</span>
+                <Bot className={`w-4 h-4 ${isLooping ? 'animate-pulse text-white' : ''}`} />
+                <span>{isLooping ? '🛑 Arrêter l\'Autopilot Non-Stop' : '⚡️ Lancer l\'Autopilot Non-Stop'}</span>
               </Button>
 
               <label className="cursor-pointer">
@@ -829,13 +855,24 @@ export default function ProspectionPage() {
               </div>
             </div>
 
-            <div className="p-4 bg-slate-950/50 border-t border-slate-800 flex justify-end">
+            <div className="p-4 bg-slate-950/50 border-t border-slate-800 flex justify-between items-center">
+              {isLooping ? (
+                <Button
+                  onClick={handleStopNonStop}
+                  className="bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl gap-1.5"
+                >
+                  <X className="w-4 h-4" />
+                  Arrêter le Mode Non-Stop
+                </Button>
+              ) : (
+                <span className="text-xs text-slate-400">Mode Non-Stop inactif</span>
+              )}
+
               <Button
                 onClick={() => setShowAutopilotModal(false)}
-                disabled={autopilotRunning}
-                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-xl"
+                className="bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl"
               >
-                {autopilotRunning ? "Veuillez patienter..." : "Fermer le journal"}
+                Fermer le journal
               </Button>
             </div>
           </div>
