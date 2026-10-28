@@ -1,7 +1,8 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Baloo_2, Montserrat } from "next/font/google"
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import "../globals.css"
@@ -159,6 +160,7 @@ export default async function RootLayout({
             </div>
             <BottomNav />
             <Analytics />
+            <SpeedInsights />
             <GoogleAnalytics gaId="G-GSJHW3W7E9" />
           </NextIntlClientProvider>
         </ThemeProvider>

@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeft, Mail } from "lucide-react"
+import { ArrowLeft, Mail, FileText } from "lucide-react"
 import { useTranslations } from 'next-intl'
 import { Link } from '@/src/i18n/routing'
 import { Button } from "@/components/ui/button"
@@ -8,6 +8,7 @@ import { FoodIcon } from "@/components/food-icon"
 import { SiteLogo } from "@/components/site-logo"
 import { SocialNav } from "@/components/social-nav"
 import { LanguageToggle } from "@/components/language-toggle"
+import { GoogleReviewsBanner } from "@/components/google-reviews-banner"
 
 export default function EvenementsPage() {
   const t = useTranslations('EventsPage')
@@ -214,7 +215,7 @@ export default function EvenementsPage() {
                 <div className="p-3 border-l-4 border-[#1E88E5]">
                   <h5 className="font-bold">{t('formulaEssential')}</h5>
                   <p className="text-sm text-gray-700">{t('formulaEssentialDesc')}</p>
-                  <p className="text-sm font-bold text-[#FF5722] mt-1">{t('formulaEssentialPrice')}</p>
+                  <p className="text-xs font-bold text-[#1E88E5] mt-1 uppercase tracking-wider">Tarif sur-mesure selon effectifs & lieu</p>
                 </div>
 
                 <div className="p-3 border-l-4 border-[#1E88E5]">
@@ -222,7 +223,7 @@ export default function EvenementsPage() {
                   <p className="text-sm text-gray-700">
                     {t('formulaFriendlyDesc')}
                   </p>
-                  <p className="text-sm font-bold text-[#FF5722] mt-1">{t('formulaFriendlyPrice')}</p>
+                  <p className="text-xs font-bold text-[#1E88E5] mt-1 uppercase tracking-wider">Tarif sur-mesure · Formule clé en main</p>
                 </div>
 
                 <div className="p-3 border-l-4 border-[#1E88E5]">
@@ -230,20 +231,31 @@ export default function EvenementsPage() {
                   <p className="text-sm text-gray-700">
                     {t('formulaPremiumDesc')}
                   </p>
-                  <p className="text-sm font-bold text-[#FF5722] mt-1">{t('formulaPremiumPrice')}</p>
+                  <p className="text-xs font-bold text-[#1E88E5] mt-1 uppercase tracking-wider">Tarif sur-mesure · Prestation traiteur complète</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 text-center">
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/devis">
-                <Button className="bg-[#1E88E5] hover:bg-[#1565C0]">
-                  <Mail className="mr-2 h-4 w-4" />
+                <Button className="bg-[#1E88E5] hover:bg-[#1565C0] text-white px-6 py-3 rounded-xl font-bold gap-2">
+                  <Mail className="h-4 w-4" />
                   {t('getQuote')}
+                </Button>
+              </Link>
+              <Link href="/plaquette">
+                <Button variant="outline" className="border-[#1E88E5] text-[#1E88E5] hover:bg-[#1E88E5] hover:text-white px-6 py-3 rounded-xl font-bold gap-2">
+                  <FileText className="h-4 w-4" />
+                  <span>Consulter la Plaquette PDF</span>
                 </Button>
               </Link>
             </div>
           </div>
+        </div>
+
+        {/* Avis Google & Témoignages */}
+        <div className="mx-auto max-w-4xl">
+          <GoogleReviewsBanner />
         </div>
       </div>
     </div>
