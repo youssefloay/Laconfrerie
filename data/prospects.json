@@ -1,0 +1,90 @@
+[
+  {
+    "id": "lead-001",
+    "company": "Swile",
+    "contactName": "Responsable Culture & Events",
+    "email": "contact@swile.co",
+    "category": "entreprise",
+    "location": "Montpellier (Millénaire)",
+    "description": "Entreprise tech / scale-up, friande d'afterworks conviviaux et de déjeuners d'équipe décontractés.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-002",
+    "company": "Matooma",
+    "contactName": "Office Manager / CSE",
+    "email": "contact@matooma.com",
+    "category": "entreprise",
+    "location": "Pérols / Montpellier",
+    "description": "Société IoT de 60+ collaborateurs, habituée à organiser des pots de rentrée et des déjeuners foodtruck.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-003",
+    "company": "Halle Tropisme",
+    "contactName": "Équipe Programmation & Événements",
+    "email": "bonjour@tropisme.coop",
+    "category": "coworking",
+    "location": "Montpellier",
+    "description": "Tiers-lieu créatif et pôle d'entreprises, événements récurrents, marchés, afterworks et séminaires.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-004",
+    "company": "The Babel Community",
+    "contactName": "Community Manager & Événements",
+    "email": "montpellier@thebabelcommunity.com",
+    "category": "coworking",
+    "location": "Montpellier Centre",
+    "description": "Espace de coliving et coworking moderne avec communauté jeune et dynamique.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-005",
+    "company": "Domaine de Verchant",
+    "contactName": "Coordinateur Mariages & Réceptions",
+    "email": "evenements@verchant.com",
+    "category": "domaine",
+    "location": "Castelnau-le-Lez",
+    "description": "Domaine viticole et hôtelier de prestige, recherche de partenaires foodtruck premium pour lendemains de mariage (brunch retour de noces).",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-006",
+    "company": "Château de Flaugergues",
+    "contactName": "Service Événementiel",
+    "email": "contact@flaugergues.com",
+    "category": "domaine",
+    "location": "Montpellier",
+    "description": "Folie montpelliéraine accueillant mariages et soirées d'entreprise privatisées.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-007",
+    "company": "Mas de Biar",
+    "contactName": "Responsable Événements Privés",
+    "email": "contact@masdebiar.com",
+    "category": "domaine",
+    "location": "Lavérune",
+    "description": "Lieu de réception d'exception pour mariages champêtres et séminaires au vert.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-008",
+    "company": "Parc Eurêka (Pépinière Cap Alpha / MIBI)",
+    "contactName": "Responsable Animation Réseau",
+    "email": "animation@bic-montpellier.com",
+    "category": "entreprise",
+    "location": "Castelnau / Eurêka",
+    "description": "Écosystème de startups et PME innovantes, friands de formats street food festifs sur le parvis.",
+    "status": "ready",
+    "lastContactDate": null
+  }
+]
