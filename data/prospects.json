@@ -669,5 +669,86 @@
     "description": "Espace de coworking fédérant une communauté d'entrepreneurs, idéal pour animer le parvis lors de afterworks de networking hebdomadaires.",
     "status": "ready",
     "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsonjmr-7emg",
+    "company": "Solucial Avocats",
+    "contactName": "Office Manager",
+    "email": "contact@solucial.fr",
+    "category": "entreprise",
+    "location": "Saint-Jean-de-Védas (Mas de Grille)",
+    "description": "Cabinet dynamique d'une cinquantaine de collaborateurs cherchant des solutions de restauration rapide et qualitative pour leurs déjeuners d'équipe.",
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:25:28.111Z",
+    "generatedEmail": {
+      "subject": "Une pause gourmande pour l'équipe de Solucial Avocats ?",
+      "body": "Bonjour à l'équipe de Solucial Avocats,\n\nBasés juste à côté, au Mas de Grille, vous cherchez sans doute parfois une alternative qualitative pour vos déjeuners ou afterworks. Je suis le fondateur de La Confrérie Foodtruck et nous serions ravis de régaler vos 50 collaborateurs.\n\nPourquoi nous choisir ? Nous proposons des burgers gourmets (pains boulangers locaux) et des pokebowls ultra-frais, le tout avec une efficacité redoutable : nous servons plus de 100 couverts à l'heure.\n\nLe vrai plus ? Nous sommes 100% autonomes. Vous n'avez aucune logistique à gérer, pas de vaisselle, juste le plaisir de se retrouver autour d'un bon repas sur votre parvis. \n\nDécouvrez notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un bref échange téléphonique de 5 minutes dans la semaine pour voir comment nous pourrions ponctuer vos prochaines journées d'équipe ?\n\nBien chaleureusement,\n\nLe Fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:25:28.111Z"
+    }
+  },
+  {
+    "id": "lead-mvsonjmr-v6m5",
+    "company": "Domaine de la Grangette",
+    "contactName": "Responsable Événementiel",
+    "email": "contact@domainedelagrangette.com",
+    "category": "domaine",
+    "location": "Fabrègues",
+    "description": "Lieu de réception prisé recherchant des partenaires foodtrucks gourmets pour sublimer les retours de noces dominicaux de leur clientèle.",
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:25:35.826Z",
+    "generatedEmail": {
+      "subject": "Partenariat culinaire - La Confrérie Foodtruck pour vos lendemains de mariage",
+      "body": "Bonjour à l'équipe du Domaine de la Grangette,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé entre Montpellier et Villeneuve-lès-Maguelone. Nous sommes de grands admirateurs de votre domaine et nous aimerions vous proposer nos services pour sublimer les retours de noces de vos mariés.\n\nPourquoi nous choisir ? Nous proposons des burgers gourmets (pains artisanaux locaux) et des pokebowls frais, servis avec une cadence de 100+ couverts/heure. Surtout, nous sommes 100% autonomes : pas besoin de votre cuisine, nous gérons toute la logistique sur votre parking et ne laissons aucune trace. Simplement du goût et de la convivialité.\n\nVous pouvez découvrir notre univers ici : https://laconfrerietruck.fr/fr/plaquette\n\nSeriez-vous disponible pour un court échange téléphonique de 5 minutes cette semaine ? J'aimerais beaucoup discuter de la manière dont nous pourrions simplifier l'organisation de vos dimanches.\n\nÀ très vite,\n\nLe fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:25:35.826Z"
+    }
+  },
+  {
+    "id": "lead-mvsonjmr-wlg8",
+    "company": "Le Coworking Saint-Jean",
+    "contactName": "Community Manager",
+    "email": "hello@coworking-stjean.fr",
+    "category": "coworking",
+    "location": "Saint-Jean-de-Védas",
+    "description": "Espace de travail partagé accueillant une centaine de coworkers, idéal pour installer un foodtruck sur le parvis lors des animations afterwork hebdomadaires.",
+    "status": "contacted",
+    "lastContactDate": "2026-10-28T22:25:43.808Z",
+    "generatedEmail": {
+      "subject": "Animation gourmande sur le parvis du Coworking Saint-Jean ?",
+      "body": "Bonjour à l'équipe du Coworking Saint-Jean,\n\nJe suis le fondateur de La Confrérie Foodtruck, basé juste à côté, à Montpellier et Villeneuve-lès-Maguelone. On accompagne déjà de nombreuses entreprises pour dynamiser leurs pauses déjeuners ou leurs afterworks.\n\nImaginez un jeudi midi ou une fin de journée animée sur votre parvis avec nos burgers gourmets au pain boulanger et nos pokebowls frais. Le gros avantage pour vous ? On arrive avec tout le nécessaire : autonomie totale, aucune logistique pour vos équipes, et une cadence pensée pour servir vos coworkers en un temps record.\n\nVous pouvez découvrir notre univers et nos formules ici : https://laconfrerietruck.fr/fr/plaquette\n\nÇa vous dirait qu'on échange 5 minutes par téléphone pour voir si on peut pimenter vos prochaines animations à Saint-Jean-de-Védas ?\n\nBien à vous,\n\nLe fondateur\nLa Confrérie Foodtruck\n06 62 35 09 53",
+      "generatedAt": "2026-10-28T22:25:43.808Z"
+    }
+  },
+  {
+    "id": "lead-mvsonjmr-tpvz",
+    "company": "Kallista Energy",
+    "contactName": "Responsable CSE",
+    "email": "contact@kallistaenergy.com",
+    "category": "entreprise",
+    "location": "Montpellier (Euralatte)",
+    "description": "Société d'ingénierie employant plus de 100 personnes, en recherche constante d'animations culinaires pour renforcer la cohésion lors de leurs séminaires internes.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsonjmr-oy4m",
+    "company": "Domaine de Verchant",
+    "contactName": "Direction Événements",
+    "email": "events@domainedeverchant.com",
+    "category": "domaine",
+    "location": "Castelnau-le-Lez",
+    "description": "Établissement haut de gamme souhaitant proposer des prestations foodtruck innovantes et authentiques pour les événements de team building en extérieur.",
+    "status": "ready",
+    "lastContactDate": null
+  },
+  {
+    "id": "lead-mvsonjmr-48p8",
+    "company": "Node",
+    "contactName": "Responsable de Site",
+    "email": "contact@node-coworking.fr",
+    "category": "coworking",
+    "location": "Montpellier (Port Marianne)",
+    "description": "Hub créatif de grande envergure cherchant à diversifier son offre de restauration éphémère pour satisfaire une communauté de plus de 150 freelances et startups.",
+    "status": "ready",
+    "lastContactDate": null
   }
 ]

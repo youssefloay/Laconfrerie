@@ -257,20 +257,20 @@ export function formatOutboundEmailHTML(bodyText: string, lead?: Partial<Prospec
             </td>
           </tr>
 
-          <!-- Food Imagery Showcase -->
+          <!-- Food Imagery Showcase (Photos réelles de la galerie) -->
           <tr>
             <td style="padding: 0 28px 24px 28px; background-color: #ffffff;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; padding: 14px;">
                 <tr>
                   <td width="50%" align="center" style="padding: 6px;">
-                    <img src="https://www.laconfrerietruck.fr/images/burgers/cheese.jpeg" alt="Burger Artisanal La Confrérie" width="100%" style="display: block; max-width: 250px; border-radius: 12px; height: 140px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.06);" />
-                    <p style="margin: 8px 0 0 0; font-size: 11px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">Burgers Gourmets Minute</p>
-                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Pain frais boulanger local</p>
+                    <img src="https://www.laconfrerietruck.fr/images/gallery/burger-frites.jpeg" alt="Burger Gourmet & Frites Maison La Confrérie" width="100%" style="display: block; max-width: 250px; border-radius: 12px; height: 145px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.06);" />
+                    <p style="margin: 8px 0 0 0; font-size: 11px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">Burgers & Frites Maison</p>
+                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Pain artisanal local & frites fraîches</p>
                   </td>
                   <td width="50%" align="center" style="padding: 6px;">
-                    <img src="https://www.laconfrerietruck.fr/images/burgers/bacon.jpeg" alt="Frites & Sauces Maison" width="100%" style="display: block; max-width: 250px; border-radius: 12px; height: 140px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.06);" />
-                    <p style="margin: 8px 0 0 0; font-size: 11px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">Options Fraîches & Veggie</p>
-                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Pokebowls, frites croustillantes</p>
+                    <img src="https://www.laconfrerietruck.fr/images/gallery/salade-fraicheur.jpeg" alt="Salade Fraîcheur & Options Veggie" width="100%" style="display: block; max-width: 250px; border-radius: 12px; height: 145px; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.06);" />
+                    <p style="margin: 8px 0 0 0; font-size: 11px; font-weight: 800; color: #1e293b; text-transform: uppercase; letter-spacing: 0.5px;">Salades Fraîches & Veggie</p>
+                    <p style="margin: 2px 0 0 0; font-size: 11px; color: #64748b;">Salades composées, bowls & tenders</p>
                   </td>
                 </tr>
               </table>
