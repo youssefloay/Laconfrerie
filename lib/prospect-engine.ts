@@ -15,6 +15,73 @@ export interface ProspectLead {
   }
 }
 
+export async function generateProspectEmailWithGemini(
+  lead: ProspectLead,
+  customAngle?: string
+): Promise<{ subject: string; body: string }> {
+  const apiKey = process.env.GEMINI_API_KEY
+
+  if (!apiKey) {
+    return generateProspectEmail(lead, customAngle)
+  }
+
+  const prompt = `
+Tu es le fondateur de "La Confrérie Foodtruck" (burgers gourmets maison, pains boulangers locaux, pokebowls frais, capacité 100+ personnes/h, 100% autonome en logistique, basé à Montpellier et Villeneuve-lès-Maguelone).
+Site web : https://laconfrerietruck.fr
+Plaquette : https://laconfrerietruck.fr/fr/plaquette
+Téléphone : 06 62 35 09 53
+
+Rédige un email de prospection B2B personnalisé, court, chaleureux et percutant pour le prospect suivant :
+- Nom de la structure : ${lead.company}
+- Contact : ${lead.contactName || "Responsable Événements / Office Manager"}
+- Catégorie : ${lead.category} (${lead.category === 'domaine' ? 'Lieu de réception / mariage : proposer un partenariat brunch lendemain de mariage' : lead.category === 'coworking' ? 'Coworking / Tiers-lieu : proposer un afterwork du jeudi ou déjeuner parvis' : 'Entreprise : proposer un afterwork d\'équipe ou déjeuner foodtruck sans aucune logistique'})
+- Localisation : ${lead.location}
+- Contexte / Description : ${lead.description || "Entreprise ciblée dans la région de Montpellier"}
+${customAngle ? `- Consigne spécifique demandée : "${customAngle}"` : ""}
+
+Règles de style impératives :
+1. Ton : Professionnel mais convivial, chaleureux, méridional, pas pompeux, pas de blabla corporate artificiel.
+2. Longueur : Moins de 180 mots. Doit se lire en 40 secondes.
+3. Points forts à mentionner selon la cible : zéro logistique (on gère tout sur le parking/parvis, pas de vaisselle), rapidité d'envoi minute, produits frais et locaux, lien vers la plaquette.
+4. Call to action : Un appel téléphonique informel de 5 minutes.
+5. Format de réponse STRICT en JSON avec deux clés : "subject" et "body". Ne mets aucun texte en dehors du JSON.
+`
+
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key=${apiKey}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          responseMimeType: "application/json"
+        }
+      })
+    })
+
+    if (!res.ok) {
+      console.warn(`[Gemini API] Échec (${res.status}), bascule sur le moteur modèle standard.`)
+      return generateProspectEmail(lead, customAngle)
+    }
+
+    const data = await res.json()
+    const textOutput = data?.candidates?.[0]?.content?.parts?.[0]?.text
+    if (textOutput) {
+      const parsed = JSON.parse(textOutput)
+      if (parsed.subject && parsed.body) {
+        return {
+          subject: parsed.subject,
+          body: parsed.body
+        }
+      }
+    }
+  } catch (err: any) {
+    console.warn(`[Gemini API] Erreur: ${err.message}. Utilisation du fallback.`)
+  }
+
+  return generateProspectEmail(lead, customAngle)
+}
+
 export function generateProspectEmail(lead: ProspectLead, customAngle?: string): { subject: string; body: string } {
   const salutation = lead.contactName && !lead.contactName.toLowerCase().includes('responsable') && !lead.contactName.toLowerCase().includes('équipe')
     ? `Bonjour ${lead.contactName},`
@@ -34,9 +101,9 @@ Ce que nous apportons aux mariés et aux gestionnaires de domaine :
 • **Service rapide & chaleureux** : capacité d'envoi fluide de 60 à 250 convives (burgers gourmets minute, wraps frais, frites maison, options végétariennes).
 • **Zéro contrainte pour vous** : le domaine reste impeccable, départ propre et rapide après le service.
 
-Seriez-vous ouverts à ce que nous vous fassions parvenir notre plaquette traiteur pour vos mariés 2025/2026 en recherche d'une solution originale ?
+Seriez-vous ouverts à ce que nous vous fassions parvenir notre plaquette traiteur pour vos mariés en recherche d'une solution originale ?
 
-Vous pouvez déjà jeter un œil à notre formule et nos engagements ici : https://laconfrerietruck.fr/fr/plaquette
+Vous pouvez jeter un œil à notre formule et nos engagements ici : https://laconfrerietruck.fr/fr/plaquette
 
 Au plaisir d'échanger 5 minutes par téléphone à votre convenance,
 

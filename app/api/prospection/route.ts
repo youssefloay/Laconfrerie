@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
-import { generateProspectEmail, generateFollowUpEmail, ProspectLead } from '@/lib/prospect-engine'
+import { generateProspectEmail, generateProspectEmailWithGemini, generateFollowUpEmail, ProspectLead } from '@/lib/prospect-engine'
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'prospects.json')
 const RESEND_API_KEY = process.env.RESEND_API_KEY
@@ -32,7 +32,7 @@ export async function POST(req: Request) {
       const lead = leads.find(l => l.id === leadId)
       if (!lead) return NextResponse.json({ error: 'Lead introuvable' }, { status: 404 })
 
-      const email = generateProspectEmail(lead, customAngle)
+      const email = await generateProspectEmailWithGemini(lead, customAngle)
       return NextResponse.json({ success: true, email })
     }
 

@@ -1,15 +1,19 @@
 import fs from 'fs'
 import path from 'path'
-import { generateProspectEmail, generateFollowUpEmail, ProspectLead } from '../lib/prospect-engine'
+import { generateProspectEmail, generateProspectEmailWithGemini, generateFollowUpEmail, ProspectLead } from '../lib/prospect-engine'
 
 const DATA_PATH = path.join(process.cwd(), 'data', 'prospects.json')
 // Charge les variables d'environnement depuis .env.local si non définies
-if (!process.env.RESEND_API_KEY) {
-  const envPath = path.join(process.cwd(), '.env.local')
-  if (fs.existsSync(envPath)) {
-    const envContent = fs.readFileSync(envPath, 'utf-8')
+const envPath = path.join(process.cwd(), '.env.local')
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf-8')
+  if (!process.env.RESEND_API_KEY) {
     const match = envContent.match(/RESEND_API_KEY=["']?([^"'\n\r]+)["']?/)
     if (match) process.env.RESEND_API_KEY = match[1]
+  }
+  if (!process.env.GEMINI_API_KEY) {
+    const match = envContent.match(/GEMINI_API_KEY=["']?([^"'\n\r]+)["']?/)
+    if (match) process.env.GEMINI_API_KEY = match[1]
   }
 }
 
@@ -119,7 +123,7 @@ async function main() {
 
     for (let i = 0; i < toSend.length; i++) {
       const lead = toSend[i]
-      const email = generateProspectEmail(lead)
+      const email = await generateProspectEmailWithGemini(lead)
       console.log(`[${i + 1}/${toSend.length}] Envoi à ${lead.company} (${lead.email})...`)
       try {
         await sendEmailViaResend(lead.email, email.subject, email.body)
