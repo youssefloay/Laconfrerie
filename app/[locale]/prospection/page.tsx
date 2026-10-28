@@ -16,6 +16,7 @@ import {
   RefreshCw,
   Eye,
   X,
+  FileText,
   Upload,
   Bot,
   Zap
