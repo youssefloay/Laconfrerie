@@ -37,7 +37,17 @@ const nextConfig = {
       },
       {
         source: '/evenements.html',
-        destination: '/evenements',
+        destination: '/devis',
+        permanent: true,
+      },
+      {
+        source: '/evenements',
+        destination: '/devis',
+        permanent: true,
+      },
+      {
+        source: '/:locale/evenements',
+        destination: '/:locale/devis',
         permanent: true,
       },
       {
