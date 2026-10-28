@@ -16,7 +16,8 @@ import {
   RefreshCw,
   Eye,
   X,
-  FileText
+  FileText,
+  Upload
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -46,6 +47,90 @@ export default function ProspectionPage() {
   const [newCategory, setNewCategory] = useState<'entreprise' | 'domaine' | 'coworking'>('entreprise')
   const [newLocation, setNewLocation] = useState('Montpellier')
   const [newDescription, setNewDescription] = useState('')
+
+  // Bulk import state
+  const [importing, setImporting] = useState(false)
+  const [importMessage, setImportMessage] = useState<string | null>(null)
+
+  const handleCSVUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    setImporting(true)
+    setImportMessage(null)
+
+    const reader = new FileReader()
+    reader.onload = async (event) => {
+      try {
+        const text = event.target?.result as string
+        const lines = text.split(/\r?\n/).filter(l => l.trim().length > 0)
+        if (lines.length < 2) {
+          setImportMessage("Fichier CSV vide ou sans données.")
+          setImporting(false)
+          return
+        }
+
+        const header = lines[0].toLowerCase().split(/[,;\t]/).map(h => h.trim().replace(/^["']|["']$/g, ''))
+        const compIdx = header.findIndex(h => h.includes('societe') || h.includes('company') || h.includes('entreprise') || h.includes('nom'))
+        const mailIdx = header.findIndex(h => h.includes('email') || h.includes('mail') || h.includes('courriel'))
+        const contactIdx = header.findIndex(h => h.includes('contact') || h.includes('prenom') || h.includes('responsable'))
+        const catIdx = header.findIndex(h => h.includes('cat') || h.includes('secteur') || h.includes('type'))
+        const locIdx = header.findIndex(h => h.includes('ville') || h.includes('location') || h.includes('adresse') || h.includes('zone'))
+        const descIdx = header.findIndex(h => h.includes('desc') || h.includes('note') || h.includes('activite'))
+
+        const parsedItems: any[] = []
+
+        for (let i = 1; i < lines.length; i++) {
+          const values = lines[i].split(/[,;\t]/).map(v => v.trim().replace(/^["']|["']$/g, ''))
+          const company = compIdx !== -1 ? values[compIdx] : values[0]
+          const email = mailIdx !== -1 ? values[mailIdx] : values[1]
+
+          if (!company || !email || !email.includes('@')) continue
+
+          const catRaw = catIdx !== -1 ? (values[catIdx] || '').toLowerCase() : ''
+          let category = 'entreprise'
+          if (catRaw.includes('mariage') || catRaw.includes('domaine') || catRaw.includes('chateau') || catRaw.includes('mas')) {
+            category = 'domaine'
+          } else if (catRaw.includes('cowork') || catRaw.includes('tiers') || catRaw.includes('incub')) {
+            category = 'coworking'
+          }
+
+          parsedItems.push({
+            company,
+            email: email.toLowerCase(),
+            contactName: contactIdx !== -1 ? values[contactIdx] : undefined,
+            category,
+            location: locIdx !== -1 && values[locIdx] ? values[locIdx] : 'Montpellier',
+            description: descIdx !== -1 ? values[descIdx] : ''
+          })
+        }
+
+        if (parsedItems.length === 0) {
+          setImportMessage("Aucun email valide détecté dans le fichier.")
+          setImporting(false)
+          return
+        }
+
+        const res = await fetch('/api/prospection', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'bulk_add', items: parsedItems })
+        })
+        const data = await res.json()
+        if (data.success) {
+          setImportMessage(`🎉 ${data.addedCount} nouveaux prospects importés avec succès ! (Total: ${data.totalLeads})`)
+          await fetchLeads()
+        } else {
+          setImportMessage(`Erreur: ${data.error}`)
+        }
+      } catch (err: any) {
+        setImportMessage(`Erreur lors de la lecture: ${err.message}`)
+      } finally {
+        setImporting(false)
+      }
+    }
+    reader.readAsText(file)
+  }
 
   useEffect(() => {
     fetchLeads()
@@ -214,16 +299,39 @@ export default function ProspectionPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
+              <label className="cursor-pointer">
+                <input 
+                  type="file" 
+                  accept=".csv" 
+                  className="hidden" 
+                  onChange={handleCSVUpload}
+                  disabled={importing}
+                />
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-sm bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition-all shadow-sm">
+                  <Upload className={`w-4 h-4 text-amber-400 ${importing ? 'animate-bounce' : ''}`} />
+                  <span>{importing ? 'Importation...' : 'Importer un CSV (500-1000+)'}</span>
+                </span>
+              </label>
+
               <Button 
                 onClick={() => setShowAddForm(true)}
-                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold gap-2 shadow-lg shadow-amber-400/20"
+                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold gap-2 shadow-lg shadow-amber-400/20 rounded-xl"
               >
                 <Plus className="w-4 h-4" />
                 Ajouter un prospect
               </Button>
             </div>
           </div>
+
+          {importMessage && (
+            <div className="mt-4 p-3 bg-amber-400/10 border border-amber-400/30 rounded-xl text-amber-300 text-xs font-bold flex items-center justify-between">
+              <span>{importMessage}</span>
+              <button onClick={() => setImportMessage(null)} className="text-amber-300/70 hover:text-white">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          )}
 
           {/* Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-800">

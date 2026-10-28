@@ -97,8 +97,11 @@ async function main() {
   }
 
   if (mode === '--send') {
-    const targetId = args[1]
-    const toSend = targetId 
+    const limitArgIdx = args.findIndex(a => a === '--limit' || a === '-l')
+    const limit = limitArgIdx !== -1 ? parseInt(args[limitArgIdx + 1], 10) : 50
+    const targetId = args[1] && !args[1].startsWith('-') ? args[1] : null
+
+    let toSend = targetId 
       ? leads.filter(l => l.id === targetId)
       : leads.filter(l => l.status === 'ready')
 
@@ -107,11 +110,17 @@ async function main() {
       return
     }
 
+    if (!targetId && toSend.length > limit) {
+      console.log(`🛡️ Sécurité anti-spam : Limite de ${limit} envois par lot appliquée (sur ${toSend.length} prêts).`)
+      toSend = toSend.slice(0, limit)
+    }
+
     console.log(`\n🚀 Envoi en cours pour ${toSend.length} prospect(s)...\n`)
 
-    for (const lead of toSend) {
+    for (let i = 0; i < toSend.length; i++) {
+      const lead = toSend[i]
       const email = generateProspectEmail(lead)
-      console.log(`Envoi à ${lead.company} (${lead.email})...`)
+      console.log(`[${i + 1}/${toSend.length}] Envoi à ${lead.company} (${lead.email})...`)
       try {
         await sendEmailViaResend(lead.email, email.subject, email.body)
         lead.status = 'contacted'
@@ -125,12 +134,12 @@ async function main() {
       } catch (err: any) {
         console.error(`❌ Échec pour ${lead.company}: ${err.message}`)
       }
-      // Petite pause de 1 seconde entre les envois
-      await new Promise(r => setTimeout(r, 1000))
+      // Pause de 2.5s entre chaque envoi pour la réputation du domaine
+      await new Promise(r => setTimeout(r, 2500))
     }
 
     saveLeads(leads)
-    console.log('\n✨ Campagne terminée et base prospects mise à jour dans data/prospects.json !\n')
+    console.log('\n✨ Lot terminé et base prospects mise à jour dans data/prospects.json !\n')
     return
   }
 

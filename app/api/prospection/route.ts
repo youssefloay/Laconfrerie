@@ -88,6 +88,39 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true, message: 'Email envoyé avec succès !' })
     }
 
+    if (action === 'bulk_add') {
+      const { items } = body
+      if (!Array.isArray(items) || items.length === 0) {
+        return NextResponse.json({ error: 'Liste d\'items vide ou invalide' }, { status: 400 })
+      }
+
+      let addedCount = 0
+      const existingEmails = new Set(leads.map(l => l.email.toLowerCase().trim()))
+
+      for (const item of items) {
+        if (!item.company || !item.email) continue
+        const cleanEmail = item.email.toLowerCase().trim()
+        if (existingEmails.has(cleanEmail)) continue
+
+        leads.push({
+          id: `lead-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 6)}`,
+          company: item.company.trim(),
+          contactName: item.contactName?.trim() || undefined,
+          email: cleanEmail,
+          category: item.category || 'entreprise',
+          location: item.location?.trim() || 'Montpellier',
+          description: item.description?.trim() || '',
+          status: 'ready',
+          lastContactDate: null
+        })
+        existingEmails.add(cleanEmail)
+        addedCount++
+      }
+
+      saveLeads(leads)
+      return NextResponse.json({ success: true, addedCount, totalLeads: leads.length })
+    }
+
     if (action === 'add') {
       const { company, email, category, location, description } = body
       if (!company || !email) {
